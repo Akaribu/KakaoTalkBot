@@ -1,8 +1,8 @@
 var D = require("DBManager.js")("D"); 
 function blankFunc(r){}
 function userdb(r){
-	var searchname=D.selectForArray("botpoint","name","name=?",sender);
-	if(searchname==sender){
+	var searchname=D.selectForArray("botpoint","name","name=?",r.sender);
+	if(searchname==r.sender){
 		return 0;}
 	else{D.insert("botpoint"{room:r.room,name:r.sender, point:0})
 		return 1;}
