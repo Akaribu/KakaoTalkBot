@@ -1,1 +1,2 @@
-function response(room, msg, sender, isGroupChat, replier, imageDB) {}
+function response(room, msg, sender, isGroupChat, replier, imageDB) {
+}
