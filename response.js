@@ -1,4 +1,5 @@
 var D = require("DBManager.js")("D"); 
+function blankFunc(r){}
 function time() {
     var today = new Date();
     var dayNames = ["(일요일)", "(월요일)", "(화요일)", "(수요일)", "(목요일)", "(금요일)", "(토요일)"];
@@ -56,7 +57,8 @@ if (msg == '/로딩'){
                 replier.reply(String(eval(msg.substring(1))).encoding());
                 return;
             }
-        }
+		blankFunc(r);	
+	}
     }
     catch (e) {
         replier.reply(e + "\n" + e.stack);
