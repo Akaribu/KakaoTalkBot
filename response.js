@@ -3,8 +3,8 @@ function botpoint(r){
 	if(D.selectForArray("botpoint","name","name=?",r.sender) == r.sender)
 	{}
 	else {D.insert("botpoint",{room : r.room, name:r.sender, point:0})}
-	
 }
+
 function blankFunc(r){}
 function time() {
     var today = new Date();
