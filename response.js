@@ -20,8 +20,6 @@ function reload(r) {
 	    Api.replyRoom(r.room ,"파일저장 완료 / " + time + "s\n" + new Date() );
 	    Api.reload();
 	    reloadcheck = 0;
-	    control = D.selectForArray('control').map(v=>v[0]);
-	    controlPanel = D.selectForObject('control');
 	    var time = (new Date() - Timer) / 1000;
 	    Api.replyRoom(r.room , "reloading 완료 / " + time + "s\n" + new Date());
 	}
