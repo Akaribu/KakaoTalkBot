@@ -1,5 +1,12 @@
 var D = require("DBManager.js")("D"); 
 function blankFunc(r){}
+function userdb(r){
+	var searchname=D.selectForArray("botpoint","name","name=?",sender);
+	if(searchname==sender){
+		return 0;}
+	else{D.insert("botpoint"{room:r.room,name:r.sender, point:0})
+		return 1;}
+}
 function time() {
     var today = new Date();
     var dayNames = ["(일요일)", "(월요일)", "(화요일)", "(수요일)", "(목요일)", "(금요일)", "(토요일)"];
