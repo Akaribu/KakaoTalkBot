@@ -37,8 +37,6 @@ conn = new java.net.URL("https://raw.githubusercontent.com/Akaribu/KakaoTalkBot/
             T.interrupt();
             Api.reload();
             reloadcheck = 0;
-            control = D.selectForArray("control").map(v => v[0]);
-            controlPanel = D.selectForObject("control");
             var time = (new Date() - Timer) / 1000;
             r.replier.reply("reloading 완료 / " + time + "s\n" + new Date());
         }
