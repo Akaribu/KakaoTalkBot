@@ -15,7 +15,7 @@ function time() {
 }
 function reload(r) {
     try {
-        if (r.sender == "니부아카리" || r.room == "46") {
+        if (r.sender == "니부아카리" || r.room == "건의방") {
             reloadcheck = 1;
             reloadtime = new Date().getTime();
             var Timer = new Date();
