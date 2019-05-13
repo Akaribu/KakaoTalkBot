@@ -5,7 +5,7 @@ function botpoint(r){
 	else {D.insert("botpoint",{room : r.room, name:r.sender, point:0})}
 	if(r.msg=="/조회"){var check=D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
 	r.replier.reply(r.sender+"님은"+check+"네루를 가지고 있습니다!");}
-	if(r.msg=="/조회"){var list=D.selectForString("botpoint",null,"room=?",[r.room]);
+	if(r.msg=="/목록"){var list=D.selectForString("botpoint",null,"room=?",[r.room]);
 	r.replier.reply(list);
 }
 
