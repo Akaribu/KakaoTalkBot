@@ -42,7 +42,7 @@ conn = new java.net.URL("https://raw.githubusercontent.com/Akaribu/KakaoTalkBot/
         }
     }
     catch (e) {
-        r.replier.reply("46", e + "\n" + e.stack);
+        r.replier.reply("건의방", e + "\n" + e.stack);
     }
 }
 function response(room, msg, sender, isGroupChat, replier, imageDB) {
