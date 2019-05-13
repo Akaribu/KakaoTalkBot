@@ -1,12 +1,5 @@
 var D = require("DBManager.js")("D"); 
 function blankFunc(r){}
-function userdb(r){
-	var searchname=D.selectForArray("botpoint","name","name=?",r.sender);
-	if(searchname==r.sender){
-		return 0;}
-	else{D.insert("botpoint"{room:r.room,name:r.sender, point:0})
-		return 1;}
-}
 function time() {
     var today = new Date();
     var dayNames = ["(일요일)", "(월요일)", "(화요일)", "(수요일)", "(목요일)", "(금요일)", "(토요일)"];
@@ -54,7 +47,11 @@ conn = new java.net.URL("https://raw.githubusercontent.com/Akaribu/KakaoTalkBot/
 }
 function response(room, msg, sender, isGroupChat, replier, imageDB) {
 	var r = { replier: replier, msg: msg, sender: sender, room: room, imageDB :imageDB};
-	userdb(r)
+	try{
+	if(D.selectForArray("botpoint","name","name=?",sender)[0][0] == sender) {}
+	else {D.insert("botpoint",{room : room, name:sender, point:0})}}
+	catch (e) {D.insert("botpoint",{room : room, name:sender, point:0})}
+
 	if (msg == '/로딩'){
     		reload(r);
     		return;
