@@ -1,6 +1,6 @@
 var D = require("DBManager.js")("D"); 
 function botpoint(r){
-	if(D.selectForArray("botpoint","name","name=?",r.sender)[0][0] == sender)
+	if(D.selectForArray("botpoint","name","name=?",r.sender)[0][0] == r.sender)
 	{return 0;}
 	else {D.insert("botpoint",{room : r.room, name:r.sender, point:0})return 1;}
 	
