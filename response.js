@@ -4,11 +4,10 @@ function botpoint(r){
 	{return 0;}
 	else {D.insert("botpoint",{room : r.room, name:r.sender, point:0})}}
 function pointcheck(r){
-	if(r.msg=="/조회"){var check=D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
-	r.replier.reply(r.sender+"님은"+check+"네루를 가지고 있습니다!");}
-	else if(r.msg=="/목록"){var list=D.selectForString("botpoint",null,"room=?",[r.room]);
-	r.replier.reply(list);
-}
+	var check=D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
+	var list=D.selectForString("botpoint",null,"room=?",[r.room]);
+	if(r.msg=="/조회"){r.replier.reply(r.sender+"님은"+check+"네루를 가지고 있습니다!");}
+	else if(r.msg=="/목록"){r.replier.reply(list);}}
 
 function blankFunc(r){}
 function time() {
