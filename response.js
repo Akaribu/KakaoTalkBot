@@ -54,10 +54,9 @@ if (msg == '/로딩'){
 	try {
         if (sender== "니부아카리" || room == "건의방") {
             if (msg.indexOf(">") == 0) {
-                replier.reply(String(eval(msg.substring(1))).encoding());
+                replier.reply(String(eval(msg.substring(1))));
                 return;
             }
-		blankFunc(r);	
 	}
     }
     catch (e) {
