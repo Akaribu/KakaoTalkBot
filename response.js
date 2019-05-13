@@ -1,9 +1,9 @@
 var D = require("DBManager.js")("D"); 
 function botpoint(r){
-	try{
-	if(D.selectForArray("botpoint","name","name=?",r.sender)[0][0] == sender) {}
-	else {D.insert("botpoint",{room : r.room, name:r.sender, point:0})}}
-	catch (e) {D.insert("botpoint",{room : r.room, name:r.sender, point:0})}
+	if(D.selectForArray("botpoint","name","name=?",r.sender)[0][0] == sender)
+	{return 0;}
+	else {D.insert("botpoint",{room : r.room, name:r.sender, point:0})return 1;}
+	
 }
 function blankFunc(r){}
 function time() {
