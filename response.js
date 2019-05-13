@@ -37,7 +37,7 @@ conn = new java.net.URL("https://raw.githubusercontent.com/Akaribu/KakaoTalkBot/
             Api.reload();
             reloadcheck = 0;
             var time = (new Date() - Timer) / 1000;
-            r.replier.reply("reloading 완료 / " + time + "s\n" + new Date());
+            r.replier.reply("리로딩 완료 / " + time + "s\n" + new Date());
         }
     }
     catch (e) {
