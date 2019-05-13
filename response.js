@@ -1,4 +1,10 @@
 var D = require("DBManager.js")("D"); 
+function botpoint(r){
+	try{
+	if(D.selectForArray("botpoint","name","name=?",r.sender)[0][0] == sender) {}
+	else {D.insert("botpoint",{room : r.room, name:r.sender, point:0})}}
+	catch (e) {D.insert("botpoint",{room : r.room, name:r.sender, point:0})}
+}
 function blankFunc(r){}
 function time() {
     var today = new Date();
@@ -47,11 +53,7 @@ conn = new java.net.URL("https://raw.githubusercontent.com/Akaribu/KakaoTalkBot/
 }
 function response(room, msg, sender, isGroupChat, replier, imageDB) {
 	var r = { replier: replier, msg: msg, sender: sender, room: room, imageDB :imageDB};
-	try{
-	if(D.selectForArray("botpoint","name","name=?",sender)[0][0] == sender) {}
-	else {D.insert("botpoint",{room : room, name:sender, point:0})}}
-	catch (e) {D.insert("botpoint",{room : room, name:sender, point:0})}
-
+	botpoint(r);
 	if (msg == '/로딩'){
     		reload(r);
     		return;
