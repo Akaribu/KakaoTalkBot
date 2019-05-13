@@ -27,4 +27,9 @@ function reload(r) {
 	}
 }
 function response(room, msg, sender, isGroupChat, replier, imageDB) {
+	var r = { replier: replier, msg: msg, sender: sender, room: room, imageDB :imageDB};
+if (msg == '/로딩'){
+    		reload(r);
+    		return;
+	    }
 }
