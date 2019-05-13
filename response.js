@@ -2,7 +2,8 @@ var D = require("DBManager.js")("D");
 function botpoint(r){
 	if(D.selectForArray("botpoint","name","name=?",r.sender) == r.sender)
 	{return 0;}
-	else {D.insert("botpoint",{room : r.room, name:r.sender, point:0})}
+	else {D.insert("botpoint",{room : r.room, name:r.sender, point:0})}}
+function pointcheck(r){
 	if(r.msg=="/조회"){var check=D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
 	r.replier.reply(r.sender+"님은"+check+"네루를 가지고 있습니다!");}
 	if(r.msg=="/목록"){var list=D.selectForString("botpoint",null,"room=?",[r.room]);
@@ -58,6 +59,7 @@ conn = new java.net.URL("https://raw.githubusercontent.com/Akaribu/KakaoTalkBot/
 function response(room, msg, sender, isGroupChat, replier, imageDB) {
 	var r = { replier: replier, msg: msg, sender: sender, room: room, imageDB :imageDB};
 	botpoint(r);
+	pointcheck(r);
 	if (msg == '/로딩'){
     		reload(r);
     		return;
