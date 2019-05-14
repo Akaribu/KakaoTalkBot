@@ -126,7 +126,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 	pointcheck(r);
 	pointgive(r);
 	
-	if (msg.indexOf(">") == 0 && room=="건의방"&& sender"니부아카리") {
+	if (msg.indexOf(">") == 0 && room=="건의방") {
 		ev(r);
 		return;
 	}
