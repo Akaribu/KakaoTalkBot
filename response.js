@@ -243,7 +243,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 	botpoint(r);
 	pointcheck(r);
 	pointgive(r);
-	if (msg.indexOf("/가사"){
+	if (msg.indexOf("/가사")==0){
 	lyric(r);
 	return;
 	}
