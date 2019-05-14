@@ -42,7 +42,8 @@ var D = require("DBManager.js")("D");
             }
             else{
                 for(var i=0; i<num; i++){
-                        if(random>=99){
+                        random1 = Math.floor(Math.random()*101);
+			if(random1>=99){
                         temp1+=1;
                         }
                         else{
@@ -100,22 +101,23 @@ currentpoint = D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.se
             }
             else{
              for(var i=0; i<num; i++){
-                    if(random>=99){
+                    random1 = Math.floor(Math.random()*101);
+		    if(random1>=99){
                     temp1+=1;
                     currentpoint+=70
                     D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
                     }
-                    else if(random>=94){
+                    else if(random1>=94){
                     temp2+=1;
                     currentpoint+=50
                     D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
                     }
-                    else if(random>=87){
+                    else if(random1>=87){
                     temp3+=1;
                     currentpoint+=30
                     D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
                     }
-                    else if(random>=77){
+                    else if(random1>=77){
                     temp4+=1;
                     currentpoint+=15
                     D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
