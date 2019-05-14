@@ -1,4 +1,43 @@
 var D = require("DBManager.js")("D"); 
+function pointgive(r){
+	var proportion= Math.floor(Math.random()*101);
+	var give=Math.floor(Math.random()*31);
+	currentpoint=D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
+	if(proportion>99){
+	currentpoint+=give;
+	D.update("botpoint",point,"room=? and name=?",[r.room,r.sender],currentpoint);
+	}
+	else{}
+}
+
+function pointlottery(r){
+	var proportion=Math.floor(Math.random()*101);
+		if(proportion>=99){
+		r.replier.reply("1등 당첨!");
+		currentpoint+=100
+		D.update("botpoint",{"point":currentpint},"name=?",r.sender);
+		}
+		else if(99>proportion>=94){
+		r.replier.reply("2등 당첨!");
+		currentpoint+=70
+		D.update("botpoint",{"point":currentpint},"name=?",r.sender);
+		}
+		else if(94>proportion>=87){
+		r.replier.reply("3등 당첨!");
+		currentpoint+=40
+		D.update("botpoint",{"point":currentpint},"name=?",r.sender);
+		}
+		else if(87>proportion>=77){
+		r.replier.reply("4등 당첨!");
+		currentpoint+=20
+		D.update("botpoint",{"point":currentpint},"name=?",r.sender);
+		}
+		else
+		{
+		r.replier.reply("꽝");
+		}
+}
+	
 function botpoint(r){
 	if(D.selectForArray("botpoint","name","name=?",r.sender) == r.sender)
 	{return 0;}
@@ -59,6 +98,11 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 	var r = { replier: replier, msg: msg, sender: sender, room: room, imageDB :imageDB};
 	botpoint(r);
 	pointcheck(r);
+	pointgive(r);
+	if (msg == '/즉석복권'){
+    		pointlottery(r);
+    		return;
+	    }
 	if (msg == '/로딩'){
     		reload(r);
     		return;
