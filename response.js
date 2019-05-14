@@ -24,46 +24,115 @@ var D = require("DBManager.js")("D");
 		}
 	}
 	function roomlottery(r){
-		currentpoint = D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
-		random = Math.floor(Math.random()*101);
-			if(random>=99){
-			r.replier.reply("부방장 당첨!");
-			}
-			else
-			{
-			r.replier.reply("꽝");
-			}
-	}
+        currentpoint = D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
+        random = Math.floor(Math.random()*101);
+        num=Number(msg.substr(6));
+        temp1="";
+        temp2="";
+        if(currentpoint-10>=0){
+            currentpoint-=10;
+            D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
+            if(num=="" && num=="1"){
+                if(random>=99){
+                r.replier.reply("부방장 당첨!");
+                }
+                else{
+                r.replier.reply("꽝");
+                }
+            }
+            else{
+                for(var i=0; i<num; i++){
+                        if(random>=99){
+                        Number(temp1)+=1;
+                        }
+                        else{
+                        Number(temp2)+=1;
+                        }
+                }
+                r.replier.reply("당첨 횟수 : "+temp1+"회\n 꽝 :"+temp2+"회");
+                    if(Number(temp1)>1){
+                        r.replier.reply("축하합니다! "+r.sender+"님이 부방장에 당첨 되었습니다.");
+                    }
+                }
+        }
+        else{
+        replier.reply("네루가 부족합니다");
+        }
+        return;
+    }
 	
 	function pointlottery(r){
-		random = Math.floor(Math.random()*101);
-		currentpoint = D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
-			
-			if(random>=99){
-			r.replier.reply("1등 당첨!");
-			currentpoint+=100
-			D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
-			}
-			else if(random>=94){
-			r.replier.reply("2등 당첨!");
-			currentpoint+=70
-			D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
-			}
-			else if(random>=87){
-			r.replier.reply("3등 당첨!");
-			currentpoint+=40
-			D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
-			}
-			else if(random>=72){
-			r.replier.reply("4등 당첨!");
-			currentpoint+=20
-			D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
-			}
-			else
-			{
-			r.replier.reply("꽝");
-			}
-	}
+currentpoint = D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
+        random = Math.floor(Math.random()*101);
+        num=Number(msg.substr(6));
+        temp1="";
+        temp2="";
+        temp3="";
+        temp4="";
+        temp5="";
+        if(currentpoint-10>=0){
+            currentpoint-=10;
+            D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
+            if(num=="" && num=="1"){
+                if(random>=99){
+                r.replier.reply("1등 당첨!");
+                currentpoint+=100
+                D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
+                }
+                 else if(random>=94){
+                r.replier.reply("2등 당첨!");
+                currentpoint+=70
+                D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
+                }
+                else if(random>=87){
+                r.replier.reply("3등 당첨!");
+                currentpoint+=40
+                D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
+                }
+                else if(random>=72){
+                r.replier.reply("4등 당첨!");
+                currentpoint+=20
+                D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
+                }
+                else
+                {
+                r.replier.reply("꽝");
+                }
+            }
+            else{
+             for(var i=0; i<num; i++){
+                    if(random>=99){
+                    Number(temp1)+=1;
+                    currentpoint+=100
+                    D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
+                    }
+                    else if(random>=94){
+                    Number(temp2)+=1;
+                    currentpoint+=70
+                    D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
+                    }
+                    else if(random>=87){
+                    Number(temp3)+=1;
+                    currentpoint+=40
+                    D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
+                    }
+                    else if(random>=77){
+                    Number(temp4)+=1;
+                    currentpoint+=20
+                    D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
+                    }
+                    else{
+                    Numbner(temp5)+=1;
+                    }
+            }
+            r.replier.reply("1등 당첨 횟수 : "+temp1+"회\n2등 당첨 횟수 : "+temp2+"회\n3등 당첨 횟수 : "+temp3+"회\n4등 당첨 횟수 : "+temp4+"회\n꽝: "+temp5+"회")
+        }
+    }
+    else{
+        replier.reply("네루가 부족합니다");
+    }
+    return;
+}
 function botpoint(r){
 	if(D.selectForArray("botpoint","name","name=?",r.sender) == r.sender)
 	{return 0;}
@@ -136,29 +205,15 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 	pointcheck(r);
 	pointgive(r);
 	
-	if (msg.indexOf('/즉석복권')==0){
-        num=Number(msg.substr(6));
-	if(currentpoint-10>=0){
-        for(var i=0; i<num; i++){
-	currentpoint-=10;
-        D.update("botpoint",{"point":currentpoint},"name=?",sender);
+	if (msg.indexOf('/즉석복권')==0){ 
         pointlottery(r);
-        }}
-        else if(currentpoint-10<0){replier.reply("네루가 부족합니다")}
         return;
         }
     
 	if(msg.indexOf("/부방장복권")==0){
-	num=Number(msg.substr(7));	
-        if(currentpoint-10>=0){
-	for(var i=0; i<num; i++){
-        currentpoint-=10;
-        D.update("botpoint",{"point":currentpoint},"name=?",sender);
         roomlottery(r)
-        }}
-        else if(currentpoint-10<0){replier.reply("네루가 부족합니다")}
         return;
-    	}
+        }
     
 	if (msg.indexOf(">") == 0 && room=="건의방") {
 		ev(r);
