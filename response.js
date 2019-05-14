@@ -1,4 +1,5 @@
 var D = require("DBManager.js")("D"); 
+var currentpoint=D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
 	function ev(r){
 		try {  
                 r.replier.reply(String(eval(r.msg.substring(1))));
@@ -8,7 +9,7 @@ var D = require("DBManager.js")("D");
     		catch (e) {
         	r.replier.reply(e + "\n" + e.stack);	
     		}
-}
+	}
 	function pointgive(r){
 		random = Math.floor(Math.random()*101);
 		give = Math.floor(Math.random()*31);
