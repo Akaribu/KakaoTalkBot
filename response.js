@@ -1,5 +1,4 @@
 var D = require("DBManager.js")("D"); 
-var currentpoint=D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
 	function ev(r){
 		try {  
                 r.replier.reply(String(eval(r.msg.substring(1))));
@@ -11,6 +10,7 @@ var currentpoint=D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.
     		}
 	}
 	function pointgive(r){
+		currentpoint=D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
 		random = Math.floor(Math.random()*101);
 		give = Math.floor(Math.random()*31);
 		currentpoint=D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
@@ -68,8 +68,9 @@ function botpoint(r){
 	{return 0;}
 	else {D.insert("botpoint",{room : r.room, name:r.sender, point:0})}}
 function pointcheck(r){
-	var check=D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
-	var list=D.selectForString("botpoint",null,"room=?",[r.room]);
+	currentpoint=D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
+	check=D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
+	list=D.selectForString("botpoint",null,"room=?",[r.room]);
 	if(r.msg=="/조회"){r.replier.reply(r.sender+"님은 "+check+"네루를 가지고 있습니다!");}
 	else if(r.msg=="/목록"){
 		if(currentpoint-5>=0){
