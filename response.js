@@ -27,8 +27,8 @@ var D = require("DBManager.js")("D");
         currentpoint = D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
         random = Math.floor(Math.random()*101);
         num=Number(r.msg.substr(7));
-        temp1="";
-        temp2="";
+        temp1="0";
+        temp2="0";
         if(currentpoint-10>=0){
             currentpoint-=10;
             D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
@@ -65,11 +65,11 @@ var D = require("DBManager.js")("D");
 currentpoint = D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
         random = Math.floor(Math.random()*101);
         num=Number(r.msg.substr(6));
-        temp1="";
-        temp2="";
-        temp3="";
-        temp4="";
-        temp5="";
+        temp1="0";
+        temp2="0";
+        temp3="0";
+        temp4="0";
+        temp5="0";
         if(currentpoint-10>=0){
             currentpoint-=10;
             D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
