@@ -75,9 +75,9 @@ function pointcheck(r){
 		if(currentpoint-5>=0){
         	currentpoint-=5;
         	D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
-        	replier.reply(list);
+        	r.replier.reply(list);
         	}
-        	else if(currentpoint-5<0){replier.reply("네루가 부족합니다")}
+        	else if(currentpoint-5<0){r.replier.reply("네루가 부족합니다")}
 	}
 }
 		
