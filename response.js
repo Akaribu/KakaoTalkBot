@@ -31,9 +31,9 @@ var D = require("DBManager.js")("D");
         temp1=Number(0);
         temp2=Number(0);
         if(currentpoint-10>=0){
-	    currentpoint-=10;
-            D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
             if(r.msg=="/부방장복권"){
+		currentpoint-=10;
+          	D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
                 if(random>=99){
                 r.replier.reply("부방장 당첨!");
                 }
@@ -70,7 +70,7 @@ var D = require("DBManager.js")("D");
         }
 	      return;
 }
-		function pointlottery(r){
+function pointlottery(r){
 		currentpoint = D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
 		        random = Math.floor(Math.random()*101);
 		        num=Number(r.msg.substr(6));
@@ -80,9 +80,9 @@ var D = require("DBManager.js")("D");
 		       	temp4=Number(0)
 		       	temp5=Number(0)
 		        if(currentpoint-10>=0){
-		            currentpoint-=10;
-		            D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
 		            if(r.msg=="/즉석복권"){
+				currentpoint-=10;
+           			D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
 		                if(random>=99){
 		                r.replier.reply("1등 당첨!");
 		                currentpoint+=70
