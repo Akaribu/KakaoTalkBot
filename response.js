@@ -1,33 +1,35 @@
 var D = require("DBManager.js")("D"); 
 function pointgive(r){
-	var proportion= Math.floor(Math.random()*101);
-	var give=Math.floor(Math.random()*31);
+	random = Math.floor(Math.random()*101);
+	give = Math.floor(Math.random()*31);
 	currentpoint=D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
-	if(proportion>99){
+	if(random > 99 && room="건의방"){
 	currentpoint+=give;
-	D.update("botpoint",point,"room=? and name=?",[r.room,r.sender],currentpoint);
+	D.update("botpoint",{"point":currentpint},"name=?",r.sender);
+	r.replier.reply(r.sender+"님 "+give+"획득")
 	}
 	else{}
 }
 
 function pointlottery(r){
-	var proportion=Math.floor(Math.random()*101);
-		if(proportion>=99){
+	random = Math.floor(Math.random()*101);
+	currentpoint = D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
+		if(random>=99){
 		r.replier.reply("1등 당첨!");
 		currentpoint+=100
 		D.update("botpoint",{"point":currentpint},"name=?",r.sender);
 		}
-		else if(99>proportion>=94){
+		else if(99>random>=94){
 		r.replier.reply("2등 당첨!");
 		currentpoint+=70
 		D.update("botpoint",{"point":currentpint},"name=?",r.sender);
 		}
-		else if(94>proportion>=87){
+		else if(94>random>=87){
 		r.replier.reply("3등 당첨!");
 		currentpoint+=40
 		D.update("botpoint",{"point":currentpint},"name=?",r.sender);
 		}
-		else if(87>proportion>=77){
+		else if(87>random>=17){
 		r.replier.reply("4등 당첨!");
 		currentpoint+=20
 		D.update("botpoint",{"point":currentpint},"name=?",r.sender);
