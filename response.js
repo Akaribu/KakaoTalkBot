@@ -30,7 +30,7 @@ var D = require("DBManager.js")("D");
         temp1=Number(0);
         temp2=Number(0);
         if(currentpoint-10>=0){
-            currentpoint-=10;
+	    currentpoint-=10;
             D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
             if(r.msg=="/부방장복권"){
                 if(random>=99){
@@ -42,7 +42,9 @@ var D = require("DBManager.js")("D");
             }
             else{
                 for(var i=0; i<num; i++){
-                        random1 = Math.floor(Math.random()*101);
+                        currentpoint-=10;
+           		D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
+			random1 = Math.floor(Math.random()*101);
 			if(random1>=99){
                         temp1+=1;
                         }
@@ -101,7 +103,9 @@ currentpoint = D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.se
             }
             else{
              for(var i=0; i<num; i++){
-                    random1 = Math.floor(Math.random()*101);
+                    currentpoint-=10;
+            	    D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
+		    random1 = Math.floor(Math.random()*101);
 		    if(random1>=99){
                     temp1+=1;
                     currentpoint+=70
