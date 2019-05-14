@@ -38,6 +38,7 @@ var D = require("DBManager.js")("D");
 	function pointlottery(r){
 		random = Math.floor(Math.random()*101);
 		currentpoint = D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
+			
 			if(random>=99){
 			r.replier.reply("1등 당첨!");
 			currentpoint+=100
@@ -134,21 +135,27 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 	botpoint(r);
 	pointcheck(r);
 	pointgive(r);
-	        if (msg == '/즉석복권'){
-        if(currentpoint-10>=0){
-        currentpoint-=10;
+	
+	if (msg.indexOf('/즉석복권')==0){
+        num=Number(msg.substr(6));
+	if(currentpoint-10>=0){
+        for(var i=0; i<num; i++){
+	currentpoint-=10;
         D.update("botpoint",{"point":currentpoint},"name=?",sender);
         pointlottery(r);
-        }
+        }}
         else if(currentpoint-10<0){replier.reply("네루가 부족합니다")}
         return;
         }
-    if(msg== "/부방장복권"){
+    
+	if(msg.indexOf("/부방장복권")==0){
+	num=Number(msg.substr(7));	
         if(currentpoint-10>=0){
+	for(var i=0; i<num; i++){
         currentpoint-=10;
         D.update("botpoint",{"point":currentpoint},"name=?",sender);
         roomlottery(r)
-        }
+        }}
         else if(currentpoint-10<0){replier.reply("네루가 부족합니다")}
         return;
     	}
