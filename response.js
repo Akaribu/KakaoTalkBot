@@ -58,7 +58,6 @@ var D = require("DBManager.js")("D");
         else{
         replier.reply("네루가 부족합니다");
         }
-        return;
     }
 	
 	function pointlottery(r){
@@ -124,7 +123,7 @@ currentpoint = D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.se
                     else{
                     temp5+=1;
                     }
-            	return;
+            	
 	     }
             r.replier.reply("1등 당첨 횟수 : "+temp1+"회\n2등 당첨 횟수 : "+temp2+"회\n3등 당첨 횟수 : "+temp3+"회\n4등 당첨 횟수 : "+temp4+"회\n꽝: "+temp5+"회")
         }
