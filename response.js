@@ -43,14 +43,14 @@ var D = require("DBManager.js")("D");
             else{
                 for(var i=0; i<num; i++){
                         if(random>=99){
-                        Number(temp1)+=1;
+                        temp1+=1;
                         }
                         else{
-                        Number(temp2)+=1;
+                        temp2+=1;
                         }
                 }
                 r.replier.reply("당첨 횟수 : "+temp1+"회\n 꽝 :"+temp2+"회");
-                    if(Number(temp1)>1){
+                    if(temp1>1){
                         r.replier.reply("축하합니다! "+r.sender+"님이 부방장에 당첨 되었습니다.");
                     }
                 }
@@ -76,22 +76,22 @@ currentpoint = D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.se
             if(num=="" && num=="1"){
                 if(random>=99){
                 r.replier.reply("1등 당첨!");
-                currentpoint+=100
+                currentpoint+=70
                 D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
                 }
                  else if(random>=94){
                 r.replier.reply("2등 당첨!");
-                currentpoint+=70
+                currentpoint+=50
                 D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
                 }
                 else if(random>=87){
                 r.replier.reply("3등 당첨!");
-                currentpoint+=40
+                currentpoint+=30
                 D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
                 }
                 else if(random>=72){
                 r.replier.reply("4등 당첨!");
-                currentpoint+=20
+                currentpoint+=15
                 D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
                 }
                 else
@@ -102,27 +102,27 @@ currentpoint = D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.se
             else{
              for(var i=0; i<num; i++){
                     if(random>=99){
-                    Number(temp1)+=1;
-                    currentpoint+=100
-                    D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
-                    }
-                    else if(random>=94){
-                    Number(temp2)+=1;
+                    temp1+=1;
                     currentpoint+=70
                     D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
                     }
+                    else if(random>=94){
+                    temp2+=1;
+                    currentpoint+=50
+                    D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
+                    }
                     else if(random>=87){
-                    Number(temp3)+=1;
-                    currentpoint+=40
+                    temp3+=1;
+                    currentpoint+=30
                     D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
                     }
                     else if(random>=77){
-                    Number(temp4)+=1;
-                    currentpoint+=20
+                    temp4+=1;
+                    currentpoint+=15
                     D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
                     }
                     else{
-                    Numbner(temp5)+=1;
+                    temp5+=1;
                     }
             }
             r.replier.reply("1등 당첨 횟수 : "+temp1+"회\n2등 당첨 횟수 : "+temp2+"회\n3등 당첨 횟수 : "+temp3+"회\n4등 당첨 횟수 : "+temp4+"회\n꽝: "+temp5+"회")
