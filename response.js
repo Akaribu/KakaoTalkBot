@@ -14,7 +14,7 @@ var D = require("DBManager.js")("D");
 		random = Math.floor(Math.random()*101);
 		give = Math.floor(Math.random()*31);
 		currentpoint=D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
-			if(random > 90 && r.room=="46"){
+			if(random > 95 && r.room=="46"){
 				currentpoint+=give;
 				D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
 				r.replier.reply(r.sender+"님 "+give+"네루 획득")
@@ -53,7 +53,7 @@ var D = require("DBManager.js")("D");
 			currentpoint+=40
 			D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
 			}
-			else if(random>=67){
+			else if(random>=72){
 			r.replier.reply("4등 당첨!");
 			currentpoint+=20
 			D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
