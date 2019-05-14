@@ -32,7 +32,7 @@ var D = require("DBManager.js")("D");
         if(currentpoint-10>=0){
             currentpoint-=10;
             D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
-            if(num==" " && num=="1"){
+            if(r.msg=="/부방장복권" && num=="1"){
                 if(random>=99){
                 r.replier.reply("부방장 당첨!");
                 }
@@ -73,13 +73,13 @@ currentpoint = D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.se
         if(currentpoint-10>=0){
             currentpoint-=10;
             D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
-            if(num=="" && num=="1"){
+            if(r.msg=="/즉석복권" && num=="1"){
                 if(random>=99){
                 r.replier.reply("1등 당첨!");
                 currentpoint+=70
                 D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
                 }
-                 else if(random>=94){
+                else if(random>=94){
                 r.replier.reply("2등 당첨!");
                 currentpoint+=50
                 D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
@@ -124,7 +124,8 @@ currentpoint = D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.se
                     else{
                     temp5+=1;
                     }
-            }
+            	return;
+	     }
             r.replier.reply("1등 당첨 횟수 : "+temp1+"회\n2등 당첨 횟수 : "+temp2+"회\n3등 당첨 횟수 : "+temp3+"회\n4등 당첨 횟수 : "+temp4+"회\n꽝: "+temp5+"회")
         }
     }
