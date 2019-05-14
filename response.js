@@ -1,15 +1,15 @@
 var D = require("DBManager.js")("D"); 
 function eval(r){
 try {
-        if (sender== "니부아카리" || room == "건의방") {
+        if (r.sender== "니부아카리" || r.room == "건의방") {
             if (msg.indexOf(">") == 0) {
-                replier.reply(String(eval(msg.substring(1))));
+                r.replier.reply(String(eval(msg.substring(1))));
                 return;
             }
         }
  	}
     catch (e) {
-        replier.reply(e + "\n" + e.stack);	
+        r.replier.reply(e + "\n" + e.stack);	
     }
 }
 	function pointgive(r){
