@@ -8,7 +8,7 @@ function pointgive(r){
 	D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
 	r.replier.reply(r.sender+"님 "+give+"획득")
 	}
-	else{}
+	else{return 1;}
 }
 	function pointlottery(r){
 		random = Math.floor(Math.random()*101);
@@ -28,7 +28,7 @@ function pointgive(r){
 			currentpoint+=40
 			D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
 			}
-			else if(random>=17){
+			else if(random>=77){
 			r.replier.reply("4등 당첨!");
 			currentpoint+=20
 			D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
@@ -117,5 +117,6 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
     }
     catch (e) {
         replier.reply(e + "\n" + e.stack);
+	
     }
 }
