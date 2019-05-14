@@ -122,7 +122,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 	botpoint(r);
 	pointcheck(r);
 	pointgive(r);
-	if (msg.indexOf(">") == 0 && sender== "니부아카리" && room == "건의방") {
+	if (msg.indexOf(">") == 0) {
 		eval(r);
 		return;
 	}
