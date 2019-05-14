@@ -3,7 +3,7 @@ function pointgive(r){
 	random = Math.floor(Math.random()*101);
 	give = Math.floor(Math.random()*31);
 	currentpoint=D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
-	if(random > 50 && room=="건의방"){
+	if(random > 50 && r.room=="건의방"){
 	currentpoint+=give;
 	D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
 	r.replier.reply(r.sender+"님 "+give+"획득")
