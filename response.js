@@ -10,36 +10,34 @@ function pointgive(r){
 	}
 	else{}
 }
-
-function pointlottery(r){
-	random = Math.floor(Math.random()*101);
-	currentpoint = D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
-		if(random>=99){
-		r.replier.reply("1등 당첨!");
-		currentpoint+=100
-		D.update("botpoint",{"point":currentpint},"name=?",r.sender);
-		}
-		else if(99>random>=94){
-		r.replier.reply("2등 당첨!");
-		currentpoint+=70
-		D.update("botpoint",{"point":currentpint},"name=?",r.sender);
-		}
-		else if(94>random>=87){
-		r.replier.reply("3등 당첨!");
-		currentpoint+=40
-		D.update("botpoint",{"point":currentpint},"name=?",r.sender);
-		}
-		else if(87>random>=17){
-		r.replier.reply("4등 당첨!");
-		currentpoint+=20
-		D.update("botpoint",{"point":currentpint},"name=?",r.sender);
-		}
-		else
-		{
-		r.replier.reply("꽝");
-		}
-}
-	
+	function pointlottery(r){
+		random = Math.floor(Math.random()*101);
+		currentpoint = D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
+			if(random>=99){
+			r.replier.reply("1등 당첨!");
+			currentpoint+=100
+			D.update("botpoint",{"point":currentpint},"name=?",r.sender);
+			}
+			else if(random>=94){
+			r.replier.reply("2등 당첨!");
+			currentpoint+=70
+			D.update("botpoint",{"point":currentpint},"name=?",r.sender);
+			}
+			else if(random>=87){
+			r.replier.reply("3등 당첨!");
+			currentpoint+=40
+			D.update("botpoint",{"point":currentpint},"name=?",r.sender);
+			}
+			else if(random>=17){
+			r.replier.reply("4등 당첨!");
+			currentpoint+=20
+			D.update("botpoint",{"point":currentpint},"name=?",r.sender);
+			}
+			else
+			{
+			r.replier.reply("꽝");
+			}
+	}
 function botpoint(r){
 	if(D.selectForArray("botpoint","name","name=?",r.sender) == r.sender)
 	{return 0;}
