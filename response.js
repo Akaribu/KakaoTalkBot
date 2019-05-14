@@ -26,7 +26,7 @@ var D = require("DBManager.js")("D");
 	function roomlottery(r){
         currentpoint = D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
         random = Math.floor(Math.random()*101);
-        num=Number(msg.substr(6));
+        num=Number(r.msg.substr(6));
         temp1="";
         temp2="";
         if(currentpoint-10>=0){
@@ -64,7 +64,7 @@ var D = require("DBManager.js")("D");
 	function pointlottery(r){
 currentpoint = D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
         random = Math.floor(Math.random()*101);
-        num=Number(msg.substr(6));
+        num=Number(r.msg.substr(6));
         temp1="";
         temp2="";
         temp3="";
