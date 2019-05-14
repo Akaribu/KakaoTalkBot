@@ -10,12 +10,20 @@ function ev(r){
         	r.replier.reply(e + "\n" + e.stack);	
     		}
 	}
+function intro(r){
+	if(r.msg=="/기능 즉석복권){
+		r.replier.reply("10 네루를 사용해 복권을 뽑습니다.\n1등 : 200네루 1%\n2등 : 50네루 4%\n3등 : 30네루 6%\n4등 : 15네루 10프로");
+	   }
+	if(r.msg=="/기능 부방장복권){
+		r.replier.reply("10 네루를 사용해 부방장 복권을 뽑습니다.\n부방장 당첨 확률 1% 당첨 시 하루 당 200 네루 지급 부방장은 2 명으로 2명인 상태에서 새로운 부방장이 뽑히면 첫번째로 부방장이 된 사람은 탄핵됩니다.");
+	   }
+}
 function lyric(r) {
     var replier = r.replier;
     var room = r.r;
     var sender = r.s;
     var msg = r.m;
-    var str = msg.replace("/가사", "").rmspace();
+    var str = string(msg.replace("/가사", "").rmspace());
     var title = str.includes("/") ? str.split("/")[0] : str;
     var artist = str.includes("/") ? str.split("/")[1] : "";
     var xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><SOAP-ENV:Envelope xmlns:SOAP-ENV=\"http://www.w3.org/2003/05/soap-envelope\"" + " xmlns:SOAP-ENC=\"http://www.w3.org/2003/05/soap-encoding\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" " + "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:ns2=\"ALSongWebServer/Service1Soap\" xmlns:ns1=\"ALSongWebServer\" " + "xmlns:ns3=\"ALSongWebServer/Service1Soap12\"><SOAP-ENV:Body><ns1:GetResembleLyric2><ns1:stQuery><ns1:strTitle>" + title.XMLEncode() + "</ns1:strTitle><ns1:strArtistName>" + artist.XMLEncode() + "</ns1:strArtistName><ns1:nCurPage>0</ns1:nCurPage></ns1:stQuery>" + "</ns1:GetResembleLyric2></SOAP-ENV:Body></SOAP-ENV:Envelope>";
@@ -106,7 +114,7 @@ function pointlottery(r){
            			D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
 		                if(random>=99){
 		                r.replier.reply("1등 당첨!");
-		                currentpoint+=70
+		                currentpoint+=200
 		                D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
 		                }
 		                else if(random>=96){
@@ -114,12 +122,12 @@ function pointlottery(r){
 		                currentpoint+=50
 		                D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
 		                }
-		                else if(random>=93){
+		                else if(random>=90){
 		                r.replier.reply("3등 당첨!");
 		                currentpoint+=30
 		                D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
 		                }
-		                else if(random>=90){
+		                else if(random>=80){
 		                r.replier.reply("4등 당첨!");
 		                currentpoint+=15
 		                D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
@@ -137,7 +145,7 @@ function pointlottery(r){
 				    	random1 = Math.floor(Math.random()*101);
 				    	if(random1>=99){
 		                    	temp1+=1;
-		                    	currentpoint+=70
+		                    	currentpoint+=200
 		                    	D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
 		                    	}
 		                    	else if(random1>=96){
@@ -145,12 +153,12 @@ function pointlottery(r){
 		                    	currentpoint+=50
 		                    	D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
 		                    	}
-		                    	else if(random1>=93){
+		                    	else if(random1>=90){
 		                    	temp3+=1;
 		                    	currentpoint+=30
 		                    	D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
 		                    	}
-		                    	else if(random1>=90){
+		                    	else if(random1>=80){
 		                    	temp4+=1;
 		                    	currentpoint+=15
 		                    	D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
@@ -246,6 +254,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 	botpoint(r);
 	pointcheck(r);
 	pointgive(r);
+	intro(r);
 	if (msg.indexOf("/가사")==0){
 	lyric(r);
 	return;
