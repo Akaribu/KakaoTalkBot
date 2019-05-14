@@ -252,13 +252,13 @@ conn = new java.net.URL("https://raw.githubusercontent.com/Akaribu/KakaoTalkBot/
 }
 function response(room, msg, sender, isGroupChat, replier, imageDB) {
 	
-	var r = {replier: replier, m: msg, msg: msg, s: sender, sender: sender, r: room, room: room, g: isGroupChat, i: imageDB, imageDB:imageDB, reply: function (str) {
-         this.replier.reply(new String(str));}};
+	var r = {replier: replier, msg: msg, sender: sender, room : room};
 	
 	botpoint(r);
 	pointcheck(r);
 	pointgive(r);
 	intro(r);
+	
 	if (msg.indexOf("/가사")==0){
 	lyric(r);
 	return;
