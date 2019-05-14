@@ -2,7 +2,7 @@ var D = require("DBManager.js")("D");
 function eval(r){
 try {
         if (r.sender== "니부아카리" || r.room == "건의방") {
-            if (msg.indexOf(">") == 0) {
+            if (r.msg.indexOf(">") == 0) {
                 r.replier.reply(String(eval(r.msg.substring(1))));
                 return;
             }
