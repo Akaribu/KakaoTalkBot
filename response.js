@@ -134,25 +134,6 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 		ev(r);
 		return;
 	}
-	if (msg == '/즉석복권'){
-		if(currentpoint-10>=0){
-		currentpoint-=10;
-		D.update("botpoint",{"point":currentpoint},"name=?",sender);
-		pointlottery(r);
-		}
-		else if(currentpoint-10<0){replier.reply("네루가 부족합니다")}
-		return;
-	    }
-	if(msg== "/부방장복권"){
-		if(currentpoint-10>=0){
-		currentpoint-=10;
-		D.update("botpoint",{"point":currentpoint},"name=?",sender);
-		roomlottery(r)
-		}
-		else if(currentpoint-10<0){replier.reply("네루가 부족합니다")}
-		return;
-		
-	}
 	
 	if (msg == '/로딩'){
     		reload(r);
