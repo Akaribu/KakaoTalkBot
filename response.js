@@ -25,7 +25,7 @@ var D = require("DBManager.js")("D");
 	function roomlottery(r){
 		random = Math.floor(Math.random()*101);
 			if(random>=99){
-			r.replier.reply("1등 당첨!");
+			r.replier.reply("부방장 당첨!");
 			}
 			else
 			{
@@ -51,7 +51,7 @@ var D = require("DBManager.js")("D");
 			currentpoint+=40
 			D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
 			}
-			else if(random>=77){
+			else if(random>=67){
 			r.replier.reply("4등 당첨!");
 			currentpoint+=20
 			D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
@@ -69,7 +69,14 @@ function pointcheck(r){
 	var check=D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
 	var list=D.selectForString("botpoint",null,"room=?",[r.room]);
 	if(r.msg=="/조회"){r.replier.reply(r.sender+"님은 "+check+"네루를 가지고 있습니다!");}
-	else if(r.msg=="/목록"){r.replier.reply(list);}}
+	else if(r.msg=="/목록"){	
+		if(currentpoint-5>=0){
+		currentpoint-=5;
+		D.update("botpoint",{"point":currentpoint},"name=?",sender);
+		replier.reply(list);
+		}
+		else if(currentpoint-5<0){replier.reply("네루가 부족합니다")}
+		}
 
 function blankFunc(r){}
 function time() {
@@ -122,20 +129,28 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 	botpoint(r);
 	pointcheck(r);
 	pointgive(r);
-	if (msg.indexOf(">") == 0 && room=="건의방") {
+	if (msg.indexOf(">") == 0 && room=="건의방"&& sender"니부아카리") {
 		ev(r);
 		return;
 	}
 	if (msg == '/즉석복권'){
-    		pointlottery(r);
-    		return;
+		if(currentpoint-10>=0){
+		currentpoint-=10;
+		D.update("botpoint",{"point":currentpoint},"name=?",sender);
+		pointlottery(r);
+		}
+		else if(currentpoint-10<0){replier.reply("네루가 부족합니다")}
+		return;
 	    }
 	if(msg== "/부방장복권"){
-		currentpoint = D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
+		if(currentpoint-10>=0){
+		currentpoint-=10;
+		D.update("botpoint",{"point":currentpoint},"name=?",sender);
 		roomlottery(r)
-		currentpoint-=10
-		D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
+		}
+		else if(currentpoint-10<0){replier.reply("네루가 부족합니다")}
 		return;
+		
 	}
 	
 	if (msg == '/로딩'){
