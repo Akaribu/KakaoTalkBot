@@ -32,7 +32,7 @@ var D = require("DBManager.js")("D");
         if(currentpoint-10>=0){
             currentpoint-=10;
             D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
-            if(r.msg=="/부방장복권" && num=="1"){
+            if(r.msg=="/부방장복권"){
                 if(random>=99){
                 r.replier.reply("부방장 당첨!");
                 }
@@ -73,7 +73,7 @@ currentpoint = D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.se
         if(currentpoint-10>=0){
             currentpoint-=10;
             D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
-            if(r.msg=="/즉석복권" && num=="1"){
+            if(r.msg=="/즉석복권"){
                 if(random>=99){
                 r.replier.reply("1등 당첨!");
                 currentpoint+=70
