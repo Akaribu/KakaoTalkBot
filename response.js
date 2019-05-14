@@ -70,7 +70,8 @@ function pointcheck(r){
 	var check=D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
 	var list=D.selectForString("botpoint",null,"room=?",[r.room]);
 	if(r.msg=="/조회"){r.replier.reply(r.sender+"님은 "+check+"네루를 가지고 있습니다!");}
-	else if(r.msg=="/목록"){	
+	else if(r.msg=="/목록"){	}
+}
 		
 
 function blankFunc(r){}
