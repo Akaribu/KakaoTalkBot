@@ -1,15 +1,41 @@
 var D = require("DBManager.js")("D"); 
-function pointgive(r){
-	random = Math.floor(Math.random()*101);
-	give = Math.floor(Math.random()*31);
-	currentpoint=D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
-	if(random > 99 && r.room=="46"){
-	currentpoint+=give;
-	D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
-	r.replier.reply(r.sender+"님 "+give+"네루 획득")
-	}
-	else{return 1;}
+function eval(r){
+try {
+        if (sender== "니부아카리" || room == "건의방") {
+            if (msg.indexOf(">") == 0) {
+                replier.reply(String(eval(msg.substring(1))));
+                return;
+            }
+        }
+ 	}
+    catch (e) {
+        replier.reply(e + "\n" + e.stack);	
+    }
 }
+	function pointgive(r){
+		random = Math.floor(Math.random()*101);
+		give = Math.floor(Math.random()*31);
+		currentpoint=D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
+			if(random > 99 && r.room=="46"){
+				currentpoint+=give;
+				D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
+				r.replier.reply(r.sender+"님 "+give+"네루 획득")
+				}
+		else{
+			return 1;
+		}
+	}
+	function roomlottery(r){
+		random = Math.floor(Math.random()*101);
+			if(random>=99){
+			r.replier.reply("1등 당첨!");
+			}
+			else
+			{
+			r.replier.reply("꽝");
+			}
+	}
+	
 	function pointlottery(r){
 		random = Math.floor(Math.random()*101);
 		currentpoint = D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
@@ -96,6 +122,7 @@ conn = new java.net.URL("https://raw.githubusercontent.com/Akaribu/KakaoTalkBot/
 }
 function response(room, msg, sender, isGroupChat, replier, imageDB) {
 	var r = { replier: replier, msg: msg, sender: sender, room: room, imageDB :imageDB};
+	eval(r);
 	botpoint(r);
 	pointcheck(r);
 	pointgive(r);
@@ -103,20 +130,16 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
     		pointlottery(r);
     		return;
 	    }
+	if(msg== "/부방장복권"){
+		currentpoint = D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
+		roomlottery(r)
+		currentpoint-=10
+		D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
+		return;
+	}
+	
 	if (msg == '/로딩'){
     		reload(r);
     		return;
-	    }
-	try {
-        if (sender== "니부아카리" || room == "건의방") {
-            if (msg.indexOf(">") == 0) {
-                replier.reply(String(eval(msg.substring(1))));
-                return;
-            }
 	}
-    }
-    catch (e) {
-        replier.reply(e + "\n" + e.stack);
 	
-    }
-}
