@@ -23,7 +23,8 @@ var D = require("DBManager.js")("D");
 			return 1;
 		}
 	}
-	function roomlottery(r){
+
+		function roomlottery(r){
         currentpoint = D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
         random = Math.floor(Math.random()*101);
         num=Number(r.msg.substr(7));
@@ -40,10 +41,7 @@ var D = require("DBManager.js")("D");
                 r.replier.reply("꽝");
                 }
             }
-        }
-        else{
-            r.replier.reply("네루가 부족합니다");
-        }
+        
                 if(currentpoint-10*num>=0){
                 	for(var i=0; i<num; i++){
                 		currentpoint-=10;
@@ -64,14 +62,14 @@ var D = require("DBManager.js")("D");
                else{
                 	r.replier.reply("네루가 부족합니다")  
                }
+        }
+        else{
+            r.replier.reply("네루가 부족합니다");
+        }
 	      return;
-	}
-       
-    
-
+}
 	
-
-		function pointlottery(r){
+function pointlottery(r){
 currentpoint = D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
         random = Math.floor(Math.random()*101);
         num=Number(r.msg.substr(6));
@@ -109,10 +107,7 @@ currentpoint = D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.se
                 r.replier.reply("꽝");
                 }
             }
-        }
-        else{
-            r.replier.reply("네루가 부족합니다");
-        }
+        
             if(currentpoint-10*num>=0){
 		    for(var i=0; i<num; i++){
                     	currentpoint-=10;
@@ -148,7 +143,10 @@ currentpoint = D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.se
             else{
 	    r.replier.reply("네루가 부족합니다");
 	   }
- 
+        }
+        else{
+            r.replier.reply("네루가 부족합니다");
+        }
     return;
 }
 function botpoint(r){
