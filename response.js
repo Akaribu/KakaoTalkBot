@@ -79,17 +79,17 @@ currentpoint = D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.se
                 currentpoint+=70
                 D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
                 }
-                else if(random>=94){
+                else if(random>=97){
                 r.replier.reply("2등 당첨!");
                 currentpoint+=50
                 D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
                 }
-                else if(random>=87){
+                else if(random>=94){
                 r.replier.reply("3등 당첨!");
                 currentpoint+=30
                 D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
                 }
-                else if(random>=72){
+                else if(random>=90){
                 r.replier.reply("4등 당첨!");
                 currentpoint+=15
                 D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
@@ -107,17 +107,17 @@ currentpoint = D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.se
                     currentpoint+=70
                     D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
                     }
-                    else if(random1>=94){
+                    else if(random1>=97){
                     temp2+=1;
                     currentpoint+=50
                     D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
                     }
-                    else if(random1>=87){
+                    else if(random1>=94){
                     temp3+=1;
                     currentpoint+=30
                     D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
                     }
-                    else if(random1>=77){
+                    else if(random1>=90){
                     temp4+=1;
                     currentpoint+=15
                     D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
