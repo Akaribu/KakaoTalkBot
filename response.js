@@ -27,12 +27,12 @@ var D = require("DBManager.js")("D");
         currentpoint = D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
         random = Math.floor(Math.random()*101);
         num=Number(r.msg.substr(7));
-        temp1="0";
-        temp2="0";
+        temp1=Number(0);
+        temp2=Number(0);
         if(currentpoint-10>=0){
             currentpoint-=10;
             D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
-            if(num=="" && num=="1"){
+            if(num==" " && num=="1"){
                 if(random>=99){
                 r.replier.reply("부방장 당첨!");
                 }
@@ -43,14 +43,14 @@ var D = require("DBManager.js")("D");
             else{
                 for(var i=0; i<num; i++){
                         if(random>=99){
-                        Number(temp1)+=1;
+                        temp1+=1;
                         }
                         else{
-                        Number(temp2)+=1;
+                        temp2+=1;
                         }
                 }
-                r.replier.reply("당첨 횟수 : "+Number(temp1)+"회\n 꽝 :"+Number(temp2)+"회");
-                    if(Number(temp1)>1){
+                r.replier.reply("당첨 횟수 : "+temp1+"회\n 꽝 :"+temp2+"회");
+                    if(temp1>1){
                         r.replier.reply("축하합니다! "+r.sender+"님이 부방장에 당첨 되었습니다.");
                     }
                 }
