@@ -70,7 +70,14 @@ function pointcheck(r){
 	var check=D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
 	var list=D.selectForString("botpoint",null,"room=?",[r.room]);
 	if(r.msg=="/조회"){r.replier.reply(r.sender+"님은 "+check+"네루를 가지고 있습니다!");}
-	else if(r.msg=="/목록"){	}
+	else if(r.msg=="/목록"){
+		if(currentpoint-5>=0){
+        	currentpoint-=5;
+        	D.update("botpoint",{"point":currentpoint},"name=?",sender);
+        	replier.reply(list);
+        	}
+        	else if(currentpoint-5<0){replier.reply("네루가 부족합니다")}
+	}
 }
 		
 
@@ -125,7 +132,25 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 	botpoint(r);
 	pointcheck(r);
 	pointgive(r);
-	
+	        if (msg == '/즉석복권'){
+        if(currentpoint-10>=0){
+        currentpoint-=10;
+        D.update("botpoint",{"point":currentpoint},"name=?",sender);
+        pointlottery(r);
+        }
+        else if(currentpoint-10<0){replier.reply("네루가 부족합니다")}
+        return;
+        }
+    if(msg== "/부방장복권"){
+        if(currentpoint-10>=0){
+        currentpoint-=10;
+        D.update("botpoint",{"point":currentpoint},"name=?",sender);
+        roomlottery(r)
+        }
+        else if(currentpoint-10<0){replier.reply("네루가 부족합니다")}
+        return;
+    	}
+    
 	if (msg.indexOf(">") == 0 && room=="건의방") {
 		ev(r);
 		return;
