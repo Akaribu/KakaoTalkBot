@@ -5,7 +5,7 @@ function pointgive(r){
 	currentpoint=D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
 	if(random > 99 && room="건의방"){
 	currentpoint+=give;
-	D.update("botpoint",{"point":currentpint},"name=?",r.sender);
+	D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
 	r.replier.reply(r.sender+"님 "+give+"획득")
 	}
 	else{}
@@ -16,22 +16,22 @@ function pointgive(r){
 			if(random>=99){
 			r.replier.reply("1등 당첨!");
 			currentpoint+=100
-			D.update("botpoint",{"point":currentpint},"name=?",r.sender);
+			D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
 			}
 			else if(random>=94){
 			r.replier.reply("2등 당첨!");
 			currentpoint+=70
-			D.update("botpoint",{"point":currentpint},"name=?",r.sender);
+			D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
 			}
 			else if(random>=87){
 			r.replier.reply("3등 당첨!");
 			currentpoint+=40
-			D.update("botpoint",{"point":currentpint},"name=?",r.sender);
+			D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
 			}
 			else if(random>=17){
 			r.replier.reply("4등 당첨!");
 			currentpoint+=20
-			D.update("botpoint",{"point":currentpint},"name=?",r.sender);
+			D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
 			}
 			else
 			{
