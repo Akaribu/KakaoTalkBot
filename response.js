@@ -1,5 +1,5 @@
 var D = require("DBManager.js")("D"); 
-function eval(r){
+	function ev(r){
 		try {  
                 r.replier.reply(String(eval(r.msg.substring(1))));
                 return;
@@ -122,8 +122,8 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 	botpoint(r);
 	pointcheck(r);
 	pointgive(r);
-	if (msg.indexOf(">") == 0) {
-		eval(r);
+	if (msg.indexOf(">") == 0 && room=="건의방") {
+		ev(r);
 		return;
 	}
 	if (msg == '/즉석복권'){
