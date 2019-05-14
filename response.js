@@ -23,6 +23,7 @@ var D = require("DBManager.js")("D");
 		}
 	}
 	function roomlottery(r){
+		currentpoint = D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
 		random = Math.floor(Math.random()*101);
 			if(random>=99){
 			r.replier.reply("부방장 당첨!");
