@@ -40,23 +40,27 @@ var D = require("DBManager.js")("D");
                 r.replier.reply("꽝");
                 }
             }
-            else{
-                for(var i=0; i<num; i++){
+	       else{
+                 if(currentpoint-10*num>=0){
+			for(var i=0; i<num; i++){
                         currentpoint-=10;
            		D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
 			random1 = Math.floor(Math.random()*101);
-			if(random1>=99){
-                        temp1+=1;
-                        }
-                        else{
-                        temp2+=1;
-                        }
-                }
+				if(random1>=99){
+                        	temp1+=1;
+                        	}
+                        	else{
+                        	temp2+=1;
+                        	}
+                	}
                 r.replier.reply("당첨 횟수 : "+temp1+"회\n꽝 :"+temp2+"회");
                     if(temp1>=1){
                         r.replier.reply("축하합니다! "+r.sender+"님이 부방장에 당첨 되었습니다.");
                     }
-                }
+		  }
+		else{
+		r.replier.reply("네루가 부족합니다")
+	        }
         }
         else{
         replier.reply("네루가 부족합니다");
@@ -102,38 +106,41 @@ currentpoint = D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.se
                 }
             }
             else{
-             for(var i=0; i<num; i++){
-                    currentpoint-=10;
-            	    D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
-		    random1 = Math.floor(Math.random()*101);
-		    if(random1>=99){
-                    temp1+=1;
-                    currentpoint+=70
-                    D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
-                    }
-                    else if(random1>=96){
-                    temp2+=1;
-                    currentpoint+=50
-                    D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
-                    }
-                    else if(random1>=93){
-                    temp3+=1;
-                    currentpoint+=30
-                    D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
-                    }
-                    else if(random1>=90){
-                    temp4+=1;
-                    currentpoint+=15
-                    D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
-                    }
-                    else{
-                    temp5+=1;
-                    }
+              if(currentpoint-10*num>=0){
+		    for(var i=0; i<num; i++){
+                    	currentpoint-=10;
+            	    	D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
+		    	random1 = Math.floor(Math.random()*101);
+		    	if(random1>=99){
+                    	temp1+=1;
+                    	currentpoint+=70
+                    	D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
+                    	}
+                    	else if(random1>=96){
+                    	temp2+=1;
+                    	currentpoint+=50
+                    	D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
+                    	}
+                    	else if(random1>=93){
+                    	temp3+=1;
+                    	currentpoint+=30
+                    	D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
+                    	}
+                    	else if(random1>=90){
+                    	temp4+=1;
+                    	currentpoint+=15
+                    	D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
+                    	}
+                    	else{
+                    	temp5+=1;
+                    	}
             	
-	     }
+	     	   }
             r.replier.reply("1등 당첨 횟수 : "+temp1+"회\n2등 당첨 횟수 : "+temp2+"회\n3등 당첨 횟수 : "+temp3+"회\n4등 당첨 횟수 : "+temp4+"회\n꽝: "+temp5+"회")
-        }
-    }
+             }
+            else{
+	    r.replier.reply("네루가 부족합니다");
+	   }
     else{
         replier.reply("네루가 부족합니다");
     }
