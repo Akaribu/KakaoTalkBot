@@ -43,14 +43,14 @@ var D = require("DBManager.js")("D");
             else{
                 for(var i=0; i<num; i++){
                         if(random>=99){
-                        temp1+=1;
+                        Number(temp1)+=1;
                         }
                         else{
-                        temp2+=1;
+                        Number(temp2)+=1;
                         }
                 }
-                r.replier.reply("당첨 횟수 : "+temp1+"회\n 꽝 :"+temp2+"회");
-                    if(temp1>1){
+                r.replier.reply("당첨 횟수 : "+Number(temp1)+"회\n 꽝 :"+Number(temp2)+"회");
+                    if(Number(temp1)>1){
                         r.replier.reply("축하합니다! "+r.sender+"님이 부방장에 당첨 되었습니다.");
                     }
                 }
