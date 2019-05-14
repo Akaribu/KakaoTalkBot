@@ -216,7 +216,11 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         roomlottery(r)
         return;
         }
-    
+   	if (msg.indexOf(">") == 0 && sender=="니부아카리") {
+		ev(r);
+		return;
+	}
+	
 	if (msg.indexOf(">") == 0 && room=="건의방") {
 		ev(r);
 		return;
