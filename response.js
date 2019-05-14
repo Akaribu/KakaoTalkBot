@@ -40,32 +40,34 @@ var D = require("DBManager.js")("D");
                 r.replier.reply("꽝");
                 }
             }
-	       else{
-                 if(currentpoint-10*num>=0){
-			for(var i=0; i<num; i++){
-                        currentpoint-=10;
-           		D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
-			random1 = Math.floor(Math.random()*101);
-				if(random1>=99){
+        }
+        else{
+            r.replier.reply("네루가 부족합니다");
+        }
+                if(currentpoint-10*num>=0){
+                	for(var i=0; i<num; i++){
+                		currentpoint-=10;
+                		D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
+                		random1 = Math.floor(Math.random()*101);
+                    	if(random1>=99){
                         	temp1+=1;
                         	}
                         	else{
                         	temp2+=1;
                         	}
                 	}
-                r.replier.reply("당첨 횟수 : "+temp1+"회\n꽝 :"+temp2+"회");
+                    r.replier.reply("당첨 횟수 : "+temp1+"회\n꽝 :"+temp2+"회");
                     if(temp1>=1){
                         r.replier.reply("축하합니다! "+r.sender+"님이 부방장에 당첨 되었습니다.");
                     }
-		  }
-		else{
-		r.replier.reply("네루가 부족합니다")
-	        }
-        }
-        else{
-        r.replier.reply("네루가 부족합니다");
-        }
-    }
+                }
+               else{
+                	r.replier.reply("네루가 부족합니다")  
+               }
+	      }
+       
+    
+
 	
 	function pointlottery(r){
 currentpoint = D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
