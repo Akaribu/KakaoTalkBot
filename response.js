@@ -39,7 +39,7 @@ function lyric(r) {
     for (var i = 0; i < 3 && i < str.length; i++) {
         res += "Lyric : " + (i + 1) + "\n" + strTitles[i] + "/" + strArtistNames[i] + "\n" + String(strLyrics[i]).replace(/\<br\>/g, "\n").replace(/\[\d\d:\d\d.\d\d\]/g, "") + "\n\n";
     }
-    r.reply(res.rmspace().cut(1));
+    r.reply(res.trim().cut(1));
 }
 function pointgive(r){
 		currentpoint=D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
@@ -52,7 +52,7 @@ function pointgive(r){
 				r.replier.reply(r.sender+"님 "+give+"네루 획득")
 				}
 		else{
-			return 1;
+R			return 1;
 		}
 	}
 
