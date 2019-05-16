@@ -240,10 +240,6 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 	pointgive(r);
 	intro(r);
 	
-	if (msg.indexOf("/가사")==0){
-	lyric(r);
-	return;
-	}
 	if (msg.indexOf('/즉석복권')==0){ 
         pointlottery(r);
         return;
