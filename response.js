@@ -71,7 +71,12 @@ function intro(r){
 		r.replier.reply("말 그대로 광란의 밤입니다.\n매 주 금요일 오후 9시에서 토요일 오전 9시, 토요일 오후 9시에서 일요일 오전 9시, 매 공휴일 전날 오후 9시에서 오전 9시까지 진행 됩니다.\n이 시간 동안은 네루를 받을 확률이 30%가 되며 블랙잭, 홀짝 등의 게임에 참여 할 수 있습니다.");
 	   }
 }
-
+function osirase(r){
+	name=org.jsoup.Jsoup.connect("https://www.hinatazaka46.com/s/official/news/list?ima=0000&dy=201905").get().select("p.c-news__text").get(0).text();
+	link = "www.hinatazaka46.com"+org.jsoup.Jsoup.connect("https://www.hinatazaka46.com/s/official/news/list?ima=0000&dy=201905").get().select("a").attr("href")
+	r.replier.reply(name+"\n"+link)
+	
+}
 function pointgive(r){
 		currentpoint=D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
 		random = Math.floor(Math.random()*101);
@@ -294,7 +299,9 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         pointlottery(r);
         return;
         }
-    
+   	if(msg=="/공지"){
+	osirase(r);
+	}
 	if(msg.indexOf("/부방장복권")==0){
         roomlottery(r)
         return;
