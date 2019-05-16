@@ -108,6 +108,46 @@ function half(r){
 	r.replier.reply("홀과 짝만 입력해주세요")
 	}
 }
+function osirase(){
+	try{
+	var name=org.jsoup.Jsoup.connect("https://www.hinatazaka46.com/s/official/news/list?ima=0000&dy=201905").get().select("p.c-news__text").get(0).text();
+	var link = "www.hinatazaka46.com"+org.jsoup.Jsoup.connect("https://www.hinatazaka46.com/s/official/news/list?ima=0000&dy=201905").get().select("a").attr("href")
+	var doc = name+"\n"+link
+	var difcount = 0;
+	for(var i=0; i<15;i++){
+		for(var j=i; j<15; j++){
+			if(D.selectForArray('osirase')[i][1].indexOf(name[j]) == 0){
+				break;
+			}
+			else{
+				difcount += 1;
+    			break;
+    		}
+		}
+		if(difcount > 0){
+			break;
+		}
+	}
+	if(difcount > 0){
+		D.delete('osirase');
+		for(var i=0; i<15;i++){
+    		D.insert('osirase', { msg : name[i]});
+    	}
+		Api.replyRoom("건의방","새공지!\n"+doc);
+		Api.replyRoom("46","새공지!\n"+doc);
+	}	
+}
+	catch(e){
+	Api.replyRoom('46',e+"\n"+e.stack);
+	}
+}
+var nofinication = T.register("osirase",()=>{
+	while(1){
+		java.lang.Thread.sleep(50*1000);
+		osirase();
+	}
+}).start();
+
 function intro(r){
 	if(r.msg=="/기능 즉석복권"){
 		r.replier.reply("10 네루를 사용해 복권을 뽑습니다.\n1등 : 200네루 1%\n2등 : 50네루 4%\n3등 : 30네루 6%\n4등 : 15네루 10%");
@@ -140,7 +180,7 @@ function pointgive(r){
 		}
 	}
 
-			function roomlottery(r){
+	function roomlottery(r){
         currentpoint = D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
         random = Math.floor(Math.random()*101);
         num=Number(r.msg.substr(7));
