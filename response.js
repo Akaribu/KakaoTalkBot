@@ -26,7 +26,7 @@ function osiraseH(){
 	var difcount = 0;
 	for(var i=0; i<15;i++){
 		for(var j=i; j<15; j++){
-			if(D.selectForArray('osirase')[i][0].indexOf(name[j]) == 0){
+			if(D.selectForArray('osirase')[i][0].indexOf(temp[j]) == 0){
 				break;
 			}
 			else{
@@ -41,7 +41,7 @@ function osiraseH(){
 	if(difcount > 0){
 		D.delete('osirase');
 		for(var i=0; i<15;i++){
-    		D.insert('osirase', { name : name[i]});
+    		D.insert('osirase', { msg : temp[i]});
     	}
 		Api.replyRoom("건의방","새공지!\n"+doc);
 		Api.replyRoom("46","새공지!\n"+doc);
