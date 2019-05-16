@@ -21,12 +21,13 @@ String.prototype.cut=function (line) {
 function osiraseH(){
 	try{
 	var temp=org.jsoup.Jsoup.connect("https://www.hinatazaka46.com/s/official/news/list?ima=0000&dy=201905").get().select("p.c-news__text").get(0).text();
+	var temp1=org.jsoup.Jsoup.connect("https://www.hinatazaka46.com/s/official/news/list?ima=0000&dy=201905").get().select("p.c-news__text");
 	var link = "www.hinatazaka46.com"+org.jsoup.Jsoup.connect("https://www.hinatazaka46.com/s/official/news/list?ima=0000&dy=201905").get().select("a").attr("href")
 	var doc = temp+"\n"+link
 	var difcount = 0;
 	for(var i=0; i<15;i++){
 		for(var j=i; j<15; j++){
-			if(D.selectForArray('osirase')[i][0].indexOf(temp[j]) == 0){
+			if(D.selectForArray('osirase')[i][0].indexOf(temp1.get(0).text()) == 0){
 				break;
 			}
 			else{
@@ -41,7 +42,7 @@ function osiraseH(){
 	if(difcount > 0){
 		D.delete('osirase');
 		for(var i=0; i<15;i++){
-    		D.insert('osirase', { msg : temp[i]});
+    		D.insert('osirase', { name : temp1.get(0).text();});
     	}
 		Api.replyRoom("건의방","새공지!\n"+doc);
 		Api.replyRoom("46","새공지!\n"+doc);
