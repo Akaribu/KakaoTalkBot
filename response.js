@@ -10,6 +10,26 @@ function ev(r){
         	r.replier.reply(e + "\n" + e.stack);	
     		}
 	}
+function lyric(r) {
+    var replier = r.replier;
+    var room = r.r;
+    var sender = r.s;
+    var msg = r.m;
+    var str = r.msg.replace("/가사", "").trim();
+    var title = str.includes("/") ? str.split("/")[0] : str;
+    var artist = str.includes("/") ? str.split("/")[1] : "";
+    var xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><SOAP-ENV:Envelope xmlns:SOAP-ENV=\"http://www.w3.org/2003/05/soap-envelope\"" + " xmlns:SOAP-ENC=\"http://www.w3.org/2003/05/soap-encoding\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" " + "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:ns2=\"ALSongWebServer/Service1Soap\" xmlns:ns1=\"ALSongWebServer\" " + "xmlns:ns3=\"ALSongWebServer/Service1Soap12\"><SOAP-ENV:Body><ns1:GetResembleLyric2><ns1:stQuery><ns1:strTitle>" + title.XMLEncode() + "</ns1:strTitle><ns1:strArtistName>" + artist.XMLEncode() + "</ns1:strArtistName><ns1:nCurPage>0</ns1:nCurPage></ns1:stQuery>" + "</ns1:GetResembleLyric2></SOAP-ENV:Body></SOAP-ENV:Envelope>";
+    var elems = org.jsoup.Jsoup.connect("http://lyrics.alsong.co.kr/alsongwebservice/service1.asmx").header("Content-Type", "text/xml;charset=utf-8").requestBody(xml).post().select("ST_GET_RESEMBLELYRIC2_RETURN");
+    var strTitles = elems.select("strTitle").eachText().toArray();
+    var strArtistNames = elems.select("strArtistName").eachText().toArray();
+    var strLyrics = elems.select("strLyric").eachText().toArray();
+    var length = strTitles.length;
+    var res = "\"" + title + (artist ? ("/" + artist) : "") + "\" 검색결과" + "\n";
+    for (var i = 0; i < 3 && i < str.length; i++) {
+        res += "Lyric : " + (i + 1) + "\n" + strTitles[i] + "/" + strArtistNames[i] + "\n" + String(strLyrics[i]).replace(/\<br\>/g, "\n").replace(/\[\d\d:\d\d.\d\d\]/g, "") + "\n\n";
+    }
+    r.reply(res.trim().cut(1));
+}
 function intro(r){
 	if(r.msg=="/기능 즉석복권"){
 		r.replier.reply("10 네루를 사용해 복권을 뽑습니다.\n1등 : 200네루 1%\n2등 : 50네루 4%\n3등 : 30네루 6%\n4등 : 15네루 10%");
@@ -265,5 +285,9 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 	if (msg == '/로딩'){
     		reload(r);
     		return;
+	}
+	if (msg.indexOf("/가사")==0){
+		lyric(r);
+		return;
 	}
 }
