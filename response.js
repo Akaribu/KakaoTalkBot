@@ -20,9 +20,9 @@ String.prototype.cut=function (line) {
 }
 function osiraseH(){
 	try{
-	var name=org.jsoup.Jsoup.connect("https://www.hinatazaka46.com/s/official/news/list?ima=0000&dy=201905").get().select("p.c-news__text").get(0).text();
+	var temp=org.jsoup.Jsoup.connect("https://www.hinatazaka46.com/s/official/news/list?ima=0000&dy=201905").get().select("p.c-news__text").get(0).text();
 	var link = "www.hinatazaka46.com"+org.jsoup.Jsoup.connect("https://www.hinatazaka46.com/s/official/news/list?ima=0000&dy=201905").get().select("a").attr("href")
-	var doc = name+"\n"+link
+	var doc = temp+"\n"+link
 	var difcount = 0;
 	for(var i=0; i<15;i++){
 		for(var j=i; j<15; j++){
