@@ -60,6 +60,16 @@ function lyric(r) {
     }
     r.replier.reply(res.trim().cut(1));
 }
+function half(r){
+	random = Math.floor(Math.random()*2);
+	str=r.msg.substr(4);
+	if(random==0){
+		r.replier.reply(str+" 정답!")
+	}
+	else{
+		r.replier.reply("땡!")
+		}
+}
 function intro(r){
 	if(r.msg=="/기능 즉석복권"){
 		r.replier.reply("10 네루를 사용해 복권을 뽑습니다.\n1등 : 200네루 1%\n2등 : 50네루 4%\n3등 : 30네루 6%\n4등 : 15네루 10%");
@@ -323,6 +333,10 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
     		reload(r);
     		return;
 	}
+	if(msg.indexOf("/홀짝")=0){
+	half(r);
+	
+}
 	if (msg.indexOf("/가사")==0&&room=="46"){
 		lyric(r);
 		return;
