@@ -61,7 +61,7 @@ function lyric(r) {
     r.replier.reply(res.trim().cut(1));
 }
 function rullet(r){
-if (r.msg =="/룰렛" && Flag.get('russian_roulette',r.room)==0 ){
+if (r.msg =="/룰렛" && Flag.get('russian_roulette',r.room)==0 && r.room=="46" ){
     r.replier.reply("러시안 룰렛 게임을 시작합니다.\n[참가]를 입력하여 참가하고 [시작]을 입력하여 시작합니다.")
     Flag.set('russian_roulette',r.room, 1) // 참가자 입력 단계
     Flag.set('roulette_participants',r.room, new Array() )
