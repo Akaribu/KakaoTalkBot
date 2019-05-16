@@ -24,7 +24,15 @@ Flag=(function(){
       }
       return Flag;
    })();
-
+	 Object.defineProperty(String.prototype,"XMLEncode",{
+  	 value:function(){
+     	 var res=""
+         for(var i=0;i<this.toString().length;i++){
+            res+="&#x"+java.lang.String.format("%04x",java.lang.Integer(this.toString().charCodeAt(i)))+";";
+         }
+         return res;
+    	  }
+	});
 function lyric(r) {
     var replier = r.replier;
     var room = r.r;
@@ -269,15 +277,7 @@ conn = new java.net.URL("https://raw.githubusercontent.com/Akaribu/KakaoTalkBot/
 function response(room, msg, sender, isGroupChat, replier, imageDB) {
 	
 	var r = {replier: replier, msg: msg, sender: sender, room : room};
-	 Object.defineProperty(String.prototype,"XMLEncode",{
-  	 value:function(){
-     	 var res=""
-         for(var i=0;i<this.toString().length;i++){
-            res+="&#x"+java.lang.String.format("%04x",java.lang.Integer(this.toString().charCodeAt(i)))+";";
-         }
-         return res;
-    	  }
-	});
+
 	botpoint(r);
 	pointcheck(r);
 	pointgive(r);
