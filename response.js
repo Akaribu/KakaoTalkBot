@@ -335,7 +335,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 	}
 	if(msg.indexOf("/홀짝")=0){
 	half(r);
-	
+	return;
 }
 	if (msg.indexOf("/가사")==0&&room=="46"){
 		lyric(r);
