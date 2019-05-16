@@ -74,7 +74,7 @@ function intro(r){
 function osirase(r){
 	name=org.jsoup.Jsoup.connect("https://www.hinatazaka46.com/s/official/news/list?ima=0000&dy=201905").get().select("p.c-news__text").get(0).text();
 	link = "www.hinatazaka46.com"+org.jsoup.Jsoup.connect("https://www.hinatazaka46.com/s/official/news/list?ima=0000&dy=201905").get().select("a").attr("href")
-	r.replier.reply(name+"\n"+link)
+	r.replier.reply("최근 공지가 갱신되었습니다\n"+name+"\n"+link)
 	
 }
 function pointgive(r){
