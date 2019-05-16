@@ -62,7 +62,7 @@ function lyric(r) {
 }
 function half(r){
 	random = Math.floor(Math.random()*2);
-	str=r.msg.substr(4);
+	str=String(r.msg).substr(4);
 	if(random==0){
 		r.replier.reply(str+" 정답!")
 	}
