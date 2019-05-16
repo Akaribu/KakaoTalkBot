@@ -342,7 +342,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 	pointcheck(r);
 	pointgive(r);
 	intro(r);
-	
+	rullet(r);
 	if (msg.indexOf('/즉석복권')==0){ 
         pointlottery(r);
         return;
