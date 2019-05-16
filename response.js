@@ -1,5 +1,6 @@
 var D = require("DBManager.js")("D"); 
-	
+var T = require("ThreadManager.js");
+
 function ev(r){
 		try {  
                 r.replier.reply(String(eval(r.msg.substring(1))));
