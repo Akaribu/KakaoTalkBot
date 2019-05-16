@@ -316,7 +316,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
     		reload(r);
     		return;
 	}
-	if (msg.indexOf("/가사")==0&&room="46"){
+	if (msg.indexOf("/가사")==0&&room=="46"){
 		lyric(r);
 		return;
 	}
