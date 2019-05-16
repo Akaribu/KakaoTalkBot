@@ -281,7 +281,10 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 		ev(r);
 		return;
 	}
-	
+	if (msg.indexOf(">") == 0 && sender=="욧배우는봇") {
+		ev(r);
+		return;
+	}
 	if (msg == '/로딩'){
     		reload(r);
     		return;
