@@ -138,7 +138,7 @@ function osirase(){
 	}	
 }
 	catch(e){
-	Api.replyRoom('46',e+"\n"+e.stack);
+	Api.replyRoom('건의방',e+"\n"+e.stack);
 	}
 }
 var nofinication = T.register("osirase",()=>{
