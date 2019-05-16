@@ -63,7 +63,7 @@ function lyric(r) {
 function half(r){
 	random = Math.floor(Math.random()*2);
 	str=String(r.msg).substr(4);
-	if(str!="홀" || str!="짝"){
+	if(str!=="홀" || str!=="짝"){
 		r.replier.reply("홀과 짝만 입력해주세요")
 	}
 	else{
