@@ -42,7 +42,7 @@ function osiraseH(){
 	if(difcount > 0){
 		D.delete('osirase');
 		for(var i=0; i<15;i++){
-    		D.insert('osirase', { name : temp1.get(0).text();});
+    		D.insert('osirase', { name : temp1.get(0).text()});
     	}
 		Api.replyRoom("건의방","새공지!\n"+doc);
 		Api.replyRoom("46","새공지!\n"+doc);
