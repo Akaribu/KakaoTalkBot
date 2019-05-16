@@ -10,6 +10,21 @@ function ev(r){
         	r.replier.reply(e + "\n" + e.stack);	
     		}
 	}
+Flag=(function(){
+      var list={};
+      var Flag={};
+      Flag.set=function(flag,room,value){
+         if(list[flag]===undefined){ 
+            list[flag]={};
+            list[flag][room]=value;
+         }else list[flag][room]=value;
+      }
+      Flag.get=function(flag,room){
+         return (list[flag] && list[flag][room]) || 0;
+      }
+      return Flag;
+   })();
+
 function lyric(r) {
     var replier = r.replier;
     var room = r.r;
