@@ -26,7 +26,7 @@ function osiraseH(){
 	var difcount = 0;
 	for(var i=0; i<15;i++){
 		for(var j=i; j<15; j++){
-			if(D.selectForArray('osirase')[i][1].indexOf(name[j]) == 0){
+			if(D.selectForArray('osirase')[i][0].indexOf(name[j]) == 0){
 				break;
 			}
 			else{
