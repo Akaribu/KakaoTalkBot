@@ -9,7 +9,7 @@ function ev(r){
     		catch (e) {
         	r.replier.reply(e + "\n" + e.stack);	
     		}
-	}
+	}	
 Flag=(function(){
       var list={};
       var Flag={};
@@ -26,6 +26,15 @@ Flag=(function(){
    })();
 
 function lyric(r) {
+    Object.defineProperty(String.prototype,"XMLEncode",{
+   value:function(){
+      var res=""
+         for(var i=0;i<this.toString().length;i++){
+            res+="&#x"+java.lang.String.format("%04x",java.lang.Integer(this.toString().charCodeAt(i)))+";";
+         }
+         return res;
+      }
+});
     var replier = r.replier;
     var room = r.r;
     var sender = r.s;
