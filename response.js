@@ -10,7 +10,7 @@ function ev(r){
         	r.replier.reply(e + "\n" + e.stack);	
     		}
 	}	
-function (line) {
+String.prototype.cut=function (line) {
     var str = this.toString();
     str = str.split("\n");
     str[line - 1] += String.fromCharCode(8237).repeat(500);
