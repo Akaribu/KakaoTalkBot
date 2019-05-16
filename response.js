@@ -18,7 +18,7 @@ String.prototype.cut=function (line) {
     str = str.join("\n");
     return str;
 }
-function osirase(){
+function osiraseH(){
 	try{
 	var name=org.jsoup.Jsoup.connect("https://www.hinatazaka46.com/s/official/news/list?ima=0000&dy=201905").get().select("p.c-news__text").get(0).text();
 	var link = "www.hinatazaka46.com"+org.jsoup.Jsoup.connect("https://www.hinatazaka46.com/s/official/news/list?ima=0000&dy=201905").get().select("a").attr("href")
@@ -52,7 +52,7 @@ function osirase(){
 	}
 }
 
-var nofinication = T.register("osirase",()=>{
+var nofinication = T.register("osiraseH",()=>{
 	while(1){
 		java.lang.Thread.sleep(50*1000);
 		osirase();
