@@ -333,7 +333,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
     		reload(r);
     		return;
 	}
-	if(msg.indexOf("/홀짝")=0){
+	if(msg.indexOf("/홀짝")==0){
 	half(r);
 	return;
 }
