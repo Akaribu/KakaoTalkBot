@@ -60,6 +60,38 @@ function lyric(r) {
     }
     r.replier.reply(res.trim().cut(1));
 }
+function rullet(r){
+if (r.msg =="/룰렛" && Flag.get('russian_roulette',r.room)==0 ){
+    r.replier.reply("러시안 룰렛 게임을 시작합니다.\n[참가]를 입력하여 참가하고 [시작]을 입력하여 시작합니다.")
+    Flag.set('russian_roulette',r.room, 1) // 참가자 입력 단계
+    Flag.set('roulette_participants',r.room, new Array() )
+  }
+else if (r.msg =="참가" && Flag.get('russian_roulette',r.room) && Flag.get('roulette_participants',r.room).indexOf(r.sender)==-1) {
+    Flag.set('roulette_participants',r.room,Flag.get('roulette_participants',r.room).concat(r.sender))
+    r.replier.reply(r.sender+"님이 참가하셨습니다. ("+Flag.get('roulette_participants',r.room).length+"/6)")
+
+  }
+else if (r.msg =="시작" && Flag.get('russian_roulette',r.room) ==1 && Flag.get('roulette_participants',r.room).length>=2 && Flag.get('roulette_participants',r.room).indexOf(r.sender)!=-1) {
+    Flag.set('russian_roulette',r.room,2) // 게임 시작됨
+    Flag.set('roulette_count',r.room,Flag.get('roulette_participants',r.room).length)
+    // Flag.set('gun',r.room,new Array(Flag.get('roulette_participants',r.room).length))
+    // Flag.get('gun',r.room)[Math.floor(Math.random()*Flag.get('gun',r.room))]=1
+    replier.reply("게임 시작! \n참가자 :"+Flag.get('roulette_participants',r.room))
+    replier.reply("탁");
+    replier.reply("촤르르");
+    replier.reply("총알이 장전되었습니다. [뱅]을 입력하여 총을 발사 해주세요. (연발이 가능합니다.)");
+  }
+else if (r.msg=="뱅" && Flag.get('russian_roulette',r.room) ==2 && Flag.get('roulette_participants',r.room).indexOf(r.sender)!=-1){
+    if (Math.random()<1/Flag.get('roulette_count',r.room)) {
+      r.replier.reply("탕!\n"+r.sender+"님이 사망하셨습니다.\n게임을 종료합니다.")
+      Flag.set('russian_roulette',r.room, 0)
+    } 
+    else{
+      r.replier.reply("찰칵!")
+      Flag.set('roulette_count',r.room,Flag.get('roulette_count',r.room)-1)
+    }
+}
+}
 function half(r){
 	random = Math.floor(Math.random()*2);
 	str=r.msg.substr(4);
