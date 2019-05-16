@@ -76,10 +76,10 @@ else if (r.msg =="시작" && Flag.get('russian_roulette',r.room) ==1 && Flag.get
     Flag.set('roulette_count',r.room,Flag.get('roulette_participants',r.room).length)
     // Flag.set('gun',r.room,new Array(Flag.get('roulette_participants',r.room).length))
     // Flag.get('gun',r.room)[Math.floor(Math.random()*Flag.get('gun',r.room))]=1
-    replier.reply("게임 시작! \n참가자 :"+Flag.get('roulette_participants',r.room))
-    replier.reply("탁");
-    replier.reply("촤르르");
-    replier.reply("총알이 장전되었습니다. [뱅]을 입력하여 총을 발사 해주세요. (연발이 가능합니다.)");
+    r.replier.reply("게임 시작! \n참가자 :"+Flag.get('roulette_participants',r.room))
+    r.replier.reply("탁");
+    r.replier.reply("촤르르");
+    r.replier.reply("총알이 장전되었습니다. [뱅]을 입력하여 총을 발사 해주세요. (연발이 가능합니다.)");
   }
 else if (r.msg=="뱅" && Flag.get('russian_roulette',r.room) ==2 && Flag.get('roulette_participants',r.room).indexOf(r.sender)!=-1){
     if (Math.random()<1/Flag.get('roulette_count',r.room)) {
