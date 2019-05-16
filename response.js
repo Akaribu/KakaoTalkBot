@@ -33,7 +33,7 @@ function pointgive(r){
 				r.replier.reply(r.sender+"님 "+give+"네루 획득")
 				}
 		else{
-R			return 1;
+   		return 1;
 		}
 	}
 
