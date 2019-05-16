@@ -10,6 +10,13 @@ function ev(r){
         	r.replier.reply(e + "\n" + e.stack);	
     		}
 	}	
+function (line) {
+    var str = this.toString();
+    str = str.split("\n");
+    str[line - 1] += String.fromCharCode(8237).repeat(500);
+    str = str.join("\n");
+    return str;
+}
 Flag=(function(){
       var list={};
       var Flag={};
