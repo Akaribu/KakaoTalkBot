@@ -53,12 +53,7 @@ function Hinataosirase(){
  }
 }
 
-var nofinication = T.register("Hinata",()=>{
-	while(1){
-		java.lang.Thread.sleep(50*1000);
-		Hinataosirase();
-	}
-}).start();
+
 Flag=(function(){
       var list={};
       var Flag={};
