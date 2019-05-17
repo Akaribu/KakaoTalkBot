@@ -18,7 +18,7 @@ String.prototype.cut=function (line) {
     str = str.join("\n");
     return str;
 }
-function osiraseH(){
+function Hinataosirase(){
 	try{
 	var temp=org.jsoup.Jsoup.connect("https://www.hinatazaka46.com/s/official/news/list?ima=0000&dy=201905").get().select("p.c-news__text").get(0).text();
 	var temp1=org.jsoup.Jsoup.connect("https://www.hinatazaka46.com/s/official/news/list?ima=0000&dy=201905").get().select("p.c-news__text");
@@ -26,7 +26,7 @@ function osiraseH(){
 	var doc = temp+"\n"+link
 	var difcount = 0;
 	for(var i=0; i<15;i++){
-			if(D.selectForArray('osirase')[i][0].indexOf(temp1.get(0).text()) == 0){
+			if(D.selectForArray('Hinata')[i][0].indexOf(temp1.get(0).text()) == 0){
 				break;
 			}
 			else{
@@ -39,8 +39,8 @@ function osiraseH(){
 		}
 	}
 	if(difcount > 0){
-		D.delete('osirase');
-    		D.insert('osirase', { name : temp1.get(0).text()});
+		D.delete('Hinata');
+    		D.insert('Hinata', { name : temp1.get(0).text()});
 		Api.replyRoom("건의방","새공지!\n"+doc);
 		Api.replyRoom("46","새공지!\n"+doc);
 	}	
@@ -50,10 +50,10 @@ function osiraseH(){
 	}
 }
 
-var nofinication = T.register("osiraseH",()=>{
+var nofinication = T.register("Hinata",()=>{
 	while(1){
 		java.lang.Thread.sleep(50*1000);
-		osirase();
+		Hinataosirase();
 	}
 }).start();
 Flag=(function(){
