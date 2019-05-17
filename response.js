@@ -130,6 +130,45 @@ function osirase(r){
 	r.replier.reply("최근 공지가 갱신되었습니다\n"+name+"\n"+link)
 	
 }
+function Hinataosirase(){
+ try{
+ var temp=org.jsoup.Jsoup.connect("https://www.hinatazaka46.com/s/official/news/list?ima=0000&dy=201905").get().select("p.c-news__text").get(0).text();
+ var temp1=org.jsoup.Jsoup.connect("https://www.hinatazaka46.com/s/official/news/list?ima=0000&dy=201905").get().select("p.c-news__text");
+ var link = "www.hinatazaka46.com"+org.jsoup.Jsoup.connect("https://www.hinatazaka46.com/s/official/news/list?ima=0000&dy=201905").get().select("a").attr("href")
+ var doc = temp+"\n"+link
+ var difcount = 0;
+ for(var i=0; i<2;i++){
+   if(D.selectForArray('Hinata')[0][0].indexOf(temp1.get(0).text()) == 0){
+    break;
+   }
+   else{
+    difcount += 1;
+       break;
+              }
+  
+  if(difcount > 0){
+   break;
+  }
+ }
+ if(difcount > 0){
+  D.delete('Hinata');
+  D.insert('Hinata', { name : temp1.get(0).text()});
+               
+
+  Api.replyRoom("건의방","새공지!\n"+doc);
+  Api.replyRoom("46","새공지!\n"+doc);
+ } 
+}
+ catch(e){
+ Api.replyRoom('건의방',e+"\n"+e.stack);
+ }
+}
+var nofinication = T.register("Hinata",()=>{
+	while(1){
+		java.lang.Thread.sleep(50*1000);
+		Hinataosirase();
+	}
+}).start();
 function pointgive(r){
 		currentpoint=D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
 		random = Math.floor(Math.random()*101);
@@ -329,7 +368,8 @@ conn = new java.net.URL("https://raw.githubusercontent.com/Akaribu/KakaoTalkBot/
             bw.close();
             var time = (new Date() - Timer) / 1000;
             r.replier.reply("파일저장 완료 / " + time + "s\n" + new Date());
-            Api.reload();
+            T.interrupt();
+	    Api.reload();
             reloadcheck = 0;
             var time = (new Date() - Timer) / 1000;
             r.replier.reply("리로딩 완료 / " + time + "s\n" + new Date());
