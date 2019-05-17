@@ -19,35 +19,38 @@ String.prototype.cut=function (line) {
     return str;
 }
 function Hinataosirase(){
-	try{
-	var temp=org.jsoup.Jsoup.connect("https://www.hinatazaka46.com/s/official/news/list?ima=0000&dy=201905").get().select("p.c-news__text").get(0).text();
-	var temp1=org.jsoup.Jsoup.connect("https://www.hinatazaka46.com/s/official/news/list?ima=0000&dy=201905").get().select("p.c-news__text");
-	var link = "www.hinatazaka46.com"+org.jsoup.Jsoup.connect("https://www.hinatazaka46.com/s/official/news/list?ima=0000&dy=201905").get().select("a").attr("href")
-	var doc = temp+"\n"+link
-	var difcount = 0;
-	for(var i=0; i<15;i++){
-			if(D.selectForArray('Hinata').indexOf(temp1.get(0).text()) == 0){
-				break;
-			}
-			else{
-				difcount += 1;
-    			break;
-    		        }
-		
-		if(difcount > 0){
-			break;
-		}
-	}
-	if(difcount > 0){
-		D.delete('Hinata');
-    		D.insert('Hinata', { name : temp1.get(0).text()});
-		Api.replyRoom("건의방","새공지!\n"+doc);
-		Api.replyRoom("46","새공지!\n"+doc);
-	}	
+ try{
+ var temp=org.jsoup.Jsoup.connect("https://www.hinatazaka46.com/s/official/news/list?ima=0000&dy=201905").get().select("p.c-news__text").get(0).text();
+ var temp1=org.jsoup.Jsoup.connect("https://www.hinatazaka46.com/s/official/news/list?ima=0000&dy=201905").get().select("p.c-news__text");
+ var link = "www.hinatazaka46.com"+org.jsoup.Jsoup.connect("https://www.hinatazaka46.com/s/official/news/list?ima=0000&dy=201905").get().select("a").attr("href")
+ var doc = temp+"\n"+link
+ var difcount = 0;
+ for(var i=0; i<15;i++){
+   if(D.selectForArray('Hinata')[i][0].indexOf(temp1.get(i).text()) == 0){
+    break;
+   }
+   else{
+    difcount += 1;
+       break;
+              }
+  
+  if(difcount > 0){
+   break;
+  }
+ }
+ if(difcount > 0){
+  D.delete('Hinata');
+      for(var i=0; i<15;i++){
+                D.insert('Hinata', { name : temp1.get(i).text()});
+                }
+
+  Api.replyRoom("건의방","새공지!\n"+doc);
+  Api.replyRoom("46","새공지!\n"+doc);
+ } 
 }
-	catch(e){
-	Api.replyRoom('건의방',e+"\n"+e.stack);
-	}
+ catch(e){
+ Api.replyRoom('건의방',e+"\n"+e.stack);
+ }
 }
 
 var nofinication = T.register("Hinata",()=>{
