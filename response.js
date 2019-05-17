@@ -26,7 +26,6 @@ function osiraseH(){
 	var doc = temp+"\n"+link
 	var difcount = 0;
 	for(var i=0; i<15;i++){
-		for(var j=i; j<15; j++){
 			if(D.selectForArray('osirase')[i][0].indexOf(temp1.get(0).text()) == 0){
 				break;
 			}
@@ -34,16 +33,14 @@ function osiraseH(){
 				difcount += 1;
     			break;
     		}
-		}
+		
 		if(difcount > 0){
 			break;
 		}
 	}
 	if(difcount > 0){
 		D.delete('osirase');
-		for(var i=0; i<15;i++){
-    		D.insert('osirase', { name : temp1.get(0).text()});
-    	}
+    		D.insert('osirase', { name : temp1.get(0).text()}
 		Api.replyRoom("건의방","새공지!\n"+doc);
 		Api.replyRoom("46","새공지!\n"+doc);
 	}	
