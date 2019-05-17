@@ -163,10 +163,45 @@ function Hinataosirase(){
  Api.replyRoom('건의방',e+"\n"+e.stack);
  }
 }
+function Keyakoisirase(){
+ try{
+ var temp=org.jsoup.Jsoup.connect("http://www.keyakizaka46.com/s/k46o/news/list?ima=0000&dy=201905").get().select("div.text").get(0).text()
+ var temp1=org.jsoup.Jsoup.connect("http://www.keyakizaka46.com/s/k46o/news/list?ima=0000&dy=201905").get().select("div.text")
+ var link = org.jsoup.Jsoup.connect("http://www.keyakizaka46.com/s/k46o/news/list?ima=0000&dy=201905").get().select("div.text").get(0).select("a").attr("abs:href")
+ var doc = temp+"\n"+link
+ var difcount = 0;
+ for(var i=0; i<2;i++){
+   if(D.selectForArray('Keyaki')[0][0].indexOf(temp1.get(0).text()) == 0){
+    break;
+   }
+   else{
+    difcount += 1;
+       break;
+              }
+  
+  if(difcount > 0){
+   break;
+  }
+ }
+ if(difcount > 0){
+  D.delete('Keyaki');
+  D.insert('keyaki', { name : temp1.get(0).text()}); 
+               
+
+  Api.replyRoom("건의방","새공지!\n"+doc);
+  Api.replyRoom("46","새공지!\n"+doc);
+ } 
+}
+ catch(e){
+ Api.replyRoom('건의방',e+"\n"+e.stack);
+ }
+}
+
 var nofinication = T.register("Hinata",()=>{
 	while(1){
 		java.lang.Thread.sleep(50*1000);
 		Hinataosirase();
+		Keyakiosirase();
 	}
 }).start();
 function pointgive(r){
