@@ -26,7 +26,7 @@ function Hinataosirase(){
 	var doc = temp+"\n"+link
 	var difcount = 0;
 	for(var i=0; i<15;i++){
-			if(D.selectForArray('Hinata')[i].indexOf(temp1.get(0).text()) == 0){
+			if(D.selectForArray('Hinata').indexOf(temp1.get(0).text()) == 0){
 				break;
 			}
 			else{
