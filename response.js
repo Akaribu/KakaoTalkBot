@@ -163,7 +163,7 @@ function Hinataosirase(){
  Api.replyRoom('건의방',e+"\n"+e.stack);
  }
 }
-function Keyakoisirase(){
+function Keyakiosirase(){
  try{
  var temp=org.jsoup.Jsoup.connect("http://www.keyakizaka46.com/s/k46o/news/list?ima=0000&dy=201905").get().select("div.text").get(0).text()
  var temp1=org.jsoup.Jsoup.connect("http://www.keyakizaka46.com/s/k46o/news/list?ima=0000&dy=201905").get().select("div.text")
@@ -197,13 +197,21 @@ function Keyakoisirase(){
  }
 }
 
-var nofinication = T.register("Hinata",()=>{
+var nofinication1 = T.register("Hinata",()=>{
 	while(1){
 		java.lang.Thread.sleep(50*1000);
 		Hinataosirase();
+	}
+}).start();
+var nofinication2 = T.register("Keyaki",()=>{
+	while(1){
+		java.lang.Thread.sleep(50*1000);
 		Keyakiosirase();
 	}
 }).start();
+
+
+
 function pointgive(r){
 		currentpoint=D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
 		random = Math.floor(Math.random()*101);
