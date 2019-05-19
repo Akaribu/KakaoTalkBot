@@ -820,12 +820,15 @@ conn = new java.net.URL("https://raw.githubusercontent.com/Akaribu/KakaoTalkBot/
 function response(room, msg, sender, isGroupChat, replier, imageDB) {
 	
 	var r = {replier: replier, msg: msg, sender: sender, room : room};
-	weather(r);
 	botpoint(r);
 	pointcheck(r);
 	pointgive(r);
 	intro(r);
 	rullet(r);
+	if (msg.indexOf('/날씨')==0&& room=="46"){ 
+    	weather(r);
+        return;
+        }
 	if (msg.indexOf('/즉석복권')==0){ 
         pointlottery(r);
         return;
