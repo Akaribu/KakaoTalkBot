@@ -1,7 +1,7 @@
 var D = require("DBManager.js")("D"); 
 var T = require("ThreadManager.js");
 var I = require("Interactive.js");
-
+const es=String.fromCharCode(8237).repeat(500);
 function ev(r){
 		try {  
                 r.replier.reply(String(eval(r.msg.substring(1))));
