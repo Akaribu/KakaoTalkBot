@@ -23,7 +23,10 @@ String.prototype.extension=function(char,length){
 	const addLength = (length-this.toString().length >= 0) ? length-this.toString().length : 0; 
 	return char.repeat(addLength)+this.toString();
 }
-
+String.prototype.extensionRight=function(char,length){
+	const addLength = (length-this.toString().length >= 0) ? length-this.toString().length : 0; 
+	return this.toString()+char.repeat(addLength);
+}
 
 Flag=(function(){
       var list={};
