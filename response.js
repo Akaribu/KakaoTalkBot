@@ -19,7 +19,10 @@ String.prototype.cut=function (line) {
     str = str.join("\n");
     return str;
 }
-
+String.prototype.extension=function(char,length){
+	const addLength = (length-this.toString().length >= 0) ? length-this.toString().length : 0; 
+	return char.repeat(addLength)+this.toString();
+}
 
 
 Flag=(function(){
