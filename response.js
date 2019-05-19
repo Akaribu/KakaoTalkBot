@@ -787,7 +787,7 @@ function time() {
     return {now: now, year: year, month: month, date: date, day: day, hour: hour, minute: minute, second: second, ampm: ampm, hour1: hour1};
 }
 function reload(r) {
-    try {
+ try {
         if (r.sender == "니부아카리" || r.room == "건의방") {
             reloadcheck = 1;
             reloadtime = new Date().getTime();
@@ -821,6 +821,7 @@ conn = new java.net.URL("https://raw.githubusercontent.com/Akaribu/KakaoTalkBot/
 function response(room, msg, sender, isGroupChat, replier, imageDB) {
 	
 	var r = {replier: replier, msg: msg, sender: sender, room : room};
+	I.run(room, sender, msg);
 	botpoint(r);
 	pointcheck(r);
 	pointgive(r);
