@@ -730,7 +730,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 	pointgive(r);
 	intro(r);
 	rullet(r);
-	if (msg.indexOf('/날씨')==0&& room=="46"){ 
+	if (msg.indexOf('/날씨')==0&& room=="건의방"){ 
     	weather(r);
         return;
         }
