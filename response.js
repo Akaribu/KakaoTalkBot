@@ -56,9 +56,9 @@ function weather(r){
 		try{
 			var want = r.msg.substr(4);
            	 	var link1 = "";
-          		  var link2 = "https://m.weather.naver.com/m/main.nhn?regionCode=09140104";
+          		  var link2 = "https://m.weather.naver.com/m/main.nhn?regionCode=09140171";
           		  var check = link2.indexOf("weather");
-        		    var where = "서울 중구 을지로 1가";
+        		    var where = "서울 중구 중림동";
 			if (want.length > 0) {
                 link1 = org.jsoup.Jsoup.connect("https://m.search.naver.com/search.naver?query=" + want + "+날씨").get();
                 link2 = link1.select("div.api_more_wrap").select("a").attr("abs:href");
