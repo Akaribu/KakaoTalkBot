@@ -553,8 +553,7 @@ function Hinataosirase(){
   }
  }
  if(difcount > 0){
-  D.delete('Hinata');
-  D.insert('Hinata', { name : temp1.get(0).text()});
+  D.update('Hinata', { name : temp1.get(0).text()});
                
 
   Api.replyRoom("건의방","새공지!\n"+doc);
@@ -587,7 +586,7 @@ function Keyakiosirase(){
  }
  if(difcount > 0){
   D.delete('Keyaki');
-  D.insert('keyaki', { name : temp1.get(0).text()}); 
+  D.update('keyaki', { name : temp1.get(0).text()}); 
                
 
   Api.replyRoom("건의방","새공지!\n"+doc);
