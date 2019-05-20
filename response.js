@@ -585,7 +585,6 @@ function Keyakiosirase(){
   }
  }
  if(difcount > 0){
-  D.delete('Keyaki');
   D.update('keyaki', { name : temp1.get(0).text()}); 
                
 
