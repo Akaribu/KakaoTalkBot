@@ -578,7 +578,7 @@ function Keyakiosirase(){
               }
   
  }
- if(difcount = 0){
+ if(difcount = 1){
   D.update('keyaki', { name : temp1.get(0).text()}); 
  
   Api.replyRoom("건의방","새공지!\n"+doc);
