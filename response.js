@@ -604,13 +604,13 @@ function Keyakiosirase(r){
 var nofinication1 = T.register("Hinata",()=>{
 	while(1){
 		java.lang.Thread.sleep(50*1000);
-		Hinataosirase();
+		Hinataosirase(r);
 	}
 }).start();
 var nofinication2 = T.register("Keyaki",()=>{
 	while(1){
 		java.lang.Thread.sleep(50*1000);
-		Keyakiosirase();
+		Keyakiosirase(r);
 	}
 }).start();
 
