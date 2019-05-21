@@ -553,7 +553,7 @@ function Hinataosirase(){
   
  
   }
- else{
+ eㅣse if (count ==1) {
   D.update('Hinata', { name : temp1.get(0).text()});
   
   Api.replyRoom("건의방","새공지!\n"+doc);
@@ -587,7 +587,7 @@ function Keyakiosirase(){
               }
   
  }
- else{
+ eㅣse if (count ==1){
   D.update('keyaki', { name : temp1.get(0).text()}); 
  
   Api.replyRoom("건의방","새공지!\n"+doc);
@@ -826,7 +826,7 @@ conn = new java.net.URL("https://raw.githubusercontent.com/Akaribu/KakaoTalkBot/
         r.replier.reply("건의방", e + "\n" + e.stack);
     }
 }
-function Thread(r){
+function (r){
 	T.getThreadList().join("\n")
 }
 function response(room, msg, sender, isGroupChat, replier, imageDB) {
@@ -871,7 +871,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
     		return;
 	}
 	if (msg == '/쓰레드'){
-    		Thread(r);
+    		(r);
     		return;
 	}
 	if(msg.indexOf("/홀짝")==0){
