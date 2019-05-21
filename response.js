@@ -541,7 +541,7 @@ function Hinataosirase(){
  var count = Number(0);
  if(count = 0){
    if(D.selectForArray('Hinata')[0][0].indexOf(temp1.get(0).text()) == 0){ Api.replyRoom("건의방",count)}
-   else if(D.selectForArray('Hinata')[0][0].indexOf(temp1.get(0).text()) != 0){
+   else{
     count += 1;
     Api.replyRoom("건의방",count)
 }
@@ -555,8 +555,6 @@ function Hinataosirase(){
   Api.replyRoom("46","새공지!\n"+doc);
   count-=1;
  Api.replyRoom("건의방",count);
- 
-  
  } 
 return;
 }
