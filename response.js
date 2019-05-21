@@ -538,23 +538,23 @@ function Hinataosirase(){
  var temp1=org.jsoup.Jsoup.connect("https://www.hinatazaka46.com/s/official/news/list?ima=0000&dy=201905").get().select("p.c-news__text");
  var link = "www.hinatazaka46.com"+org.jsoup.Jsoup.connect("https://www.hinatazaka46.com/s/official/news/list?ima=0000&dy=201905").get().select("p.c-news__text").get(0).parent().attr("href")
  var doc = temp+"\n"+link
- var count = Number(0);
- if(count = 0){
-   if(D.selectForArray('Hinata')[0][0].indexOf(temp1.get(0).text()) == 0){ Api.replyRoom("건의방",count)}
+ Var counter= D.selectForArray("Count")[0][0];
+ if(counter = 0){
+   if(D.selectForArray('Hinata')[0][0].indexOf(temp1.get(0).text()) == 0){ Api.replyRoom("건의방",counter)}
    else{
-    count += 1;
-    Api.replyRoom("건의방",count)
+    D.update("Count", {"point":"1"})
+    Api.replyRoom("건의방",counter)
 }
   
  
   }
- else if (count =1) {
+ else if (counter =1) {
   D.update('Hinata', { name : temp1.get(0).text()});
-  Api.replyRoom("건의방",count);
+  Api.replyRoom("건의방",counter);
   Api.replyRoom("건의방","새공지!\n"+doc);
   Api.replyRoom("46","새공지!\n"+doc);
-  count-=1;
- Api.replyRoom("건의방",count);
+  D.update("Count", {"point":"0"})
+ Api.replyRoom("건의방",counter);
  } 
 return;
 }
