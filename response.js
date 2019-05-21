@@ -538,7 +538,7 @@ function Hinataosirase(){
  var temp1=org.jsoup.Jsoup.connect("https://www.hinatazaka46.com/s/official/news/list?ima=0000&dy=201905").get().select("p.c-news__text");
  var link = "www.hinatazaka46.com"+org.jsoup.Jsoup.connect("https://www.hinatazaka46.com/s/official/news/list?ima=0000&dy=201905").get().select("p.c-news__text").get(0).parent().attr("href")
  var doc = temp+"\n"+link
- var Number(count) = 0;
+ var count = 0;
  if(count = 0){
    if(D.selectForArray('Hinata')[0][0].indexOf(temp1.get(0).text()) == 0){ Api.replyRoom("건의방",count)}
    else if(D.selectForArray('Hinata')[0][0].indexOf(temp1.get(0).text()) != 0){
