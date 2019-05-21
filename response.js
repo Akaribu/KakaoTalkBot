@@ -826,7 +826,7 @@ conn = new java.net.URL("https://raw.githubusercontent.com/Akaribu/KakaoTalkBot/
         r.replier.reply("건의방", e + "\n" + e.stack);
     }
 }
-function (r){
+function Hread(r){
 	T.getThreadList().join("\n")
 }
 function response(room, msg, sender, isGroupChat, replier, imageDB) {
@@ -871,7 +871,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
     		return;
 	}
 	if (msg == '/쓰레드'){
-    		(r);
+    		Hread(r);
     		return;
 	}
 	if(msg.indexOf("/홀짝")==0){
