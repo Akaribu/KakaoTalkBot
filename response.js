@@ -539,7 +539,7 @@ function Hinataosirase(){
  var link = "www.hinatazaka46.com"+org.jsoup.Jsoup.connect("https://www.hinatazaka46.com/s/official/news/list?ima=0000&dy=201905").get().select("p.c-news__text").get(0).parent().attr("href")
  var doc = temp+"\n"+link
  var difcount = 0;
- for(var i=0; i<2;i++){
+ for(var i=0; i<1;i++){
    if(D.selectForArray('Hinata')[0][0].indexOf(temp1.get(0).text()) == 0){
     break;
    }
@@ -571,7 +571,7 @@ function Keyakiosirase(){
  var link = org.jsoup.Jsoup.connect("http://www.keyakizaka46.com/s/k46o/news/list?ima=0000&dy=201905").get().select("div.text").get(0).select("a").attr("abs:href")
  var doc = temp+"\n"+link
  var difcount = 0;
- for(var i=0; i<2;i++){
+ for(var i=0; i<1;i++){
    if(D.selectForArray('Keyaki')[0][0].indexOf(temp1.get(0).text()) == 0){
     break;
    }
