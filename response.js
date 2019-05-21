@@ -540,10 +540,12 @@ function Hinataosirase(){
  var doc = temp+"\n"+link
  var count = 0;
  if(count == 0){
-   if(D.selectForArray('Hinata')[0][0].indexOf(temp1.get(0).text()) == 0){}
+   if(D.selectForArray('Hinata')[0][0].indexOf(temp1.get(0).text()) == 0){ Api.replyRoom("건의방",count)}
    else{
     count == 1;
-             return; }
+Api.replyRoom("건의방",count)
+return;
+}
   
  
   }
@@ -553,7 +555,8 @@ function Hinataosirase(){
   Api.replyRoom("건의방","새공지!\n"+doc);
   Api.replyRoom("46","새공지!\n"+doc);
   count==0;
-  return;
+ Api.replyRoom("건의방",count)
+ return;
   
  } 
 }
