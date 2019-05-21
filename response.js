@@ -555,7 +555,7 @@ function Hinataosirase(){
   Api.replyRoom("46","새공지!\n"+doc);
   count-=1;
  Api.replyRoom("건의방",count)
- return;
+ 
   
  } 
 }
