@@ -542,10 +542,12 @@ function Hinataosirase(){
  if(count = 0){
    if(D.selectForArray('Hinata')[0][0].indexOf(temp1.get(0).text()) == 0){
    count = 0;
-return 0;
+   r.replier.reply(count);
+	   return 0;
   }
    else{
     count = 1;
+    r.replier.reply(count);
     return 0;
               }
   
@@ -553,10 +555,11 @@ return 0;
   }
  else{
   D.update('Hinata', { name : temp1.get(0).text()});
-     
+  
   Api.replyRoom("건의방","새공지!\n"+doc);
   Api.replyRoom("46","새공지!\n"+doc);
   count=0;
+  r.replier.reply(count);
   return 0;
  } 
 }
@@ -574,11 +577,13 @@ function Keyakiosirase(){
  if(count = 0){
    if(D.selectForArray('Keyaki')[0][0].indexOf(temp1.get(0).text()) == 0){
    count = 0;
-   return 0;
+   r.replier.reply(count);
+	   return 0;
    }
    else{
     count = 1;
-    return 0;
+    r.replier.reply(count);
+	   return 0;
               }
   
  }
@@ -588,7 +593,8 @@ function Keyakiosirase(){
   Api.replyRoom("건의방","새공지!\n"+doc);
   Api.replyRoom("46","새공지!\n"+doc);
   count=0;
-  return 0;
+  r.replier.reply(count);
+	 return 0;
  } 
 }
  catch(e){
