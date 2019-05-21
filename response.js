@@ -553,7 +553,7 @@ function Hinataosirase(){
   
  
   }
- eㅣse if (count ==1) {
+ else if (count ==1) {
   D.update('Hinata', { name : temp1.get(0).text()});
   
   Api.replyRoom("건의방","새공지!\n"+doc);
@@ -587,7 +587,7 @@ function Keyakiosirase(){
               }
   
  }
- eㅣse if (count ==1){
+ else if (count ==1){
   D.update('keyaki', { name : temp1.get(0).text()}); 
  
   Api.replyRoom("건의방","새공지!\n"+doc);
