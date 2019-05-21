@@ -550,14 +550,15 @@ function Hinataosirase(){
   }
  else if (count =1) {
   D.update('Hinata', { name : temp1.get(0).text()});
-  
+  Api.replyRoom("건의방",count);
   Api.replyRoom("건의방","새공지!\n"+doc);
   Api.replyRoom("46","새공지!\n"+doc);
   count-=1;
- Api.replyRoom("건의방",count)
+ Api.replyRoom("건의방",count);
  
   
  } 
+return;
 }
  catch(e){
  Api.replyRoom('건의방',e+"\n"+e.stack);
