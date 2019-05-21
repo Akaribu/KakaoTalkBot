@@ -532,7 +532,7 @@ function osirase(r){
 	r.replier.reply("최근 공지가 갱신되었습니다\n"+name+"\n"+link)
 	
 }
-function Hinataosirase(){
+function Hinataosirase(r){
  try{
  var temp=org.jsoup.Jsoup.connect("https://www.hinatazaka46.com/s/official/news/list?ima=0000&dy=201905").get().select("p.c-news__text").get(0).text();
  var temp1=org.jsoup.Jsoup.connect("https://www.hinatazaka46.com/s/official/news/list?ima=0000&dy=201905").get().select("p.c-news__text");
@@ -567,7 +567,7 @@ function Hinataosirase(){
  Api.replyRoom('건의방',e+"\n"+e.stack);
  }
 }
-function Keyakiosirase(){
+function Keyakiosirase(r){
  try{
  var temp=org.jsoup.Jsoup.connect("http://www.keyakizaka46.com/s/k46o/news/list?ima=0000&dy=201905").get().select("div.text").get(0).text()
  var temp1=org.jsoup.Jsoup.connect("http://www.keyakizaka46.com/s/k46o/news/list?ima=0000&dy=201905").get().select("div.text")
