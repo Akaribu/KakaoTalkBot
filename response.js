@@ -541,20 +541,20 @@ function Hinataosirase(){
  var count = 0;
  if(count == 0){
    if(D.selectForArray('Hinata')[0][0].indexOf(temp1.get(0).text()) == 0){ Api.replyRoom("건의방",count)}
-   else{
-    count == 1;
-Api.replyRoom("건의방",count)
-return;
+   else if(D.selectForArray('Hinata')[0][0].indexOf(temp1.get(0).text()) != 0){
+    count += 1;
+    Api.replyRoom("건의방",count)
+    return;
 }
   
  
   }
- else if (count ==1) {
+ else if (count !=0) {
   D.update('Hinata', { name : temp1.get(0).text()});
   
   Api.replyRoom("건의방","새공지!\n"+doc);
   Api.replyRoom("46","새공지!\n"+doc);
-  count==0;
+  count-=1;
  Api.replyRoom("건의방",count)
  return;
   
