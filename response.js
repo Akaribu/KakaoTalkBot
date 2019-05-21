@@ -550,12 +550,12 @@ function Hinataosirase(){
   
  
   }
- if(difcount = 1){
+ else{
   D.update('Hinata', { name : temp1.get(0).text()});
      
   Api.replyRoom("건의방","새공지!\n"+doc);
   Api.replyRoom("46","새공지!\n"+doc);
-  difcount-=1
+  difcount=0;
   return 0;
  } 
 }
@@ -580,12 +580,12 @@ function Keyakiosirase(){
               }
   
  }
- if(difcount = 1){
+ else{
   D.update('keyaki', { name : temp1.get(0).text()}); 
  
   Api.replyRoom("건의방","새공지!\n"+doc);
   Api.replyRoom("46","새공지!\n"+doc);
-  difcount-=1;
+  difcount=0;
 return 0;
  } 
 }
