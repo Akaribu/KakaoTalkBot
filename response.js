@@ -541,7 +541,7 @@ function Hinataosirase(){
  var difcount = 0;
  if(difcount = 0){
    if(D.selectForArray('Hinata')[0][0].indexOf(temp1.get(0).text()) == 0){
-  
+   
    }
    else{
     difcount += 1;
@@ -550,7 +550,7 @@ function Hinataosirase(){
   
  
   }
- if(difcount > 0){
+ if(difcount = 1){
   D.update('Hinata', { name : temp1.get(0).text()});
      
   Api.replyRoom("건의방","새공지!\n"+doc);
