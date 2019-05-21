@@ -873,6 +873,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 	if (msg == '/쓰레드'){
     		Thread(r);
     		return;
+	}
 	if(msg.indexOf("/홀짝")==0){
 	half(r);
 	return;
