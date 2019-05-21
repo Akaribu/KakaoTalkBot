@@ -544,7 +544,7 @@ function Hinataosirase(){
    return 0;
    }
    else{
-    difcount += 1;
+    difcount = 1;
     return 0;
               }
   
@@ -575,7 +575,7 @@ function Keyakiosirase(){
    return 0;
 }
    else{
-    difcount += 1;
+    difcount = 1;
     return 0;
               }
   
