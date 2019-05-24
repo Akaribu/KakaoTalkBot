@@ -541,10 +541,11 @@ function Hinataosirase(){
  var counter= Number(0)
  if(counter = Number(1)){
    if(D.selectForArray('Hinata')[0][0].indexOf(temp1.get(0).text()) == 0){
-	   counter=0;
+	   counter=1;
 	   D.update("Count", {"point":"counter"})
 	   Api.replyRoom("건의방",counter)}
-   else{
+  
+	 else{
 	   counter+=1
     D.update("Count", {"point":"counter"})
     Api.replyRoom("건의방",counter)
