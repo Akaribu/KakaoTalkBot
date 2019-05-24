@@ -540,7 +540,7 @@ function Hinataosirase(){
  var doc = temp+"\n"+link
  var counter= Number(0)
  var verse = D.selectForArray('Count')[0][0] 
- if(verse= Number(0)){
+ if(verse<1){
    if(D.selectForArray('Hinata')[0][0].indexOf(temp1.get(0).text()) == 0){
 	D.update("Count", {"point":0})
 	   Api.replyRoom("건의방",counter)}
