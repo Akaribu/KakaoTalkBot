@@ -552,7 +552,7 @@ function Hinataosirase(){
   
  
   }
- else if (counter =1) {
+ else{
 	 Api.replyRoom("건의방",counter);
 	 counter-=1
 	 D.update("Count", {"point":"counter"})
