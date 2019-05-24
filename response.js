@@ -540,9 +540,9 @@ function Hinataosirase(){
  var doc = temp+"\n"+link
  var counter= D.selectForArray("Count")[0][0];
  if(counter = 0){
-   if(D.selectForArray('Hinata')[0][0].indexOf(temp1.get(0).text()) == 0){ Api.replyRoom("건의방",counter)}
+   if(D.selectForArray('Hinata')[0][0].indexOf(temp1.get(0).text()) == 0){ counter=0; Api.replyRoom("건의방",counter)}
    else{
-counter+=1
+	   counter+=1
     D.update("Count", {"point":"counter"})
     Api.replyRoom("건의방",counter)
 }
@@ -550,12 +550,12 @@ counter+=1
  
   }
  else if (counter =1) {
-  D.update('Hinata', { name : temp1.get(0).text()});
-  Api.replyRoom("건의방",counter);
+	 Api.replyRoom("건의방",counter);
+	 counter-=1
+	 D.update("Count", {"point":"counter"})
+	 D.update('Hinata', { name : temp1.get(0).text()});
   Api.replyRoom("건의방","새공지!\n"+doc);
   Api.replyRoom("46","새공지!\n"+doc);
-  counter-=1
-D.update("Count", {"point":"counter"})
  Api.replyRoom("건의방",counter);
  } 
 
@@ -563,7 +563,6 @@ D.update("Count", {"point":"counter"})
  catch(e){
  Api.replyRoom('건의방',e+"\n"+e.stack);
  }
-}
 function Keyakiosirase(){
  try{
  var temp=org.jsoup.Jsoup.connect("http://www.keyakizaka46.com/s/k46o/news/list?ima=0000&dy=201905").get().select("div.text").get(0).text()
