@@ -540,25 +540,25 @@ function Hinataosirase(){
  var doc = temp+"\n"+link
  var counter= Number(0)
  var verse = D.selectForArray('Count')[0][0] 
- if(verse<1){
+ if(verse>=1){
    if(D.selectForArray('Hinata')[0][0].indexOf(temp1.get(0).text()) == 0){
 	D.update("Count", {"point":0})
-	   Api.replyRoom("건의방",counter)}
+	   Api.replyRoom("건의방",verse)}
   
 	 else{
 	   D.update("Count", {"point":1})
-    Api.replyRoom("건의방",counter)
+    Api.replyRoom("건의방",verse)
 }
   
  
   }
  else{
-	 Api.replyRoom("건의방",counter);
+	 Api.replyRoom("건의방",verse);
 	 D.update("Count", {"point":0})
 	 D.update('Hinata', { name : temp1.get(0).text()});
   Api.replyRoom("건의방","새공지!\n"+doc);
   Api.replyRoom("46","새공지!\n"+doc);
- Api.replyRoom("건의방",counter);
+ Api.replyRoom("건의방",verse);
  } 
 }
  catch(e){
