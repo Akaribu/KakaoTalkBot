@@ -548,7 +548,7 @@ function Hinataosirase(){
   
 	 else{
 	   counter+=1
-    D.update("Count", {"point":""})
+    D.update("Count", {"point":counter})
     Api.replyRoom("건의방",counter)
 }
   
@@ -557,6 +557,7 @@ function Hinataosirase(){
  else{
 	 Api.replyRoom("건의방",counter);
 	 counter-=1
+	  D.update("Count", {"point":counter})
 	 D.update('Hinata', { name : temp1.get(0).text()});
   Api.replyRoom("건의방","새공지!\n"+doc);
   Api.replyRoom("46","새공지!\n"+doc);
