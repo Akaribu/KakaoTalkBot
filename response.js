@@ -561,7 +561,8 @@ function Hinataosirase(){
   Api.replyRoom("46","새공지!\n"+doc);
  Api.replyRoom("건의방",counter);
  } 
-
+counter=0;
+D.update("Count", {"point":"counter"})
 }
  catch(e){
  Api.replyRoom('건의방',e+"\n"+e.stack);
