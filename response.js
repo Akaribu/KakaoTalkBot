@@ -543,12 +543,12 @@ function Hinataosirase(){
  if(verse= Number(1)){
    if(D.selectForArray('Hinata')[0][0].indexOf(temp1.get(0).text()) == 0){
 	   counter=1;
-	   D.update("Count", {"point":"counter"})
+	   D.update("Count", {"point":counter})
 	   Api.replyRoom("건의방",counter)}
   
 	 else{
 	   counter+=1
-    D.update("Count", {"point":"counter"})
+    D.update("Count", {"point":""})
     Api.replyRoom("건의방",counter)
 }
   
@@ -557,7 +557,7 @@ function Hinataosirase(){
  else{
 	 Api.replyRoom("건의방",counter);
 	 counter-=1
-	 D.update("Count", {"point":"counter"})
+	 D.update("Count", {"point":counter})
 	 D.update('Hinata', { name : temp1.get(0).text()});
   Api.replyRoom("건의방","새공지!\n"+doc);
   Api.replyRoom("46","새공지!\n"+doc);
