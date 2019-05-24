@@ -563,6 +563,7 @@ function Hinataosirase(){
  catch(e){
  Api.replyRoom('건의방',e+"\n"+e.stack);
  }
+}
 function Keyakiosirase(){
  try{
  var temp=org.jsoup.Jsoup.connect("http://www.keyakizaka46.com/s/k46o/news/list?ima=0000&dy=201905").get().select("div.text").get(0).text()
