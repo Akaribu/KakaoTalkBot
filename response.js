@@ -560,6 +560,7 @@ function Hinataosirase(){
   Api.replyRoom("건의방","새공지!\n"+doc);
   Api.replyRoom("46","새공지!\n"+doc);
  Api.replyRoom("건의방",counter);
+return 1;
  } 
 counter=0;
 D.update("Count", {"point":"counter"})
