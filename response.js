@@ -538,7 +538,7 @@ function Hinataosirase(){
  var temp1=org.jsoup.Jsoup.connect("https://www.hinatazaka46.com/s/official/news/list?ima=0000&dy=201905").get().select("p.c-news__text");
  var link = "www.hinatazaka46.com"+org.jsoup.Jsoup.connect("https://www.hinatazaka46.com/s/official/news/list?ima=0000&dy=201905").get().select("p.c-news__text").get(0).parent().attr("href")
  var doc = temp+"\n"+link
- var counter= D.selectForArray("Count")[0][0];
+ var counter= Number(0)
  if(counter = 0){
    if(D.selectForArray('Hinata')[0][0].indexOf(temp1.get(0).text()) = 0){
 	   counter=0;
@@ -560,10 +560,7 @@ function Hinataosirase(){
   Api.replyRoom("건의방","새공지!\n"+doc);
   Api.replyRoom("46","새공지!\n"+doc);
  Api.replyRoom("건의방",counter);
-return 1;
  } 
-counter=0;
-D.update("Count", {"point":"counter"})
 }
  catch(e){
  Api.replyRoom('건의방',e+"\n"+e.stack);
