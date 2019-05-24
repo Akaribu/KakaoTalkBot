@@ -549,6 +549,7 @@ function Hinataosirase(){
 	 else{
 	   D.update("Count", {"point":0})
   	   Api.replyRoom("건의방",verse)
+	   return;
 }
   
  
