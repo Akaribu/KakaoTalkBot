@@ -51,6 +51,44 @@ Flag=(function(){
          return res;
     	  }
 	});
+
+function lyrics2(r) {
+    var temp = org.jsoup.Jsoup.connect("https://www.melon.com/search/total/index.htm?q=" + r.msg.substr(4) + "&section=&linkOrText=T&ipath=srch_form").get().select("div.tb_list.d_song_list.songTypeOne").select("tr>td");
+    if (String(temp).length == 0) {
+        var temp = org.jsoup.Jsoup.connect("https://www.google.com/search?ei=u7v0XKb3B9mAr7wPuoq2kAk&q=" + r.msg.substr(4) + " 가사").get();
+        var temp1 = temp.select("div.SPZz6b").select("span").toArray();
+        if (temp1.length == 0) {
+            r.replier.reply("정보를 제공할 수 없습니다.");
+            return;
+        }
+        var artist = temp1[1].text();
+        var title = temp1[0].text();
+        var musicLyrics1 = String(temp.select("div.Oh5wg").select("div[jsname=rdVbIe]>div:not(.OULBYb)"));
+        var musicLyrics2 = String(temp.select("div.Oh5wg").select("div[jsname=wq5Syf]"));
+        musicLyrics = (musicLyrics1 + musicLyrics2).replace(/<br>/g, "").replace(/(<([^>]+)>)/g, "").replace(/&nbsp;/g, " ").replace(/&gt;/g, ">").replace(/^ +/gm, "").trim();
+    } else {
+        var musicCode = String(temp.get(0)).split("value=\"")[1].split("\"")[0];
+        var musicData = org.jsoup.Jsoup.connect("https://www.melon.com/song/detail.htm?songId=" + musicCode).get();
+        var artist = musicData.select("div.info>div.artist").text();
+        var title = musicData.select("div.info>div.song_name").text().replace("곡명 ", "");
+        var musicLyrics = String(musicData.select("div.lyric")).replace(/<br>/g, "").replace(/(<([^>]+)>)/g, "").replace(/&nbsp;/g, " ").replace(/&gt;/g, ">").replace(/^ +/gm, "").trim();
+        if (musicLyrics.length == 0) {
+            var temp = org.jsoup.Jsoup.connect("https://www.google.com/search?ei=u7v0XKb3B9mAr7wPuoq2kAk&q=" + r.msg.substr(4) + " 가사").get();
+            var temp1 = temp.select("div.SPZz6b").select("span").toArray();
+            if (temp1.length == 0) {
+                r.replier.reply("정보를 제공할 수 없습니다.");
+                return;
+            }
+            var artist = temp1[1].text();
+            var title = temp1[0].text();
+            var musicLyrics1 = String(temp.select("div.Oh5wg").select("div[jsname=rdVbIe]>div:not(.OULBYb)"));
+            var musicLyrics2 = String(temp.select("div.Oh5wg").select("div[jsname=wq5Syf]"));
+            musicLyrics = (musicLyrics1 + musicLyrics2).replace(/<br>/g, "").replace(/(<([^>]+)>)/g, "").replace(/&nbsp;/g, " ").replace(/&gt;/g, ">").replace(/^ +/gm, "").trim();
+        }
+    }
+    r.replier.reply(r.msg.substr(4) + "의 검색 결과" + es + "\n제목 : " + title + "\n아티스트 : " + artist + "\n\n" + musicLyrics);
+}
+
 function weather(r){
 	I.register("weatherSelect"+r.sender,r.room,r.sender,function(input){
 		try{
@@ -446,7 +484,7 @@ function weather(r){
     });
 }
 
-function lyric(r) {
+function lyric1(r) {
     var replier = r.replier;
     var room = r.r;
     var sender = r.s;
@@ -835,7 +873,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 	pointgive(r);
 	intro(r);
 	rullet(r);
-	if (msg.indexOf('/날씨')==0&& room=="46"){ 
+        if (msg.indexOf('/날씨')==0&& room=="46"){ 
     	weather(r);
         return;
         }
