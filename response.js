@@ -2,17 +2,6 @@ var D = require("DBManager.js")("D");
 var T = require("ThreadManager.js");
 var I = require("Interactive.js");
 const es=String.fromCharCode(8237).repeat(500);
-const FilePath = "/sdcard/DataChat/DataChat.json";
-const FS=FileStream;
-var DatatChat = {};
-Utils.getDateText = function()
-{
-    let date = new Date();
-    return date.getFullYear() + "년 " + (date.getMonth() + 1) + "월 " + date.getDate() + "일 " +
-    new Array('일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일')[date.getDay()] +
-        " [" + ((date.getHours() > 12) ? "오후 " + (date.getHours() - 12) : "오전 " + date.getHours()) + ":" +
-        java.lang.String.format("%02d", java.lang.Integer(date.getMinutes())) + "]";
-};
 
 function ev(r){
 		try {  
@@ -797,54 +786,6 @@ conn = new java.net.URL("https://raw.githubusercontent.com/Akaribu/KakaoTalkBot/
 function Hread(r){
 	r.replier.reply(T.getThreadList().join("\n"));
 }
-function chat(r){
-    sender=sender.trim();
-    msg=msg.trim();
-    room=room.trim();
-    
-    Msg = msg.split(" ");
-    if(!isGroupChat) return;
-    
-    if(FS.read(FilePath)=="") {FS.write(FilePath,"{}")}
-    DataChat=JSON.parse(FS.read(FilePath))
-    
-    if(DataChat[room]===undefined){DataChat[room]={}}
-    if(DataChat[room][sender]===undefined){DataChat[room][sender]=[]}
-    
-    if(Msg[0]=="/채팅"&&MiraiMsg[1]==undefined){
-        Output = "";
-        for(var Data in DataChat[room]) {
-            for(i=0;i<DataChat[room][Data].length;i++){
-                Output+=DataChat[room][Data][i][0].Date + "\n닉네임: " +DataChat[room][Data][i][0].Name + "\n내용: " + DataChat[room][Data][i][0].Message + "\n\n"
-            }
-        }
-        replier.reply(Output.trim());
-        return;
-    }
-    if(Msg[0]=="/채팅"){
-        Output = "";
-        if(!DataChat[room][msg.substr(6)]){
-            replier.reply(msg.substr(6) + "내용이 없습니다.");
-            return;
-        }
-        for(i=0;i<DataChat[room][msg.substr(6)].length;i++){
-            Output+=DataChat[room][msg.substr(6)][i][0].Date + "\n닉네임: " +DataChat[room][msg.substr(6)][i][0].Name + "\n내용: " + DataChat[room][msg.substr(6)][i][0].Message + "\n\n"
-        }
-        replier.reply(Output.trim())
-        return //명령어는 기록 안되게
-    }
-    if(Msg[0]=="/채팅삭제"){
-        FS.write(FilePath,"{}");
-        DataChat=JSON.parse(FS.read(FilePath))
-        replier.reply("삭제되었습니다.");
-        return;
-    }
-    if(msg){
-        DataChat[room][sender].push([{"Name":sender,"Message":msg,"Date":Utils.getDateText()}])
-        FS.write(FilePath,JSON.stringify(DataChat))
-        return;
-    }
-}
 function response(room, msg, sender, isGroupChat, replier, imageDB) {
 	
 	var r = {replier: replier, msg: msg, sender: sender, room : room};
@@ -854,7 +795,6 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 	pointgive(r);
 	intro(r);
 	rullet(r);
-	chat(r);
         if (msg.indexOf('/날씨')==0&& room=="46"){ 
     	weather(r);
         return;
