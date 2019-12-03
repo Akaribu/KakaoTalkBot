@@ -703,10 +703,6 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 		ev(r);
 		return;
 	}
-	if (msg.indexOf(">") == 0 && sender=="욧배우는봇") {
-		ev(r);
-		return;
-	}
 	if (msg == '/로딩'){
     		reload(r);
     		return;
@@ -715,9 +711,6 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
     		Hread(r);
     		return;
 	}
-	if(msg.indexOf("/홀짝")==0){
-	half(r);
-	return;
-        }
+	
 }
 
