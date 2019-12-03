@@ -454,7 +454,162 @@ function botpoint(r){
 	{return 0;}
 	else {D.insert("botpoint",{room : r.room, name:r.sender, point:0})}}
 
-
+function roomlottery(r){
+        currentpoint = D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
+        random = Math.floor(Math.random()*101);
+        num=Number(r.msg.substr(7));
+        temp1=Number(0);
+        temp2=Number(0);
+        if(currentpoint-10>=0){
+            if(r.msg=="/부방장복권"){
+		currentpoint-=10;
+          	D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
+                if(random>=99){
+                r.replier.reply("부방장 당첨!");
+                }
+                else{
+                r.replier.reply("꽝");
+                }
+            }
+            else if(num>=1){
+                if(currentpoint-10*num>=0){
+                	for(var i=0; i<num; i++){
+                		currentpoint-=10;
+                		D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
+                		random1 = Math.floor(Math.random()*101);
+                    	if(random1>=99){
+                        	temp1+=1;
+                        	}
+                        	else{
+                        	temp2+=1;
+                        	}
+                	}
+                    r.replier.reply("당첨 횟수 : "+temp1+"회\n꽝 :"+temp2+"회");
+                    if(temp1>=1){
+                        r.replier.reply("축하합니다! "+r.sender+"님이 부방장에 당첨 되었습니다.");
+                    }
+                }
+               else{
+                	r.replier.reply("네루가 부족합니다")  
+               }
+               }
+        }
+        
+        else{
+            r.replier.reply("네루가 부족합니다");
+        }
+	      return;
+}
+function pointlottery(r){
+		currentpoint = D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
+		        random = Math.floor(Math.random()*101);
+		        num=Number(r.msg.substr(6));
+		      	temp1=Number(0);
+		      	temp2=Number(0)
+		        temp3=Number(0)
+		       	temp4=Number(0)
+		       	temp5=Number(0)
+		        if(currentpoint-10>=0){
+		            if(r.msg=="/즉석복권"){
+				currentpoint-=10;
+           			D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
+		                if(random>=99){
+		                r.replier.reply("1등 당첨!");
+		                currentpoint+=200
+		                D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
+		                }
+		                else if(random>=96){
+		                r.replier.reply("2등 당첨!");
+		                currentpoint+=50
+		                D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
+		                }
+		                else if(random>=90){
+		                r.replier.reply("3등 당첨!");
+		                currentpoint+=30
+		                D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
+		                }
+		                else if(random>=80){
+		                r.replier.reply("4등 당첨!");
+		                currentpoint+=15
+		                D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
+		                }
+		                else
+		                {
+		                r.replier.reply("꽝");
+		                }
+		            }
+		            else if(num>=1){
+		            if(currentpoint-10*num>=0){
+				    for(var i=0; i<num; i++){
+		                    	currentpoint-=10;
+		            	    	D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
+				    	random1 = Math.floor(Math.random()*101);
+				    	if(random1>=99){
+		                    	temp1+=1;
+		                    	currentpoint+=200
+		                    	D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
+		                    	}
+		                    	else if(random1>=96){
+		                    	temp2+=1;
+		                    	currentpoint+=50
+		                    	D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
+		                    	}
+		                    	else if(random1>=90){
+		                    	temp3+=1;
+		                    	currentpoint+=30
+		                    	D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
+		                    	}
+		                    	else if(random1>=80){
+		                    	temp4+=1;
+		                    	currentpoint+=15
+		                    	D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
+		                    	}
+		                    	else{
+		                    	temp5+=1;
+		                    	}
+		            	
+			     	   }
+		            	r.replier.reply("1등 당첨 횟수 : "+temp1+"회\n2등 당첨 횟수 : "+temp2+"회\n3등 당첨 횟수 : "+temp3+"회\n4등 당첨 횟수 : "+temp4+"회\n꽝: "+temp5+"회")
+		             }
+		            
+		            else{
+			    r.replier.reply("네루가 부족합니다");
+			   }
+		       }
+		        }
+		        else{
+		            r.replier.reply("네루가 부족합니다");
+		        }
+		    return;
+		}
+function pointcheck(r){
+	currentpoint=D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
+	check=D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
+	list=D.selectForString("botpoint",null,"room=?",[r.room]);
+	if(r.msg=="/조회"){r.replier.reply(r.sender+"님은 "+check+"네루를 가지고 있습니다!");}
+	else if(r.msg=="/목록"){
+		if(currentpoint-5>=0){
+        	currentpoint-=5;
+        	D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
+        	r.replier.reply(list);
+        	}
+        	else if(currentpoint-5<0){r.replier.reply("네루가 부족합니다")}
+	}
+}
+function pointgive(r){
+	currentpoint=D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
+	random = Math.floor(Math.random()*101);
+	give = Math.floor(Math.random()*31);
+	currentpoint=D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
+		if(random > 98 && r.room=="46"){
+			currentpoint+=give;
+			D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
+			r.replier.reply(r.sender+"님 "+give+"네루 획득")
+			}
+	else{
+		return 1;
+	}
+}
 function intro(r){
 	if(r.msg=="/기능 즉석복권"){
 		r.replier.reply("10 네루를 사용해 복권을 뽑습니다.\n1등 : 200네루 1%\n2등 : 50네루 4%\n3등 : 30네루 6%\n4등 : 15네루 10%");
@@ -518,7 +673,8 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 	
 	var r = {replier: replier, msg: msg, sender: sender, room : room};
 	I.run(room, sender, msg);
-	
+	pointgive(r);
+	pointcheck(r);
 	botpoint(r);
 	intro(r);
         if (msg.indexOf('/날씨')==0&& room=="46"){ 
@@ -546,7 +702,14 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
     		Hread(r);
     		return;
 	}
-	
+	if (msg.indexOf('/즉석복권')==0){ 
+    pointlottery(r);
+    return;
+    }
+	if(msg.indexOf("/부방장복권")==0){
+    roomlottery(r)
+    return;
+    }	
 
 	
 }
