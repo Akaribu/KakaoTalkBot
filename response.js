@@ -448,6 +448,20 @@ function weather(r){
         }
     });
 }
+function pointgive(r){
+		currentpoint=D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
+		random = Math.floor(Math.random()*101);
+		give = Math.floor(Math.random()*31);
+		currentpoint=D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
+			if(random > 98 && r.room=="46"){
+				currentpoint+=give;
+				D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
+				r.replier.reply(r.sender+"님 "+give+"네루 획득")
+				}
+		else{
+   		return 1;
+		}
+	}
 function botpoint(r){
 	if(D.selectForArray("botpoint","name","name=?",r.sender) == r.sender)
 	{return 0;}
