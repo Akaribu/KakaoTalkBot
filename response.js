@@ -529,7 +529,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 	if(msg=="/공지"){
 	osirase(r);
 	}
-   	if (msg.indexOf(">") == 0 && sender=="니부아카리") {
+   	if (msg.indexOf(">") == 0 && sender=="김석우") {
 		ev(r);
 		return;
 	}
