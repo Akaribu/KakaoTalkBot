@@ -13,6 +13,7 @@ function ev(r){
         	r.replier.reply(e + "\n" + e.stack);	
     		}
 	}	
+
 String.prototype.cut=function (line) {
     var str = this.toString();
     str = str.split("\n");
@@ -52,43 +53,6 @@ Flag=(function(){
          return res;
     	  }
 	});
-
-function lyrics2(r) {
-    var temp = org.jsoup.Jsoup.connect("https://www.melon.com/search/total/index.htm?q=" + r.msg.substr(4) + "&section=&linkOrText=T&ipath=srch_form").get().select("div.tb_list.d_song_list.songTypeOne").select("tr>td");
-    if (String(temp).length == 0) {
-        var temp = org.jsoup.Jsoup.connect("https://www.google.com/search?ei=u7v0XKb3B9mAr7wPuoq2kAk&q=" + r.msg.substr(4) + " 가사").get();
-        var temp1 = temp.select("div.SPZz6b").select("span").toArray();
-        if (temp1.length == 0) {
-            r.replier.reply("정보를 제공할 수 없습니다.");
-            return;
-        }
-        var artist = temp1[1].text();
-        var title = temp1[0].text();
-        var musicLyrics1 = String(temp.select("div.Oh5wg").select("div[jsname=rdVbIe]>div:not(.OULBYb)"));
-        var musicLyrics2 = String(temp.select("div.Oh5wg").select("div[jsname=wq5Syf]"));
-        musicLyrics = (musicLyrics1 + musicLyrics2).replace(/<br>/g, "").replace(/(<([^>]+)>)/g, "").replace(/&nbsp;/g, " ").replace(/&gt;/g, ">").replace(/^ +/gm, "").trim();
-    } else {
-        var musicCode = String(temp.get(0)).split("value=\"")[1].split("\"")[0];
-        var musicData = org.jsoup.Jsoup.connect("https://www.melon.com/song/detail.htm?songId=" + musicCode).get();
-        var artist = musicData.select("div.info>div.artist").text();
-        var title = musicData.select("div.info>div.song_name").text().replace("곡명 ", "");
-        var musicLyrics = String(musicData.select("div.lyric")).replace(/<br>/g, "").replace(/(<([^>]+)>)/g, "").replace(/&nbsp;/g, " ").replace(/&gt;/g, ">").replace(/^ +/gm, "").trim();
-        if (musicLyrics.length == 0) {
-            var temp = org.jsoup.Jsoup.connect("https://www.google.com/search?ei=u7v0XKb3B9mAr7wPuoq2kAk&q=" + r.msg.substr(4) + " 가사").get();
-            var temp1 = temp.select("div.SPZz6b").select("span").toArray();
-            if (temp1.length == 0) {
-                r.replier.reply("정보를 제공할 수 없습니다.");
-                return;
-            }
-            var artist = temp1[1].text();
-            var title = temp1[0].text();
-            var musicLyrics1 = String(temp.select("div.Oh5wg").select("div[jsname=rdVbIe]>div:not(.OULBYb)"));
-            var musicLyrics2 = String(temp.select("div.Oh5wg").select("div[jsname=wq5Syf]"));
-            musicLyrics = (musicLyrics1 + musicLyrics2).replace(/<br>/g, "").replace(/(<([^>]+)>)/g, "").replace(/&nbsp;/g, " ").replace(/&gt;/g, ">").replace(/^ +/gm, "").trim();
-        }
-    }
-    r.replier.reply(r.msg.substr(4) + "의 검색 결과" + es + "\n제목 : " + title + "\n아티스트 : " + artist + "\n\n" + musicLyrics);
-}
 
 function weather(r){
 	I.register("weatherSelect"+r.sender,r.room,r.sender,function(input){
@@ -485,75 +449,6 @@ function weather(r){
     });
 }
 
-function lyric1(r) {
-    var replier = r.replier;
-    var room = r.r;
-    var sender = r.s;
-    var msg = r.m;
-    var str = r.msg.replace("/가사", "").trim();
-    var title = str.includes("/") ? str.split("/")[0] : str;
-    var artist = str.includes("-") ? str.split("-")[1] : "";
-    var xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><SOAP-ENV:Envelope xmlns:SOAP-ENV=\"http://www.w3.org/2003/05/soap-envelope\"" + " xmlns:SOAP-ENC=\"http://www.w3.org/2003/05/soap-encoding\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" " + "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:ns2=\"ALSongWebServer/Service1Soap\" xmlns:ns1=\"ALSongWebServer\" " + "xmlns:ns3=\"ALSongWebServer/Service1Soap12\"><SOAP-ENV:Body><ns1:GetResembleLyric2><ns1:stQuery><ns1:strTitle>" + title.XMLEncode() + "</ns1:strTitle><ns1:strArtistName>" + artist.XMLEncode() + "</ns1:strArtistName><ns1:nCurPage>0</ns1:nCurPage></ns1:stQuery>" + "</ns1:GetResembleLyric2></SOAP-ENV:Body></SOAP-ENV:Envelope>";
-    var elems = org.jsoup.Jsoup.connect("http://lyrics.alsong.co.kr/alsongwebservice/service1.asmx").header("Content-Type", "text/xml;charset=utf-8").requestBody(xml).post().select("ST_GET_RESEMBLELYRIC2_RETURN");
-    var strTitles = elems.select("strTitle").eachText().toArray();
-    var strArtistNames = elems.select("strArtistName").eachText().toArray();
-    var strLyrics = elems.select("strLyric").eachText().toArray();
-    var length = strTitles.length;
-    var res = "\"" + title + (artist ? ("/" + artist) : "") + "\" 검색결과" + "\n";
-    for (var i = 0; i < 3 && i < str.length; i++) {
-        res += "Lyric : " + (i + 1) + "\n" + strTitles[i] + "/" + strArtistNames[i] + "\n" + String(strLyrics[i]).replace(/\<br\>/g, "\n").replace(/\[\d\d:\d\d.\d\d\]/g, "") + "\n\n";
-    }
-    r.replier.reply(res.trim().cut(1));
-}
-function rullet(r){
-if (r.msg =="/룰렛" && Flag.get('russian_roulette',r.room)==0 && r.room=="46" ){
-    r.replier.reply("러시안 룰렛 게임을 시작합니다.\n[참가]를 입력하여 참가하고 [시작]을 입력하여 시작합니다.")
-    Flag.set('russian_roulette',r.room, 1) // 참가자 입력 단계
-    Flag.set('roulette_participants',r.room, new Array() )
-  }
-else if (r.msg =="참가" && Flag.get('russian_roulette',r.room) && Flag.get('roulette_participants',r.room).indexOf(r.sender)==-1) {
-    Flag.set('roulette_participants',r.room,Flag.get('roulette_participants',r.room).concat(r.sender))
-    r.replier.reply(r.sender+"님이 참가하셨습니다. ("+Flag.get('roulette_participants',r.room).length+"/6)")
-
-  }
-else if (r.msg =="시작" && Flag.get('russian_roulette',r.room) ==1 && Flag.get('roulette_participants',r.room).length>=2 && Flag.get('roulette_participants',r.room).indexOf(r.sender)!=-1) {
-    Flag.set('russian_roulette',r.room,2) // 게임 시작됨
-    Flag.set('roulette_count',r.room,Flag.get('roulette_participants',r.room).length)
-    // Flag.set('gun',r.room,new Array(Flag.get('roulette_participants',r.room).length))
-    // Flag.get('gun',r.room)[Math.floor(Math.random()*Flag.get('gun',r.room))]=1
-    r.replier.reply("게임 시작! \n참가자 :"+Flag.get('roulette_participants',r.room))
-    r.replier.reply("탁");
-    r.replier.reply("촤르르");
-    r.replier.reply("총알이 장전되었습니다. [뱅]을 입력하여 총을 발사 해주세요. (연발이 가능합니다.)");
-  }
-else if (r.msg=="뱅" && Flag.get('russian_roulette',r.room) ==2 && Flag.get('roulette_participants',r.room).indexOf(r.sender)!=-1){
-    if (Math.random()<1/Flag.get('roulette_count',r.room)) {
-      r.replier.reply("탕!\n"+r.sender+"님이 사망하셨습니다.\n게임을 종료합니다.")
-      Flag.set('russian_roulette',r.room, 0)
-    } 
-    else{
-      r.replier.reply("찰칵!")
-      Flag.set('roulette_count',r.room,Flag.get('roulette_count',r.room)-1)
-    }
-}
-}
-function half(r){
-	random = Math.floor(Math.random()*2);
-	str=r.msg.substr(4);
-	if(str=="홀" || str=="짝"){
-		if(random==0){
-		r.replier.reply(str+" 정답!")
-	}
-	else{
-		r.replier.reply("땡!")
-		}
-
-	}
-	else{
-	r.replier.reply("홀과 짝만 입력해주세요")
-	}
-}
-
 function intro(r){
 	if(r.msg=="/기능 즉석복권"){
 		r.replier.reply("10 네루를 사용해 복권을 뽑습니다.\n1등 : 200네루 1%\n2등 : 50네루 4%\n3등 : 30네루 6%\n4등 : 15네루 10%");
@@ -561,18 +456,7 @@ function intro(r){
 	if(r.msg=="/기능 부방장복권"){
 		r.replier.reply("10 네루를 사용해 부방장 복권을 뽑습니다.\n부방장 당첨 확률 1% 당첨 시 하루 당 200 네루 지급 부방장은 2 명으로 2명인 상태에서 새로운 부방장이 뽑히면 첫번째로 부방장이 된 사람은 탄핵됩니다.");
 	   }
-	if(r.msg=="/기능 광란의밤"){
-		r.replier.reply("말 그대로 광란의 밤입니다.\n매 주 금요일 오후 9시에서 토요일 오전 9시, 토요일 오후 9시에서 일요일 오전 9시, 매 공휴일 전날 오후 9시에서 오전 9시까지 진행 됩니다.\n이 시간 동안은 네루를 받을 확률이 30%가 되며 블랙잭, 홀짝 등의 게임에 참여 할 수 있습니다.");
-	   }
 }
-function osirase(r){
-	name=org.jsoup.Jsoup.connect("https://www.hinatazaka46.com/s/official/news/list?ima=0000&dy=201905").get().select("p.c-news__text").get(0).text();
-	link = "www.hinatazaka46.com"+org.jsoup.Jsoup.connect("https://www.hinatazaka46.com/s/official/news/list?ima=0000&dy=201905").get().select("a").attr("href")
-	r.replier.reply("최근 공지가 갱신되었습니다\n"+name+"\n"+link)
-	
-}
-
-
 function pointgive(r){
 		currentpoint=D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
 		random = Math.floor(Math.random()*101);
@@ -834,9 +718,10 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 	if(msg.indexOf("/홀짝")==0){
 	half(r);
 	return;
-}
+        }
 	if (msg.indexOf("/가사")==0&&room=="46"){
 		lyric(r);
 		return;
 	}
 }
+
