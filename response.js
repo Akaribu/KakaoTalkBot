@@ -1,6 +1,6 @@
 var D = require("DBManager.js")("D"); 
-var T = require("ThreadManager.js");
-var I = require("Interactive.js");
+var T = require("ThreadManager.js")("T");
+var I = require("Interactive.js")("I");
 const es=String.fromCharCode(8237).repeat(500);
 
 function ev(r){
