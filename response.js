@@ -518,7 +518,6 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 	
 	
 	intro(r);
-	rullet(r);
         if (msg.indexOf('/날씨')==0&& room=="46"){ 
     	weather(r);
         return;
