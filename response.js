@@ -633,7 +633,7 @@ Hinata =function () {
 hinatanofi = T.register("Hinata",()=>{
 		while(true){
 			java.lang.Thread.sleep(50*1000);
-			Hinata;
+			Hinata(r);
 		}
 	}).start();
 function news(r){
