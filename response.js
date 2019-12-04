@@ -639,6 +639,7 @@ function chat(r){
 			name=name-1
 			number=number-1
 		}
+		}
 		else{
 		number = Number(D.selectForArray("chatdb","chat","room=? and name=?",[r.room,namae]).length-1);
 		name = Number(D.selectForArray("chatdb","name","room=? and name=?",[r.room,namae]).length-1);
