@@ -580,8 +580,8 @@ function pointlottery(r){
 function versus(r){
 	 random = Math.floor(Math.random()*99);
 	 if(r.msg.indexOf("vs")==1) {
-	 var first = r.msg.split("v")[0];
-	 var second = r.msg.split("s")[1];
+	 var first = r.msg.split("vs")[0];
+	 var second = r.msg.split("vs")[1];
 	 if(random>50){
          r.replier.reply(first);
          }
