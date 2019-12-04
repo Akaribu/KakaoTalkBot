@@ -580,13 +580,12 @@ function pointlottery(r){
 function versus(r){
 	 random = Math.floor(Math.random()*99);
 	 if(r.msg.indexOf("vs")==1) {
-	 var first = r.msg.split("vs")[0];
-	 var second = r.msg.split("vs")[1];
+	 var first = r.msg.split("vs");
 	 if(random>50){
-         r.replier.reply(first);
+         r.replier.reply(first[0]);
          }
          else{
-         r.replier.reply(second);
+         r.replier.reply(first[1]);
 	 }
 }
 }
