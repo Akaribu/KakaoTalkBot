@@ -637,7 +637,7 @@ function chat(r){
 		name=name-1
 		number=number-1
 		}
-	arr.join("\n")
+	r.replier.reply(arr.join("\n"))
 	}
 }
 function blankFunc(r){}
