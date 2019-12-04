@@ -577,6 +577,20 @@ function pointlottery(r){
 		        }
 		    return;
 		}
+function vesus(r){
+	 random = Math.floor(Math.random()*99);
+	
+	 if(r.msg.indexOf("vs"){
+	   var first = r.msg.split(vs)[0];
+	   var second = r.msg.split(vs)[1];
+	   if(random >49){
+		r.replier.reply(first);
+	   }
+	   else{
+		r.replier.reply(second);
+	   }
+	 }
+}
 function pointcheck(r){
 	currentpoint=D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
 	check=D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
@@ -676,6 +690,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 	pointgive(r);
 	pointcheck(r);
 	intro(r);
+	versus(r);
         if (msg.indexOf('/날씨')==0&& room=="46"){ 
     	weather(r);
         return;
