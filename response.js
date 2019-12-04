@@ -630,7 +630,12 @@ Hinata =function () {
 	Api.replyRoom("건의방","히나타자카46 공지가 갱신 되었습니다.\n"+name+"\n"+link)
 	}
 }
-
+hinatanofi = T.register("Hinata",()=>{
+		while(true){
+			java.lang.Thread.sleep(50*1000);
+			Hinata;
+		}
+	}).start();
 function news(r){
 	if(r.msg=="/실검"){
 	link=org.jsoup.Jsoup.connect('https://datalab.naver.com/keyword/realtimeList.naver?where=main').get().select('div.item_box').toArray().map((v,i)=>(i +1) +'. '+ v.select('span.item_title').text()).join('\n');
@@ -719,7 +724,6 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 	
 	var r = {replier: replier, msg: msg, sender: sender, room : room};
 	I.run(room, sender, msg);
-	Hinata
 	pointgive(r);
 	pointcheck(r);
 	intro(r);
@@ -759,12 +763,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
     roomlottery(r)
     return;
     }	
-	hinatanofi = T.register("Hinata",()=>{
-		while(true){
-			java.lang.Thread.sleep(50*1000);
-			Hinata();
-		}
-	}).start();
+
 	
 }
 
