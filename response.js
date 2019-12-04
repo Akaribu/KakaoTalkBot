@@ -628,7 +628,7 @@ function chat(r){
 	if(r.msg.indexOf("/최근채팅")==0){
 		namae = r.msg.split(" ")[1];
 		numb = r.msg.split(" ")[2];
-		if(namae==null && numb==null){
+		if(r.msg=("/최근채팅"){
 			number = Number(D.selectForArray("chatdb","chat","room=?",[r.room]).length-2);
 			name = Number(D.selectForArray("chatdb","name","room=?",[r.room]).length-2);
 			for(i=0; i<5 ; i++){
