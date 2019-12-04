@@ -622,7 +622,12 @@ function intro(r){
 		r.replier.reply("10 네루를 사용해 부방장 복권을 뽑습니다.\n부방장 당첨 확률 1% 당첨 시 하루 당 200 네루 지급 부방장은 2 명으로 2명인 상태에서 새로운 부방장이 뽑히면 첫번째로 부방장이 된 사람은 탄핵됩니다.");
 	   }
 }
-function chat(r){
+function news(r){
+	if(r.msg=/실검){
+	link=org.jsoup.Jsoup.connect('https://datalab.naver.com/keyword/realtimeList.naver?where=main').get().select('div.item_box').toArray().map((v,i)=>(i +1) +'. '+ v.select('span.item_title').text()).join('\n');
+	r.replier.reply(link)
+}
+	function chat(r){
 	D.insert("chatdb",{room : r.room, name:r.sender, chat:r.msg})
 	currentpoint=D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
 	var arr =[]
@@ -709,6 +714,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 	intro(r);
 	versus(r);
 	chat(r);
+	news(r);
         if (msg.indexOf('/날씨')==0&& room=="46"){ 
     	weather(r);
         return;
