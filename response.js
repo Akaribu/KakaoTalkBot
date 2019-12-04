@@ -579,13 +579,11 @@ function pointlottery(r){
 		}
 function versus(r){
 	 random = Math.floor(Math.random()*99);
-	
-	 if(r.msg.indexOf("vs")==0){
-	   var first = r.msg.split("v")[0];
-	   var second = r.msg.split("s")[1];
-		r.replier.reply(first);
-	   
-		r.replier.reply(second);
+	 if(r.msg.indexOf("vs")==0)
+	 {
+	 var first = r.msg.split("v")[0];
+	 var second = r.msg.split("s")[1];
+	   r.replier.reply(r.msg);
 	 }
 }
 function pointcheck(r){
