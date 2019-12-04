@@ -636,6 +636,7 @@ function chat(r){
 	        arr[i]=na+" : "+ch
 		name=name-1
 		number=number-1
+		}
 		r.replier.reply(arr.join("\n"))
 	}
 	
