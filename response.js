@@ -580,7 +580,7 @@ function pointlottery(r){
 function vesus(r){
 	 random = Math.floor(Math.random()*99);
 	
-	 if(r.msg.indexOf("vs")){
+	 if(r.msg.indexOf("vs")==0){
 	   var first = r.msg.split("vs")[0];
 	   var second = r.msg.split("vs")[1];
 	   if(random >49){
@@ -606,19 +606,16 @@ function pointcheck(r){
 	}
 }
 function pointgive(r){
-	if(D.selectForArray("botpoint","name","name=?",r.sender) == r.sender){
 	currentpoint=D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
 	random = Math.floor(Math.random()*101);
 	give = Math.floor(Math.random()*31);
 	currentpoint=D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
-		if(random > 98 && r.room=="46"){
+	if(D.selectForArray("botpoint","name","name=?",r.sender) == r.sender){
+		if(random > 10 && r.sender=="김석우"){
 			currentpoint+=give;
 			D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
 			r.replier.reply(r.sender+"님 "+give+"네루 획득")
 			}
-		else{
-			return 1;
-		}
 	}
 	else {
 		D.insert("botpoint",{room : r.room, name:r.sender, point:0})	
