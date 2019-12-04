@@ -603,7 +603,7 @@ function pointgive(r){
 	give = Math.floor(Math.random()*31);
 	
 	if(D.selectForArray("botpoint","name","name=?",r.sender) == r.sender){
-		if(random > 90 && r.room=="46"){
+		if(random > 95 && r.room=="46"){
 			currentpoint=D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
 			currentpoint+=give;
 			D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
