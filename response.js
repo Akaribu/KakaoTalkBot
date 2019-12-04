@@ -624,22 +624,31 @@ function intro(r){
 }
 function chat(r){
 	D.insert("chatdb",{room : r.room, name:r.sender, chat:r.msg})
+	currentpoint=D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
 	var arr =[]
 	if(r.msg.indexOf("/최근채팅")==0){
 		namae = r.msg.split(" ")[1];
-		numb = r.msg.split(" ")[2];
-		number = Number(D.selectForArray("chatdb","chat","room=? and name=?",[r.room,namae]).length-1);
-		name = Number(D.selectForArray("chatdb","name","room=? and name=?",[r.room,namae]).length-1);
-		for(i=0 ; i<numb ; i++){
-		ch = D.selectForArray("chatdb","chat","room=? and name=?",[r.room,namae])[number];
-		na = D.selectForArray("chatdb","name","room=? and name=?",[r.room,namae])[name];	
-	        arr[i]=na+" : "+ch
-		name=name-1
-		number=number-1
-		}
+		numb = Number(r.msg.split(" ")[2]);
+		if(currentpoint-numb>0){
+			currentpoint-=numb;
+			D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
+			number = Number(D.selectForArray("chatdb","chat","room=? and name=?",[r.room,namae]).length-1);
+			name = Number(D.selectForArray("chatdb","name","room=? and name=?",[r.room,namae]).length-1);
+			for(i=0 ; i<numb ; i++){
+			ch = D.selectForArray("chatdb","chat","room=? and name=?",[r.room,namae])[number];
+			na = D.selectForArray("chatdb","name","room=? and name=?",[r.room,namae])[name];	
+	        	arr[i]=na+" : "+ch
+			name=name-1
+			number=number-1
+			}
 		r.replier.reply(arr.join("\n"))
+		}
+		else{
+			r.replier.reply("네루가 부족합니다")
+		}
+			
 	}
-	
+
 }
 function blankFunc(r){}
 function time() {
