@@ -603,7 +603,7 @@ function pointgive(r){
 	give = Math.floor(Math.random()*31);
 	
 	if(D.selectForArray("botpoint","name","name=?",r.sender) == r.sender){
-		if(random > 95 && r.room=="46"){
+		if(random > 90 && r.room=="46"){
 			currentpoint=D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
 			currentpoint+=give;
 			D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
@@ -622,7 +622,13 @@ function intro(r){
 		r.replier.reply("10 네루를 사용해 부방장 복권을 뽑습니다.\n부방장 당첨 확률 1% 당첨 시 하루 당 200 네루 지급 부방장은 2 명으로 2명인 상태에서 새로운 부방장이 뽑히면 첫번째로 부방장이 된 사람은 탄핵됩니다.");
 	   }
 }
-
+function chat(r){
+	D.insert("chatdb",{room : r.room, name:r.sender, chatdb:r.msg}
+	
+	
+	
+	
+}
 function blankFunc(r){}
 function time() {
     var today = new Date();
@@ -681,6 +687,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 	pointcheck(r);
 	intro(r);
 	versus(r);
+	chat(r);
         if (msg.indexOf('/날씨')==0&& room=="46"){ 
     	weather(r);
         return;
