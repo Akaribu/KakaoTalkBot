@@ -449,11 +449,6 @@ function weather(r){
     });
 }
 
-function botpoint(r){
-	if(D.selectForArray("botpoint","name","name=?",r.sender) == r.sender)
-	{return 0;}
-	else {D.insert("botpoint",{room : r.room, name:r.sender, point:0})}}
-
 function roomlottery(r){
         currentpoint = D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
         random = Math.floor(Math.random()*101);
@@ -597,6 +592,7 @@ function pointcheck(r){
 	}
 }
 function pointgive(r){
+	if(D.selectForArray("botpoint","name","name=?",r.sender) == r.sender){
 	currentpoint=D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
 	random = Math.floor(Math.random()*101);
 	give = Math.floor(Math.random()*31);
@@ -606,8 +602,12 @@ function pointgive(r){
 			D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
 			r.replier.reply(r.sender+"님 "+give+"네루 획득")
 			}
-	else{
-		return 1;
+		else{
+			return 1;
+		}
+	}
+	else {
+		D.insert("botpoint",{room : r.room, name:r.sender, point:0})	
 	}
 }
 function intro(r){
@@ -675,7 +675,6 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 	I.run(room, sender, msg);
 	pointgive(r);
 	pointcheck(r);
-	botpoint(r);
 	intro(r);
         if (msg.indexOf('/날씨')==0&& room=="46"){ 
     	weather(r);
