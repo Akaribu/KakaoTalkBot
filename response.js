@@ -625,13 +625,13 @@ function intro(r){
 function chat(r){
 	D.insert("chatdb",{room : r.room, name:r.sender, chat:r.msg})
 	if(r.msg=="/최근채팅"){
-		number = Number(D.selectForArray("chatdb","chat","room=?",[r.room]).length)
+		number = Number(D.selectForArray("chatdb","chat","room=?",[r.room]).length)-1
 		for(i=0 ; i<5 ; i++){
 		ch = D.selectForArray("chatdb","chat","room=?",[r.room])[number];
 		r.replier.reply(ch);
 		number=number-1
 		}
-	
+	}
 }
 function blankFunc(r){}
 function time() {
