@@ -578,7 +578,7 @@ function pointlottery(r){
 		    return;
 		}
 function versus(r){
-	 if(r.msg.indexOf("vs")==1) {
+	 if(r.msg.indexOf("vs")!=-1) {
 	 var temp = r.msg.split("vs");
 	 var num = Math.floor((temp.length) * Math.random());
 	 r.replier.reply(temp[num].trim());
@@ -640,7 +640,7 @@ function time() {
 }
 function reload(r) {
  try {
-        if (r.sender == "김석우" || r.room == "건의방") {
+        if (r.sender == "김석우" ) {
             reloadcheck = 1;
             reloadtime = new Date().getTime();
             var Timer = new Date();
