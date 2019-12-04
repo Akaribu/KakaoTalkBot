@@ -589,6 +589,7 @@ function versus(r){
          r.replier.reply(second);
 	 }
 }
+}
 function pointcheck(r){
 	currentpoint=D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
 	check=D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
