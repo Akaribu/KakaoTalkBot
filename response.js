@@ -631,7 +631,7 @@ function chat(r){
 		arr[i] = ch
 		number=number-1
 		}
-	r.replier.reply(arr[])
+	r.replier.reply(arr[i])
 	}
 }
 function blankFunc(r){}
