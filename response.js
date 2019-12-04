@@ -623,7 +623,7 @@ function intro(r){
 	   }
 }
 function chat(r){
-	D.insert("chatdb",{room : r.room, name:r.sender, chatdb:r.msg})
+	D.insert("chatdb",{room : r.room, name:r.sender, chat:r.msg})
 	
 	
 	
