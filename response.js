@@ -626,6 +626,7 @@ function news(r){
 	if(r.msg="/실검"){
 	link=org.jsoup.Jsoup.connect('https://datalab.naver.com/keyword/realtimeList.naver?where=main').get().select('div.item_box').toArray().map((v,i)=>(i +1) +'. '+ v.select('span.item_title').text()).join('\n');
 	r.replier.reply(link)
+	}
 }
 	function chat(r){
 	D.insert("chatdb",{room : r.room, name:r.sender, chat:r.msg})
