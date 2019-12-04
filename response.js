@@ -582,9 +582,11 @@ function versus(r){
 	 if(r.msg.indexOf("vs")==1) {
 	 make = String(r.msg);
 	 if(random>50){
+	 r.replier.reply(make)
          r.replier.reply(make.split("vs")[0]);
          }
          else{
+	 r.replier.reply(make)
          r.replier.reply(make.split("vs")[1]);
 	 }
 }
