@@ -578,18 +578,11 @@ function pointlottery(r){
 		    return;
 		}
 function versus(r){
-	 random = Math.floor(Math.random()*99);
 	 if(r.msg.indexOf("vs")==1) {
-	 make = String(r.msg);
-	 if(random>50){
-	 r.replier.reply(make)
-         r.replier.reply(make.split("vs")[0]);
+	 var temp = r.msg.split("vs");
+	 var num = Math.floor((temp.length) * Math.random());
+	 r.replier.reply(temp[num].trim());
          }
-         else{
-	 r.replier.reply(make)
-         r.replier.reply(make.split("vs")[1]);
-	 }
-}
 }
 function pointcheck(r){
 	currentpoint=D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
