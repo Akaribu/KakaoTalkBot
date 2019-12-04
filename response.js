@@ -624,7 +624,7 @@ function intro(r){
 }
 function chat(r){
 	D.insert("chatdb",{room : r.room, name:r.sender, chat:r.msg})
-	var array =[]
+	var arr =[]
 	if(r.msg=="/최근채팅"){
 		number = Number(D.selectForArray("chatdb","chat","room=?",[r.room]).length)-2
 		name = Number(D.selectForArray("chatdb","name","room=? ",[r.room]).length)-2;
