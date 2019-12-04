@@ -580,13 +580,14 @@ function pointlottery(r){
 function versus(r){
 	 random = Math.floor(Math.random()*99);
 	 if(r.msg.indexOf("vs")==1) {
-	 var first = r.msg.split("v");
-          var second= r.msg.split("s");
+         make1 = JSON.stringify(r.msg)
+	 make= make1.split("vs");
+    
 	 if(random>50){
-         r.replier.reply(first[0]);
+         r.replier.reply(make[0]);
          }
          else{
-         r.replier.reply(second[1]);
+         r.replier.reply(make[1]);
 	 }
 }
 }
