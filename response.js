@@ -636,7 +636,7 @@ function time() {
 }
 function reload(r) {
  try {
-        if (r.sender == "니부아카리" || r.room == "건의방") {
+        if (r.sender == "김석우" || r.room == "건의방") {
             reloadcheck = 1;
             reloadtime = new Date().getTime();
             var Timer = new Date();
