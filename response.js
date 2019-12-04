@@ -583,12 +583,9 @@ function versus(r){
 	 if(r.msg.indexOf("vs")==0){
 	   var first = r.msg.split("v")[0];
 	   var second = r.msg.split("s")[1];
-	   if(random >1){
 		r.replier.reply(first);
-	   }
-	   else{
+	   
 		r.replier.reply(second);
-	   }
 	 }
 }
 function pointcheck(r){
