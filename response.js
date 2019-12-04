@@ -628,10 +628,10 @@ function chat(r){
 		number = Number(D.selectForArray("chatdb","chat","room=?",[r.room]).length)-2
 		for(i=0 ; i<5 ; i++){
 		ch = D.selectForArray("chatdb","chat","room=?",[r.room])[number];
-		arr[i] = ch
+		ch = arr[i]
 		number=number-1
 		}
-	r.replier.reply(arr[i])
+	r.replier.reply(arr)
 	}
 }
 function blankFunc(r){}
