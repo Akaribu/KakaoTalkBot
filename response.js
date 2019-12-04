@@ -622,6 +622,14 @@ function intro(r){
 		r.replier.reply("10 네루를 사용해 부방장 복권을 뽑습니다.\n부방장 당첨 확률 1% 당첨 시 하루 당 200 네루 지급 부방장은 2 명으로 2명인 상태에서 새로운 부방장이 뽑히면 첫번째로 부방장이 된 사람은 탄핵됩니다.");
 	   }
 }
+function hinata(r){
+	name = org.jsoup.Jsoup.connect("https://www.hinatazaka46.com/s/official/?ima=0000").get().select('p.c-news__text').toArray().map((v)=>v.text())[0]
+	link = "https://www.hinatazaka46.com"+org.jsoup.Jsoup.connect("https://www.hinatazaka46.com/s/official/?ima=0000").get().select('a').attr("href")
+	if(D.selectForArray("hinata") != link){
+	D.insert("hinata",{ osirase : link })
+	r.replier.reply("히나타자카46 공지가 갱신 되었습니다.\n"+name+"\n"+link)
+	}
+}
 function news(r){
 	if(r.msg=="/실검"){
 	link=org.jsoup.Jsoup.connect('https://datalab.naver.com/keyword/realtimeList.naver?where=main').get().select('div.item_box').toArray().map((v,i)=>(i +1) +'. '+ v.select('span.item_title').text()).join('\n');
