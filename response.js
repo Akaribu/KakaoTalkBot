@@ -624,15 +624,18 @@ function intro(r){
 }
 function chat(r){
 	D.insert("chatdb",{room : r.room, name:r.sender, chat:r.msg})
-	var arr = new Array()
+	var array =[]
 	if(r.msg=="/최근채팅"){
 		number = Number(D.selectForArray("chatdb","chat","room=?",[r.room]).length)-2
+		name = Number(D.selectForArray("chatdb","name","room=? ",[r.room]).length)-2;
 		for(i=0 ; i<5 ; i++){
 		ch = D.selectForArray("chatdb","chat","room=?",[r.room])[number];
-		ch = arr[i]
+		na = D.selectForArray("chatdb","name","room=? ",[r.room])[name];	
+	        arr[i]=na+" : "+ch
+		name=name-1
 		number=number-1
 		}
-	r.replier.reply(arr)
+	replier.reply(arr[0]+"/n"+arr[1]+"/n"+arr[2]+"/n"+arr[3]+"/n"+arr[4]+"/n")
 	}
 }
 function blankFunc(r){}
