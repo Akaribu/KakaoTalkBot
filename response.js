@@ -725,6 +725,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 	var r = {replier: replier, msg: msg, sender: sender, room : room};
 	I.run(room, sender, msg);
 	hinatanofi
+	hinata
 	pointgive(r);
 	pointcheck(r);
 	intro(r);
