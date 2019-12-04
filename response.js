@@ -628,30 +628,16 @@ function chat(r){
 	if(r.msg.indexOf("/최근채팅")==0){
 		namae = r.msg.split(" ")[1];
 		numb = r.msg.split(" ")[2];
-		if(r.msg=("/최근채팅"){
-			number = Number(D.selectForArray("chatdb","chat","room=?",[r.room]).length-2);
-			name = Number(D.selectForArray("chatdb","name","room=?",[r.room]).length-2);
-			for(i=0; i<5 ; i++){
-				ch = D.selectForArray("chatdb","chat","room=?",[r.room])[number];
-				na = D.selectForArray("chatdb","name","room=? ",[r.room])[name];	
-	        		arr[i]=na+" : "+ch
-				name=name-1
-				number=number-1
-			}
-			r.replier.reply(arr.join("\n"))
-		}
-		else{
-			number = Number(D.selectForArray("chatdb","chat","room=? and name=?",[r.room,namae]).length-1);
-			name = Number(D.selectForArray("chatdb","name","room=? and name=?",[r.room,namae]).length-1);
-			for(i=0 ; i<numb ; i++){
-				ch = D.selectForArray("chatdb","chat","room=?",[r.room])[number];
-				na = D.selectForArray("chatdb","name","room=? ",[r.room])[name];	
-	        		arr[i]=na+" : "+ch
-				name=name-1
-				number=number-1
-			}
-			r.replier.reply(arr.join("\n"))
-		}
+		number = Number(D.selectForArray("chatdb","chat","room=? and name=?",[r.room,namae]).length-1);
+		name = Number(D.selectForArray("chatdb","name","room=? and name=?",[r.room,namae]).length-1);
+		for(i=0 ; i<numb ; i++){
+		ch = D.selectForArray("chatdb","chat","room=?",[r.room])[number];
+		na = D.selectForArray("chatdb","name","room=? ",[r.room])[name];	
+	        arr[i]=na+" : "+ch
+		name=name-1
+		number=number-1
+		r.replier.reply(arr.join("\n"))
+	}
 	
 }
 function blankFunc(r){}
