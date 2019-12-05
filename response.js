@@ -706,7 +706,7 @@ conn = new java.net.URL("https://raw.githubusercontent.com/Akaribu/KakaoTalkBot/
             bw.close();
             var time = (new Date() - Timer) / 1000;
             r.replier.reply("파일저장 완료 / " + time + "s\n" + new Date());
-            T.interrupt();
+            T.interruptAll();
 	    Api.reload();
             reloadcheck = 0;
             var time = (new Date() - Timer) / 1000;
