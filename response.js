@@ -622,6 +622,20 @@ function intro(r){
 		r.replier.reply("10 네루를 사용해 부방장 복권을 뽑습니다.\n부방장 당첨 확률 1% 당첨 시 하루 당 200 네루 지급 부방장은 2 명으로 2명인 상태에서 새로운 부방장이 뽑히면 첫번째로 부방장이 된 사람은 탄핵됩니다.");
 	   }
 }
+keyakinofi = T.register("Keyaki",()=>{
+	while(true){
+		java.lang.Thread.sleep(50*1000);
+		Keyaki(r);
+		}
+	}).start();
+Keyaki = function () {
+	name=org.jsoup.Jsoup.connect("https://www.keyakizaka46.com/s/k46o/?ima=0000").get().select("span").toArray().map((v)=>v.text())[0]
+	link="https://www.keyakizaka46.com/"+org.jsoup.Jsoup.connect("https://www.keyakizaka46.com/s/k46o/?ima=0000").get().select("span").select("a").attr("href")
+	if((D.selectForArray('Keyaki')[0] != link)==true){
+	D.update("Keyaki",{"osirase":link})
+	Api.replyRoom("46","케야키자46 공지가 갱신 되었습니다.\n"+name+"\n"+link)
+	}
+}	
 Hinata =function () {
 	name = org.jsoup.Jsoup.connect("https://www.hinatazaka46.com/s/official/?ima=0000").get().select('p.c-news__text').toArray().map((v)=>v.text())[0]
 	link = "https://www.hinatazaka46.com"+org.jsoup.Jsoup.connect("https://www.hinatazaka46.com/s/official/?ima=0000").get().select('li.p-news__item').select('a').attr("href")
@@ -727,6 +741,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 	pointgive(r);
 	pointcheck(r);
         hinatanofi;
+	keyakinofi;
 	intro(r);
 	versus(r);
 	chat(r);
