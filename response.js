@@ -626,11 +626,11 @@ Hinata =function () {
 	name = org.jsoup.Jsoup.connect("https://www.hinatazaka46.com/s/official/?ima=0000").get().select('p.c-news__text').toArray().map((v)=>v.text())[0]
 	link = "https://www.hinatazaka46.com"+org.jsoup.Jsoup.connect("https://www.hinatazaka46.com/s/official/?ima=0000").get().select('li.p-news__item').select('a').attr("href")
 	if(JSON.stringify(D.selectForArray('Hinata')[0]) != link){
-	D.updateOrInsert("Hinata",{ osirase : link }, { osirase : link },null)
+	D.update("Hinata",{"osirase":"1"})
 	Api.replyRoom("46","히나타자카46 공지가 갱신 되었습니다.\n"+name+"\n"+link)
 	}
 }
-hinatanofi = T.register("Hinata(r)",()=>{
+hinatanofi = T.register("Hinata",()=>{
 		while(true){
 			java.lang.Thread.sleep(50*1000);
 			Hinata(r);
