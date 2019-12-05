@@ -630,7 +630,7 @@ keyakinofi = T.register("Keyaki",()=>{
 	}).start();
 function Keyaki(r) {
 	name=org.jsoup.Jsoup.connect("https://www.keyakizaka46.com/s/k46o/?ima=0000").get().select("span").toArray().map((v)=>v.text())[0]
-	link="https://www.keyakizaka46.com/"+org.jsoup.Jsoup.connect("https://www.keyakizaka46.com/s/k46o/?ima=0000").get().select("span").select("a").attr("href")
+	link="https://www.keyakizaka46.com"+org.jsoup.Jsoup.connect("https://www.keyakizaka46.com/s/k46o/?ima=0000").get().select("span").select("a").attr("href")
 	if((D.selectForArray('Keyaki')[0] != link)==true){
 	D.update("Keyaki",{"osirase":link})
 	Api.replyRoom("46","케야키자46 공지가 갱신 되었습니다.\n"+name+"\n"+link)
