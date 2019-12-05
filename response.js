@@ -726,7 +726,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 	I.run(room, sender, msg);
 	pointgive(r);
 	pointcheck(r);
-        hinatanofi
+        hinatanofi(r);
 	intro(r);
 	versus(r);
 	chat(r);
