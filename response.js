@@ -627,7 +627,7 @@ Hinata =function () {
 	link = "https://www.hinatazaka46.com"+org.jsoup.Jsoup.connect("https://www.hinatazaka46.com/s/official/?ima=0000").get().select('li.p-news__item').select('a').attr("href")
 	if(JSON.stringify(D.selectForArray('Hinata')[0]) != link){
 	D.updateOrInsert("Hinata",{ osirase : link }, { osirase : link },null)
-	Api.replyRoom("김석우","히나타자카46 공지가 갱신 되었습니다.\n"+name+"\n"+link)
+	Api.replyRoom("건의방","히나타자카46 공지가 갱신 되었습니다.\n"+name+"\n"+link)
 	}
 }
 hinatanofi = T.register("Hinata",()=>{
