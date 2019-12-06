@@ -766,7 +766,6 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 	pointgive(r);
 	pointcheck(r);
 	intro(r);
-        lyric(r)
 	versus(r);
 	chat(r);
 	news(r);
@@ -774,7 +773,10 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
     	weather(r);
         return;
         }
-
+	if (msg.indexOf("/가사")) {
+		lyric(r)
+		return;
+	}
 	if(msg=="/공지"){
 	osirase(r);
 	}
