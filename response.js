@@ -54,6 +54,35 @@ Flag=(function(){
     	  }
 	});
 
+function lyric(r) {
+    var replier = r.replier;
+    var room = r.r;
+    var sender = r.s;
+    var msg = r.m;
+    const timestamp = "323B33146D42F44747881A808B81CA796996FDECFE3E1399FBB0DC89CC190743E16DBD43951A4031DC7BE2" + "D39907CAD5515DB0CEDA26508E111CFF458C86E917BDA1CB1F75506CEB27F92E72FCDA15B7FD6E061623" + "DFFB9C86262C82C00779EA8A7CDD0684E61DD4DD7D8C72F0AC3C42F21356BF0B3398E93E20AEF3555D2737";
+    var str = msg.replace("/가사", "").rmspace();
+    var title = str.includes("/") ? str.split("/")[0] : str;
+    var artist = str.includes("/") ? str.split("/")[1] : "";
+    try {
+        var lyricList = JSON.parse(String(org.jsoup.Jsoup.connect("https://lyric.altools.com/v1/search").data("title", title).data("artist", artist).data("playtime", 100).data("page", 1).data("encData", timestamp).ignoreContentType(true).post().select("body").text()));
+    }
+    catch (e) {
+        r.reply("검색된 데이터가 없습니다.");
+        return;
+    }
+    var res = "\"" + title + (artist ? ("/" + artist) : "") + "\" 검색결과" + "\n";
+    for (var i = 0; i < 3 && i < lyricList.length; i++) {
+        var lyricId = lyricList[i].lyric_id;
+        try {
+            var lyric = JSON.parse(String(org.jsoup.Jsoup.connect("https://lyric.altools.com/v1/info").data("info_id", lyricList[i].lyric_id).data("encData", timestamp).ignoreContentType(true).post().select("body").html()).replace(/\n/g, "")).lyric.replace(/\<br\>/g, "\n").replace(/\[\d\d:\d\d.\d\d\]/g, "") + "\n\n";
+            res += "Lyric : " + (i + 1) + "\n" + lyricList[i].title + "/" + lyricList[i].artist + "\n" + lyric;
+        }
+        catch (e) {
+        }
+    }
+    r.reply(res.trim().cut(1));
+}
+
 function weather(r){
 	I.register("weatherSelect"+r.sender,r.room,r.sender,function(input){
 		try{
@@ -741,6 +770,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 	pointgive(r);
 	pointcheck(r);
 	intro(r);
+        lyric(r)
 	versus(r);
 	chat(r);
 	news(r);
