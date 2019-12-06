@@ -55,19 +55,15 @@ Flag=(function(){
 	});
 
 function lyric(r) {
-    var replier = r.replier;
-    var room = r.r;
-    var sender = r.s;
-    var msg = r.m;
     const timestamp = "323B33146D42F44747881A808B81CA796996FDECFE3E1399FBB0DC89CC190743E16DBD43951A4031DC7BE2" + "D39907CAD5515DB0CEDA26508E111CFF458C86E917BDA1CB1F75506CEB27F92E72FCDA15B7FD6E061623" + "DFFB9C86262C82C00779EA8A7CDD0684E61DD4DD7D8C72F0AC3C42F21356BF0B3398E93E20AEF3555D2737";
-    var str = msg.replace("/가사", "").rmspace();
+    var str = r.msg.replace("/가사", "").rmspace();
     var title = str.includes("/") ? str.split("/")[0] : str;
     var artist = str.includes("/") ? str.split("/")[1] : "";
     try {
         var lyricList = JSON.parse(String(org.jsoup.Jsoup.connect("https://lyric.altools.com/v1/search").data("title", title).data("artist", artist).data("playtime", 100).data("page", 1).data("encData", timestamp).ignoreContentType(true).post().select("body").text()));
     }
     catch (e) {
-        r.reply("검색된 데이터가 없습니다.");
+        r.replier.reply("검색된 데이터가 없습니다.");
         return;
     }
     var res = "\"" + title + (artist ? ("/" + artist) : "") + "\" 검색결과" + "\n";
@@ -80,7 +76,7 @@ function lyric(r) {
         catch (e) {
         }
     }
-    r.reply(res.trim().cut(1));
+    r.replier.reply(res.trim().cut(1));
 }
 
 function weather(r){
