@@ -773,7 +773,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
     	weather(r);
         return;
         }
-	if (msg.indexOf("/가사")) {
+	if (msg.indexOf("/가사")==0) {
 		lyric(r)
 		return;
 	}
