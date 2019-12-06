@@ -742,6 +742,8 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 	pointcheck(r);
 	Hinata(r)
 	Keyaki(r)
+        keyakinofi
+        hinatanofi
 	intro(r);
 	versus(r);
 	chat(r);
