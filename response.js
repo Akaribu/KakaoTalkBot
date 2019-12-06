@@ -668,10 +668,10 @@ function intro(r){
 keyakinofi = T.register("Keyaki",()=>{
 	while(true){
 		java.lang.Thread.sleep(50*1000);
-		Keyaki(r);
+		Keyaki();
 		}
 	}).start();
-function Keyaki(r) {
+function Keyaki() {
 	name=org.jsoup.Jsoup.connect("https://www.keyakizaka46.com/s/k46o/?ima=0000").get().select("span").toArray().map((v)=>v.text())[0]
 	link="https://www.keyakizaka46.com"+org.jsoup.Jsoup.connect("https://www.keyakizaka46.com/s/k46o/?ima=0000").get().select("span").select("a").attr("href")
 	if((D.selectForArray('Keyaki')[0] != link)==true){
@@ -679,7 +679,7 @@ function Keyaki(r) {
 	Api.replyRoom("46","케야키자46 공지가 갱신 되었습니다.\n"+name+"\n"+link)
 	}
 }	
-function Hinata(r) {
+function Hinata() {
 	name = org.jsoup.Jsoup.connect("https://www.hinatazaka46.com/s/official/?ima=0000").get().select('p.c-news__text').toArray().map((v)=>v.text())[0]
 	link = "https://www.hinatazaka46.com"+org.jsoup.Jsoup.connect("https://www.hinatazaka46.com/s/official/?ima=0000").get().select('li.p-news__item').select('a').attr("href")
 	if((D.selectForArray('Hinata')[0] != link)==true){
@@ -690,7 +690,7 @@ function Hinata(r) {
 hinatanofi = T.register("Hinata",()=>{
 		while(true){
 			java.lang.Thread.sleep(50*1000);
-			Hinata(r);
+			Hinata();
 		}
 	}).start();
 function news(r){
@@ -784,8 +784,6 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 	pointgive(r);
 	pointcheck(r);
 	intro(r);
-	hinatanofi;
-	keyakinofi;
 	versus(r);
 	chat(r);
 	news(r);
