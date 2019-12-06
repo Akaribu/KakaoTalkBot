@@ -664,9 +664,6 @@ function intro(r){
 	if(r.msg=="/기능 최근채팅"){
 		r.replier.reply("갯수 당 1 네루를 사용합니다! /최근채팅 닉 갯수");
 	}
-	
-	   
-	}
 }
 keyakinofi = T.register("Keyaki",()=>{
 	while(true){
