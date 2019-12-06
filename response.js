@@ -640,12 +640,25 @@ function pointgive(r){
 	}
 }
 function intro(r){
+	if(r.msg=="/기능"){
+		r.replier.reply("/날씨\n/가사\n/즉석복권\n/부방장복권\n최근채팅\n/실검\nvs기능\n자세한 사항은 /기능 기능명 (예시 /기능 날씨)");
+	if(r.msg=="/기능 날씨"){
+		r.replier.reply("/날씨 지역명");
+	if(r.msg=="/기능 실검"){
+		r.replier.reply("/실검\n네이버 기준 실시간 검색어입니다");
+	if(r.msg=="/기능 vs"){
+		r.replier.reply("예시 네루vs노루");
 	if(r.msg=="/기능 즉석복권"){
 		r.replier.reply("10 네루를 사용해 복권을 뽑습니다.\n1등 : 200네루 1%\n2등 : 50네루 4%\n3등 : 30네루 6%\n4등 : 15네루 10%");
-	   }
 	if(r.msg=="/기능 부방장복권"){
 		r.replier.reply("10 네루를 사용해 부방장 복권을 뽑습니다.\n부방장 당첨 확률 1% 당첨 시 하루 당 200 네루 지급 부방장은 2 명으로 2명인 상태에서 새로운 부방장이 뽑히면 첫번째로 부방장이 된 사람은 탄핵됩니다.");
-	   }
+	if(r.msg=="/기능 가사"){
+		r.replier.reply("/가사 /노래명/아티스트명");
+	if(r.msg=="/기능 최근채팅"){
+		r.replier.reply("갯수 당 1 네루를 사용합니다! /최근채팅 닉 갯수");
+	
+	   
+	}
 }
 keyakinofi = T.register("Keyaki",()=>{
 	while(true){
