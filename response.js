@@ -740,10 +740,6 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 	I.run(room, sender, msg);
 	pointgive(r);
 	pointcheck(r);
-	Hinata(r)
-	Keyaki(r)
-        keyakinofi
-        hinatanofi
 	intro(r);
 	versus(r);
 	chat(r);
