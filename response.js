@@ -886,7 +886,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 	pointgive(r);
 	pointcheck(r);
 	intro(r);
-	Hinata()
+	Hinata(r)
 	versus(r);
 	chat(r);
 	news(r);
