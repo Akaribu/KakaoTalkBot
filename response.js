@@ -479,13 +479,13 @@ function hamburg(r){
 	var moms2 = org.jsoup.Jsoup.connect('http://www.momstouch.co.kr/sub/menu/menu_list.html?pg=2&menu=4').get().select('span.title').toArray().map(v=>v.text());
 	var moms3 = org.jsoup.Jsoup.connect('http://www.momstouch.co.kr/sub/menu/menu_list.html?pg=3&menu=4').get().select('span.title').toArray().map(v=>v.text());
 	var moms = moms1.concat(moms2).concat(moms3);
-	var rad = rad = Math.floor(Math.random() * 1);
-	if(rad = 0)
+	var rad = rad = Math.floor(Math.random() * 2);
+	if(rad = 1)
 	{
 		var rad = rad = Math.floor(Math.random() * lotte.length);
 		r.replier.reply('롯데리아 버거 추천\n' + lotte.splice(rad,1)[0]);
 	} 
-	else (rad = 1)
+	else (rad = 2)
 	{
 		var rad = rad = Math.floor(Math.random() * moms.length);
 		r.replier.reply('맘스터치 버거 추천\n' + moms.splice(rad,1)[0]);
@@ -709,7 +709,7 @@ function pointgive(r){
 	if(D.selectForArray("botpoint","name","name=?",r.sender) == r.sender){
 		if(random > 95 && r.room=="46"){
 			if(currentpoint>=200){
-				give = Math.floor(Math.random()*10);
+				give = Math.floor(Math.random()*9);
 			}
 			elseif(200>currentpoint>=100){
 				Number(10)<=give<=Number(19);
