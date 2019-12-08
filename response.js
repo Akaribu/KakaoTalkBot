@@ -711,8 +711,9 @@ function pointgive(r){
 	give1 = Math.floor(Math.random()*10)
 	give2 = Math.floor(Math.random()*10)+10
 	give3 = Math.floor(Math.random()*10)+20
-	currentpoint=D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
+	
 	if(D.selectForArray("botpoint","name","name=?",r.sender) == r.sender){
+		currentpoint=D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
 		if(random > 95 && r.room=="46"){
 			if(currentpoint>=200){
 				currentpoint+=give1;
