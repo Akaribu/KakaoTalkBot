@@ -709,7 +709,7 @@ function pointgive(r){
 	if(D.selectForArray("botpoint","name","name=?",r.sender) == r.sender){
 		if(random > 95 && r.room=="46"){
 			if(currentpoint>=200){
-				give = Math.floor(Math.random()*9);
+				Number(0)<=give<=Number(9)
 			}
 			elseif(200>currentpoint>=100){
 				Number(10)<=give<=Number(19);
