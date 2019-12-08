@@ -706,21 +706,21 @@ function pointgive(r){
 	random = Math.floor(Math.random()*101);
 	currentpoint=D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
 	if(D.selectForArray("botpoint","name","name=?",r.sender) == r.sender){
-		give=if(currentpoint>=200){
-				Number(0)=<give=<Number(9)
+		if(random > 95 && r.room=="46"){
+			if(currentpoint>=200){
+				Number(0)<=give<=Number(9)
 			}
 			elseif(200>currentpoint>=100){
-				Number(10)=<give=<Number(19);
+				Number(10)<=giv<=Number(19);
 			}
 			else
 			{
-				Number(20)=<give=<Number(30);
+				Number(20)<=give<=Number(30);
 			}
-		if(random > 95 && r.room=="46"){
 			currentpoint+=give;
 			D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
 			r.replier.reply(r.sender+"님 "+give+"네루 획득")
-			}
+		}
 	}
 	else {
 		D.insert("botpoint",{room : r.room, name:r.sender, point:0})	
