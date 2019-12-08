@@ -780,7 +780,8 @@ function Keyaki() {
 	Api.replyRoom("김석우","케야키자46 공지가 갱신 되었습니다.\n"+name1+"\n"+link1)
 	}
 }	
-function Hinata(r) {
+function Hinata() {
+	var r = {replier: replier, msg: msg, sender: sender, room : room};
 	name2 = org.jsoup.Jsoup.connect("https://www.hinatazaka46.com/s/official/?ima=0000").get().select('p.c-news__text').toArray().map((v)=>v.text())[0]
 	link2 = "https://www.hinatazaka46.com"+org.jsoup.Jsoup.connect("https://www.hinatazaka46.com/s/official/?ima=0000").get().select('li.p-news__item').select('a').attr("href")
 	if((D.selectForArray('Hinata')[0] != link2)==true){
@@ -793,7 +794,7 @@ function Hinata(r) {
 hinatanofi = T.register("Hinata1",()=>{
 		while(true){
 			java.lang.Thread.sleep(10*1000);
-			Hinata();
+			Hinata(r);
 		}
 	}).start();
 function news(r){
