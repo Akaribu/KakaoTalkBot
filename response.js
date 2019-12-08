@@ -793,7 +793,7 @@ function Hinata() {
 hinatanofi = T.register("Hinata1",()=>{
 		while(true){
 			java.lang.Thread.sleep(10*1000);
-			Hinata();
+			Hinata(r);
 		}
 	}).start();
 function news(r){
@@ -888,7 +888,6 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 	pointcheck(r);
 	intro(r);
 	versus(r);
-	Hinata(r)
 	chat(r);
 	news(r);
         if (msg.indexOf('/날씨')==0&& room=="46"){ 
