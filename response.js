@@ -480,7 +480,7 @@ function hamburg(r){
 	var moms3 = org.jsoup.Jsoup.connect('http://www.momstouch.co.kr/sub/menu/menu_list.html?pg=3&menu=4').get().select('span.title').toArray().map(v=>v.text());
 	var moms = moms1.concat(moms2).concat(moms3);
 
-	var rad = rad = Math.floor(Math.random() * 3);
+	var rad = rad = Math.floor(Math.random() * 2);
 	if(rad < 1){
 		var rad = rad = Math.floor(Math.random() * lotte.length);
 		r.replier.reply('롯데리아 버거 추천\n' + lotte.splice(rad,1)[0]);
