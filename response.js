@@ -764,7 +764,7 @@ function intro(r){
 keyakinofi = T.register("Keyaki1",()=>{
 	while(true){
 		java.lang.Thread.sleep(10*1000);
-		Keyaki(r);
+		Keyaki();
 		}
 	}).start();
 function Keyaki() {
@@ -772,7 +772,7 @@ function Keyaki() {
 	link1="https://www.keyakizaka46.com"+org.jsoup.Jsoup.connect("https://www.keyakizaka46.com/s/k46o/?ima=0000").get().select("span").select("a").attr("href")
 	if((D.selectForArray('Keyaki')[0] != link1)==true){
 	D.update("Keyaki",{"osirase":link1})
-	Api.replyRoom("46","케야키자46 공지가 갱신 되었습니다.\n"+name+"\n"+link1)
+	Api.replyRoom("감자","케야키자46 공지가 갱신 되었습니다.\n"+name+"\n"+link1)
 	}
 }	
 function Hinata() {
@@ -780,13 +780,13 @@ function Hinata() {
 	link2 = "https://www.hinatazaka46.com"+org.jsoup.Jsoup.connect("https://www.hinatazaka46.com/s/official/?ima=0000").get().select('li.p-news__item').select('a').attr("href")
 	if((D.selectForArray('Hinata')[0] != link2)==true){
 	D.update("Hinata",{"osirase":link2})
-	Api.replyRoom("46","히나타자카46 공지가 갱신 되었습니다.\n"+name+"\n"+link2)
+	Api.replyRoom("감자","히나타자카46 공지가 갱신 되었습니다.\n"+name+"\n"+link2)
 	}
 }
 hinatanofi = T.register("Hinata1",()=>{
 		while(true){
 			java.lang.Thread.sleep(10*1000);
-			Hinata(r);
+			Hinata();
 		}
 	}).start();
 function news(r){
