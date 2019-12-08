@@ -479,12 +479,14 @@ function hamburg(r){
 	var moms2 = org.jsoup.Jsoup.connect('http://www.momstouch.co.kr/sub/menu/menu_list.html?pg=2&menu=4').get().select('span.title').toArray().map(v=>v.text());
 	var moms3 = org.jsoup.Jsoup.connect('http://www.momstouch.co.kr/sub/menu/menu_list.html?pg=3&menu=4').get().select('span.title').toArray().map(v=>v.text());
 	var moms = moms1.concat(moms2).concat(moms3);
-
-	var rad = rad = Math.floor(Math.random() * 2);
-	if(rad < 1){
+	var rad = rad = Math.floor(Math.random() * 1);
+	if(rad = 0)
+	{
 		var rad = rad = Math.floor(Math.random() * lotte.length);
 		r.replier.reply('롯데리아 버거 추천\n' + lotte.splice(rad,1)[0]);
-	} else (rad < 2){
+	} 
+	else (rad = 1)
+	{
 		var rad = rad = Math.floor(Math.random() * moms.length);
 		r.replier.reply('맘스터치 버거 추천\n' + moms.splice(rad,1)[0]);
 	} 
