@@ -2,7 +2,7 @@ var D = require("DBManager.js")("D");
 var T = require("ThreadManager.js");
 var I = require("Interactive.js");
 const es=String.fromCharCode(8237).repeat(500);
-
+var r = {replier: replier, msg: msg, sender: sender, room : room};	
 function ev(r){
 		try {  
                 r.replier.reply(String(eval(r.msg.substring(1))));
@@ -792,10 +792,9 @@ function Hinata() {
 	}
 }
 hinatanofi = T.register("Hinata1",()=>{
-		var r = {replier: replier, msg: msg, sender: sender, room : room};	
 		while(true){
 			java.lang.Thread.sleep(10*1000);
-			Hinata(r);
+			Hinata();
 		}
 	}).start();
 function news(r){
