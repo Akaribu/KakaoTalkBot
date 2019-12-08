@@ -704,20 +704,20 @@ function pointcheck(r){
 }
 function pointgive(r){
 	random = Math.floor(Math.random()*101);
-	give = Number()
+	give = null
 	currentpoint=D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
 	if(D.selectForArray("botpoint","name","name=?",r.sender) == r.sender){
 		if(random > 95 && r.room=="46"){
 			if(currentpoint>=200){
-				Number(0)<=give<=Number(9)
+				give = Number(0)<=give<=Number(9)
 			}
 			else if (200>currentpoint>=100)
 			{
-				Number(10)<=give<=Number(19);
+				give = Number(10)<=give<=Number(19);
 			}
 			else if (currentpoint<100)
 			{
-				Number(20)<=give<=Number(30);
+				give = Number(20)<=give<=Number(30);
 			}
 			currentpoint+=give;
 			D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
