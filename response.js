@@ -781,7 +781,7 @@ function Keyaki() {
 	}
 }	
 function Hinata() {
-	var r = {replier: replier, msg: msg, sender: sender, room : room};
+	
 	name2 = org.jsoup.Jsoup.connect("https://www.hinatazaka46.com/s/official/?ima=0000").get().select('p.c-news__text').toArray().map((v)=>v.text())[0]
 	link2 = "https://www.hinatazaka46.com"+org.jsoup.Jsoup.connect("https://www.hinatazaka46.com/s/official/?ima=0000").get().select('li.p-news__item').select('a').attr("href")
 	if((D.selectForArray('Hinata')[0] != link2)==true){
@@ -792,6 +792,7 @@ function Hinata() {
 	}
 }
 hinatanofi = T.register("Hinata1",()=>{
+		var r = {replier: replier, msg: msg, sender: sender, room : room};	
 		while(true){
 			java.lang.Thread.sleep(10*1000);
 			Hinata(r);
