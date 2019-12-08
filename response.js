@@ -711,11 +711,11 @@ function pointgive(r){
 			if(currentpoint>=200){
 				Number(0)<=Number(give)<=Number(9)
 			}
-			elseif (200>currentpoint>=100)
+			else if (200>currentpoint>=100)
 			{
 				Number(10)<=Number(give)<=Number(19);
 			}
-			elseif (currentpoint<100)
+			else if (currentpoint<100)
 			{
 				Number(20)<=Number(give)<=Number(30);
 			}
