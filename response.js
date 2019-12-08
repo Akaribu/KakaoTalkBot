@@ -709,15 +709,15 @@ function pointgive(r){
 	if(D.selectForArray("botpoint","name","name=?",r.sender) == r.sender){
 		if(random > 95 && r.room=="46"){
 			if(currentpoint>=200){
-				Number(0)<=Number(give)<=Number(9)
+				Number(0)<=give<=Number(9)
 			}
 			else if (200>currentpoint>=100)
 			{
-				Number(10)<=Number(give)<=Number(19);
+				Number(10)<=give<=Number(19);
 			}
 			else if (currentpoint<100)
 			{
-				Number(20)<=Number(give)<=Number(30);
+				Number(20)<=give<=Number(30);
 			}
 			currentpoint+=give;
 			D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
