@@ -784,7 +784,7 @@ function Hinata() {
 	link2 = "https://www.hinatazaka46.com"+org.jsoup.Jsoup.connect("https://www.hinatazaka46.com/s/official/?ima=0000").get().select('li.p-news__item').select('a').attr("href")
 	if((D.selectForArray('Hinata')[0] != link2)==true){
 	D.update("Hinata",{"osirase":link2})
-	if (r.sender="김석우"){
+	if (r.sender=="김석우"){
 		r.replier.reply("히나타자카46 공지가 갱신 되었습니다.\n"+name2+"\n"+link2);
 	}
 	}
