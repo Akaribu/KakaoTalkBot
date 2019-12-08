@@ -888,6 +888,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 	pointcheck(r);
 	intro(r);
 	versus(r);
+	Hinata()
 	chat(r);
 	news(r);
         if (msg.indexOf('/날씨')==0&& room=="46"){ 
