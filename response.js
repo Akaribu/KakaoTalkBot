@@ -1,8 +1,7 @@
 var D = require("DBManager.js")("D"); 
 var T = require("ThreadManager.js");
 var I = require("Interactive.js");
-const es=String.fromCharCode(8237).repeat(500);
-var r = {replier: replier, msg: msg, sender: sender, room : room};	
+const es=String.fromCharCode(8237).repeat(500);	
 function ev(r){
 		try {  
                 r.replier.reply(String(eval(r.msg.substring(1))));
@@ -777,18 +776,20 @@ function Keyaki() {
 	link1="https://www.keyakizaka46.com"+org.jsoup.Jsoup.connect("https://www.keyakizaka46.com/s/k46o/?ima=0000").get().select("span").select("a").attr("href")
 	if((D.selectForArray('Keyaki')[0] != link1)==true){
 	D.update("Keyaki",{"osirase":link1})
-	Api.replyRoom("김석우","케야키자46 공지가 갱신 되었습니다.\n"+name1+"\n"+link1)
+	Api.replyRoom("김석우","케야키자카46 공지가 갱신 되었습니다.\n"+name1+"\n"+link1);	
 	}
 }	
+keyakinofi = T.register("Keyaki1",()=>{
+	while(true){
+		java.lang.Thread.sleep(10*1000);
+		Keyaki();
+		}
 function Hinata() {
-	
 	name2 = org.jsoup.Jsoup.connect("https://www.hinatazaka46.com/s/official/?ima=0000").get().select('p.c-news__text').toArray().map((v)=>v.text())[0]
 	link2 = "https://www.hinatazaka46.com"+org.jsoup.Jsoup.connect("https://www.hinatazaka46.com/s/official/?ima=0000").get().select('li.p-news__item').select('a').attr("href")
 	if((D.selectForArray('Hinata')[0] != link2)==true){
 	D.update("Hinata",{"osirase":link2})
-	if (r.sender == "김석우"){
-		r.replier.reply("히나타자카46 공지가 갱신 되었습니다.\n"+name2+"\n"+link2);
-	}
+	Api.replyRoom("김석우","히나타자카46 공지가 갱신 되었습니다.\n"+name2+"\n"+link2);
 	}
 }
 hinatanofi = T.register("Hinata1",()=>{
