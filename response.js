@@ -564,7 +564,9 @@ function roomlottery(r){
 		currentpoint-=10;
           	D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
                 if(random>=99){
-                r.replier.reply("부방장 당첨!");
+                 r.replier.reply("축하합니다! "+r.sender+"님이 부방장에 당첨 되었습니다.\n 100네루가 추가 지급 되었습니다.");
+		currentpoint+=100;
+                D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
                 }
                 else{
                 r.replier.reply("꽝");
@@ -585,7 +587,9 @@ function roomlottery(r){
                 	}
                     r.replier.reply("당첨 횟수 : "+temp1+"회\n꽝 :"+temp2+"회");
                     if(temp1>=1){
-                        r.replier.reply("축하합니다! "+r.sender+"님이 부방장에 당첨 되었습니다.");
+                        r.replier.reply("축하합니다! "+r.sender+"님이 부방장에 당첨 되었습니다.\n 100네루가 추가 지급 되었습니다.");
+			currentpoint+=100;
+                	D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
                     }
                 }
                else{
