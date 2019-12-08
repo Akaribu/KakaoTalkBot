@@ -704,10 +704,20 @@ function pointcheck(r){
 }
 function pointgive(r){
 	random = Math.floor(Math.random()*101);
-	give = Math.floor(Math.random()*31);
-	
+	give = Number(1);
+	currentpoint=D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
 	if(D.selectForArray("botpoint","name","name=?",r.sender) == r.sender){
 		if(random > 95 && r.room=="46"){
+			if(currentpoint>=200){
+				give = Math.floor(Math.random()*10);
+			}
+			elseif(200>currentpoint>=100){
+				Number(10)<=give<=Number(19);
+			}
+			else
+			{
+				Number(20)<=give<=Number(30);
+			}
 			currentpoint=D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
 			currentpoint+=give;
 			D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
@@ -720,7 +730,7 @@ function pointgive(r){
 }
 function intro(r){
 	if(r.msg=="/기능"){
-		r.replier.reply("/날씨\n/가사\n/즉석복권\n/부방장복권\n최근채팅\n/실검\nvs기능\n자세한 사항은 /기능 기능명 (예시 /기능 날씨)");
+		r.replier.reply("/날씨\n/가사\n/즉석복권\n/부방장복권\n최근채팅\n/실검\nvs기능\n/햄버거\n/써브웨이\n자세한 사항은 /기능 기능명 (예시 /기능 날씨)");
 	}
 	if(r.msg=="/기능 날씨"){
 		r.replier.reply("/날씨 지역명");
@@ -746,7 +756,7 @@ function intro(r){
 }
 keyakinofi = T.register("Keyaki1",()=>{
 	while(true){
-		java.lang.Thread.sleep(50*1000);
+		java.lang.Thread.sleep(10*1000);
 		Keyaki();
 		}
 	}).start();
@@ -768,7 +778,7 @@ function Hinata(r) {
 }
 hinatanofi = T.register("Hinata1",()=>{
 		while(true){
-			java.lang.Thread.sleep(50*1000);
+			java.lang.Thread.sleep(10*1000);
 			Hinata();
 		}
 	}).start();
