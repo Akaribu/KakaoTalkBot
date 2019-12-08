@@ -475,7 +475,6 @@ function weather(r){
 }
 function hamburg(r){
 	var lotte = org.jsoup.Jsoup.connect('http://www.lotteria.com/menu/Menu_All.asp').get().select('div.memu_group>ul').get(0).select('div.cont.menu.roundMiddle > a').toArray().map(v=>v.text());
-	var mc = org.jsoup.Jsoup.connect('http://www.mcdonalds.co.kr/www/kor/menu/menu_list.do?cate_cd=100').get().select('p.sbj').toArray().map(v=>v.ownText())
 	var moms1 = org.jsoup.Jsoup.connect('http://www.momstouch.co.kr/sub/menu/menu_list.html?pg=1&menu=4').get().select('span.title').toArray().map(v=>v.text());
 	var moms2 = org.jsoup.Jsoup.connect('http://www.momstouch.co.kr/sub/menu/menu_list.html?pg=2&menu=4').get().select('span.title').toArray().map(v=>v.text());
 	var moms3 = org.jsoup.Jsoup.connect('http://www.momstouch.co.kr/sub/menu/menu_list.html?pg=3&menu=4').get().select('span.title').toArray().map(v=>v.text());
@@ -485,13 +484,10 @@ function hamburg(r){
 	if(rad < 1){
 		var rad = rad = Math.floor(Math.random() * lotte.length);
 		r.replier.reply('롯데리아 버거 추천\n' + lotte.splice(rad,1)[0]);
-	} else if(rad < 2){
+	} else (rad < 2){
 		var rad = rad = Math.floor(Math.random() * moms.length);
 		r.replier.reply('맘스터치 버거 추천\n' + moms.splice(rad,1)[0]);
-	} else {
-		var rad = rad = Math.floor(Math.random() * mc.length);
-		r.replier.reply('맥도날드 버거 추천\n' + mc.splice(rad,1)[0]);
-	}
+	} 
 }
 function subway(r) {
 	var sandwich = org.jsoup.Jsoup.connect('http://subway.co.kr/sandwichList').get().select('div.pd_list_wrapper');
