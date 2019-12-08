@@ -704,24 +704,30 @@ function pointcheck(r){
 }
 function pointgive(r){
 	random = Math.floor(Math.random()*101);
-	give = Number(0)
+	give1 = Math.floor(Math.random()*10)
+	give2 = Math.floor(Math.random()*10)+10
+	give3 = Math.floor(Math.random()*10)+20
 	currentpoint=D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
 	if(D.selectForArray("botpoint","name","name=?",r.sender) == r.sender){
 		if(random > 100 && r.room=="46"){
 			if(currentpoint>=200){
-				give = Number(0)<=give<=Number(9)
+				currentpoint+=give1;
+				D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
+				r.replier.reply(r.sender+"님 "+give1+"네루 획득")
 			}
 			else if (200>currentpoint>=100)
 			{
-				give = Number(10)<=give<=Number(19);
+				currentpoint+=give2;
+				D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
+				r.replier.reply(r.sender+"님 "+give2+"네루 획득")
 			}
 			else if (currentpoint<100)
 			{
-				give = Number(20)<=give<=Number(30);
+				currentpoint+=give3;
+				D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
+				r.replier.reply(r.sender+"님 "+give3+"네루 획득")
 			}
-			currentpoint+=give;
-			D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
-			r.replier.reply(r.sender+"님 "+give+"네루 획득")
+		
 		}
 	}
 	else 
