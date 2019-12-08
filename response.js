@@ -668,7 +668,7 @@ function intro(r){
 keyakinofi = T.register("Keyaki",()=>{
 	while(true){
 		java.lang.Thread.sleep(50*1000);
-		Keyaki();
+		Keyaki(r);
 		}
 	}).start();
 function Keyaki() {
@@ -690,7 +690,7 @@ function Hinata() {
 hinatanofi = T.register("Hinata",()=>{
 		while(true){
 			java.lang.Thread.sleep(50*1000);
-			Hinata();
+			Hinata(r);
 		}
 	}).start();
 function news(r){
