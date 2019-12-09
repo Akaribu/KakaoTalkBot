@@ -805,8 +805,8 @@ function news(r){
 	currentpoint=D.selectForArray("botpoint",null,"room=? and name=?",[r.room,r.sender])[0][2];
 	var arr =[]
 	if(r.msg.indexOf("/최근채팅")==0){
-		namae = r.msg.split(" ")[1];
-		numb = Number(r.msg.split(" ")[2]);
+		namae = r.msg.split("/")[2];
+		numb = Number(r.msg.split("/")[3]);
 		if(currentpoint-numb>0){
 			currentpoint-=numb;
 			D.update("botpoint",{"point":currentpoint},"name=?",r.sender);
