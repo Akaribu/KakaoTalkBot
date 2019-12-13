@@ -53,39 +53,6 @@ Flag=(function(){
     	  }
 	});
 
-function randompick(r){
-   function pickOne(arr){
-      var a=arr.splice(Math.floor(Math.random()*arr.length), 1);
-      return a;
-   }
-   function pickElimination(r,arr,targetNum,delaySecond){
-      const startLength = arr.length;
-      r.reply(arr.join(", ")+"의 추첨을 시작합니다! ("+targetNum+"/"+startLength+")");
-      while(arr.length>targetNum){
-         java.lang.Thread.sleep(1000*delaySecond);
-         r.reply(pickOne(arr)+" 탈락! ("+arr.length+"/"+startLength+")");
-      }
-      java.lang.Thread.sleep(1000);
-      r.reply(arr.join(", ")+" 당첨!!!");
-   }
-   
-   function pickMain(r){
-      const regexp = /\/추첨(\d+)?(.+)/.exec(r.msg);
-      const targetNum = Number(regexp[1]) || 1; 
-      const list = regexp[2].split(",").map(v=>v.trim());
-      pickElimination(r,list,targetNum,5);
-      
-   }
-   function toString(){
-      return "Picker";
-   }
-   return {
-      pickOne:pickOne,
-      pickElimination:pickElimination,
-      pickMain:pickMain
-   }
-}
-
 function lyric(r) {
     const timestamp = "323B33146D42F44747881A808B81CA796996FDECFE3E1399FBB0DC89CC190743E16DBD43951A4031DC7BE2" + "D39907CAD5515DB0CEDA26508E111CFF458C86E917BDA1CB1F75506CEB27F92E72FCDA15B7FD6E061623" + "DFFB9C86262C82C00779EA8A7CDD0684E61DD4DD7D8C72F0AC3C42F21356BF0B3398E93E20AEF3555D2737";
     var str = r.msg.replace("/가사", "").trim();
@@ -921,7 +888,6 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 	versus(r);
 	chat(r);
 	news(r);
-        randompick(r);
         if (msg.indexOf('/날씨')==0&& room=="46"){ 
     	weather(r);
         return;
