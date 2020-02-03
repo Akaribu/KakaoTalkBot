@@ -52,6 +52,14 @@ Flag=(function(){
          return res;
     	  }
 	});
+function CoronaVirus(r){
+	Jsoup = org.jsoup.Jsoup
+	Ll = "⎼".repeat(50)
+	Lw = "\u200b".repeat(500
+id = Jsoup.connect("http://www.xn--now-po7lf48dlsm0ya109f.kr/infect/occurrence_list.do?pageIndex=&disease_no2=&search_nm=코로나").get().select("tbody").select("tr").get(0).select("a").attr("href").split("'")[1]
+url = "http://www.xn--now-po7lf48dlsm0ya109f.kr/infect/occurrence_info.do?infect_no="+id+"&pageIndex=&disease_no2=&search_nm="
+return id.split("in_2020")[1].split("0001")[0].replace(/([0-9]){2}/, "$1월 ")+"일 기준\n"+Ll+"\n한국 : "+Jsoup.connect("http://www.cdc.go.kr/linkCheck.es?mid=a21111050500").get().select("li").get(12).text().split(") ")[1].split(",")[0]+("\n중국"+Jsoup.connect(url).get().select("tr").html().split("중국")[1].replace(/<([^>])+>|아시아|아메리카|유럽|오세아니아|\*|,/g, "").replace(/\n\n/g, "\n").replace(/\(([0-9]+)+\)/g, " ($1명 사망)")).replace(/\n([0-9]+)+/g, " : $1명")+Ll
+}
 
 function lyric(r) {
     const timestamp = "323B33146D42F44747881A808B81CA796996FDECFE3E1399FBB0DC89CC190743E16DBD43951A4031DC7BE2" + "D39907CAD5515DB0CEDA26508E111CFF458C86E917BDA1CB1F75506CEB27F92E72FCDA15B7FD6E061623" + "DFFB9C86262C82C00779EA8A7CDD0684E61DD4DD7D8C72F0AC3C42F21356BF0B3398E93E20AEF3555D2737";
@@ -932,7 +940,11 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
     roomlottery(r)
     return;
     }	
-
+if (msg == "/코로나"){
+replier.reply(CoronaVirus(r));
+return;
+}
+}
 	
 }
 
