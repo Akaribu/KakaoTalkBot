@@ -52,12 +52,6 @@ Flag=(function(){
          return res;
     	  }
 	});
-function CoronaVirus(r) {
-id =org.jsoup.Jsoup.connect("http://www.xn--now-po7lf48dlsm0ya109f.kr/infect/occurrence_list.do?pageIndex=&disease_no2=&search_nm=코로나").get().select("tbody").select("tr").get(0).select("a").attr("href").split("'")[1]
-url = "http://www.xn--now-po7lf48dlsm0ya109f.kr/infect/occurrence_info.do?infect_no="+id+"&pageIndex=&disease_no2=&search_nm="+
-id.split("in_2020")[1].split("0001")[0].replace(/([0-9]){2}/, "$1월 ")+"일 기준\n"+"⎼".repeat(50)+"\n한국 : "+org.jsoup.Jsoup.connect("http://www.cdc.go.kr/linkCheck.es?mid=a21111050500").get().select("li").get(12).text().split(") ")[1].split(",")[0]+("\n중국"+org.jsoup.Jsoup.connect(url).get().select("tr").html().split("중국")[1].replace(/<([^>])+>|아시아|아메리카|유럽|오세아니아|\*|,/g, "").replace(/\n\n/g, "\n").replace(/\(([0-9]+)+\)/g, " ($1명 사망)")).replace(/\n([0-9]+)+/g, " : $1명")+"⎼".repeat(50)
-r.replier.reply(url)
-}
 
 
 
@@ -941,9 +935,6 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
     roomlottery(r)
     return;
     }	
-if (msg == "/코로나"){
-CoronaVirus(r);
-return;
-}
+
 }
 
